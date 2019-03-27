@@ -14,13 +14,13 @@ class Menu extends Component {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Domů <span className="sr-only">(aktuální)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Životopis</a>
+                            <a className="nav-link" href="#">O mně <span className="sr-only">(aktuální)</span></a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">Zkušenosti</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Projekty</a>
                         </li>
                     </ul>
                 </div>

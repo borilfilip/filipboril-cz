@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Intro.css';
 
-class Intro extends Component {
-  render() {
-    return (
-        <div className="jumbotron">
-            <h1>{this.props.headline}</h1>
-            <p className="lead">{this.props.children}</p>
-        </div>
-    );
-  }
-}
+const intro = (props) => {
+  return (
+      <div className="jumbotron">
+          <h1>{props.headline}</h1>
+          <p className="lead">{props.children}</p>
+      </div>
+  );
+};
 
-export default Intro;
+export default intro;

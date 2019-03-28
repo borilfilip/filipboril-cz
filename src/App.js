@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Menu from './Menu/Menu'
 import Intro from "./Intro/Intro";
+import Menu from './Menu/Menu'
+import Social from './Social/Social'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
                   Poté jsem se ale přesunul k tomu, co mě baví více, tedy tvorbě webových aplikací. Nejvíce zkušeností mám s programováním v PHP a frameworku
                   Nette. V poslední době mě zaujalo programování v Reactu, ve kterém je napsán také tento web.
               </Intro>
+              <Social />
           </main>
       </div>
     );

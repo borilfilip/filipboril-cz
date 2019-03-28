@@ -17,9 +17,6 @@ class Menu extends Component {
                             <a className="nav-link" href="#">O mně <span className="sr-only">(aktuální)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Zkušenosti</a>
-                        </li>
-                        <li className="nav-item">
                             <a className="nav-link" href="#">Projekty</a>
                         </li>
                     </ul>

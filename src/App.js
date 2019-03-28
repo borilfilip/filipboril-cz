@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
+import { Route, HashRouter } from "react-router-dom";
 import './App.css';
-import Intro from "./Intro/Intro";
-import Menu from './Menu/Menu'
-import Social from './Social/Social'
+import Menu from './Menu/Menu';
+import Footer from './Footer/Footer'
+import Home from "./Home/Home";
+import Projects from "./Projects/Projects";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-          <Menu />
-          <main className="container">
-              <Intro headline="Bc. Filip Bořil">
-                  Jsem student magisterského programu informatika na FIT.ČVUT. Mým oborem je softwarové inženýrství se zaměřením na webové inženýrství.
-                  Kariérně jsem začínal prací s databázemi a tvorbu reportů s využitím excelových maker pro oddělení finančního plánování české banky.
-                  Poté jsem se ale přesunul k tomu, co mě baví více, tedy tvorbě webových aplikací. Nejvíce zkušeností mám s programováním v PHP a frameworku
-                  Nette. V poslední době mě zaujalo programování v Reactu, ve kterém je napsán také tento web.
-              </Intro>
-              <Social />
-          </main>
-      </div>
+      <HashRouter>
+          <div className="App">
+              <Menu />
+              <main className="container">
+                  <Route exact path="/" component={Home} />
+                  <Route path="/projects" component={Projects} />
+              </main>
+              <Footer />
+          </div>
+      </HashRouter>
     );
   }
 }

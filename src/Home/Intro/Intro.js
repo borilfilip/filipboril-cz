@@ -12,7 +12,7 @@ const intro = (props) => {
               Poté jsem se ale přesunul k tomu, co mě baví více, tedy tvorbě webových aplikací. Nejvíce zkušeností mám s programováním v PHP a frameworku
               Nette. V poslední době mě zaujalo programování v Reactu, ve kterém je napsán také tento web.
           </p>
-          <NavLink to="/projects" role="button" className="btn btn-lg btn-primary">Zobrazit projekty »</NavLink>
+          <NavLink to="/projects" role="button" className="btn btn-lg btn-primary">Zobrazit projekty →</NavLink>
       </div>
   );
 };

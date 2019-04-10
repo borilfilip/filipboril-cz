@@ -7,7 +7,6 @@ class Projects extends Component {
   render() {
     return (
         <div className="Projects">
-            <h1>Projekty</h1>
             <Project img="/img/fras-hp-thumb.png" name="FRAS – docházkový systém s rozpoznáváním tváří">
               <p>
                 Tento projekt byl vytvořen jako bakalářská práce. Systém má zá úkol zjednodušit proces zazamenávání

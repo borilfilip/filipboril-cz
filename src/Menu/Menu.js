@@ -20,6 +20,9 @@ class Menu extends Component {
                         <li className="nav-item">
                             <NavLink to="/projects" className="nav-link">Projekty</NavLink>
                         </li>
+                      <li className="nav-item">
+                        <NavLink to="/demo" className="nav-link">Ukázka</NavLink>
+                      </li>
                     </ul>
                 </div>
             </div>

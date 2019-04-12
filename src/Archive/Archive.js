@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
 import './Archive.css';
 
-class Archive extends Component {
-  render() {
+const archive = (props) => {
     return (
         <div className="Archive">
           <h1>Archiv</h1>
@@ -24,7 +23,6 @@ class Archive extends Component {
           <NavLink to="/projects" className="btn btn-primary btn-sm">← Zpět</NavLink>
         </div>
     );
-  }
-}
+};
 
-export default Archive;
+export default archive;

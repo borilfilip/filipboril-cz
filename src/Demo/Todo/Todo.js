@@ -8,9 +8,10 @@ class Todo extends Component {
       {id: 1, content: "Content 1", editMode: false},
       {id: 2, content: "Content 2", editMode: false},
       {id: 3, content: "Content 3", editMode: false},
-    ],
-    increment: 4
+    ]
   };
+
+  increment = 4;
 
   deleteItemHandler = (idx) => {
     const notes = [...this.state.notes];
@@ -35,7 +36,7 @@ class Todo extends Component {
 
   addItemHandler = () => {
     const item = {
-      id: this.state.increment++,
+      id: this.increment++,
       editMode: true
     };
 

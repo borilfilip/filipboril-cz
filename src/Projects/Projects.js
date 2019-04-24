@@ -7,17 +7,18 @@ class Projects extends Component {
   render() {
     return (
         <div className="Projects">
-            <Project img="/img/fras-hp-thumb.png" name="FRAS – docházkový systém s rozpoznáváním tváří">
+            <Project img="/img/fras-hp-thumb.png" name="FRAS – docházkový systém s rozpoznáváním tváří (bakalářská práce)">
               <p>
-                Tento projekt byl vytvořen jako bakalářská práce. Systém má zá úkol zjednodušit proces zazamenávání
-                docházky. Je tvořen moduly, z nichž jeden běží na Raspberry PI a má na starosti detekovat pohyb
-                a fotit procházející lidi. Další modul na pořízených fotkách rozpozná tváře. Hlavním modulem je webový
-                portál, přes který se kontroluje docházka, správnost rozpoznání a také zadává a schvaluje dovolená,
-                prochází se historie, spravují se uživatelé a připojená zařízení.
+                Systém má zá úkol zjednodušit proces zazamenávání docházky. Je tvořen moduly, z nichž jeden běží na
+                Raspberry PI a má na starosti detekovat pohyb a fotit procházející lidi. Další modul na pořízených
+                fotkách rozpozná tváře. Hlavním modulem je webový portál, přes který se kontroluje docházka, správnost
+                rozpoznání a také zadává a schvaluje dovolená a spravuje se celý systém.
               </p>
               <p>
                 Použité technologie: PHP, HTML, nette, jQuery, python, bootstrap, MySQL, docker a další.
               </p>
+              <a href="/fras-code-demo.zip" className="btn btn-primary btn-sm" role="button"><i
+                className="far fa-file-archive" /> Ukázka kódu</a>
             </Project>
             <Project img="/img/sep-hp-thumb.png" name="SEP – skupinová evidence protistran">
               <p>
@@ -66,7 +67,8 @@ class Projects extends Component {
                           které je na stránce možno rovnou vyzkoušet nebo opsat. Je to druhá verze webu psaná v čistém
                           PHP v době, kdy jsem chodil do 8. třídy ZŠ.
                         </p>
-                        <a href="http://iadm.wz.cz/" className="btn btn-primary btn-sm" role="button" target="_blank">Přejít na web</a>
+                        <a href="http://iadm.wz.cz/" className="btn btn-primary btn-sm" role="button" target="_blank"
+                           rel="noopener noreferrer"><i className="fas fa-external-link-alt" /> Přejít na web</a>
                       </Project>
                       <Project img="/img/noviny.png" name="iAdministrativa noviny – mix zpráv a návodů">
                         <p>
@@ -74,7 +76,8 @@ class Projects extends Component {
                           rozhodl psát články a vyzkoušet si instalaci a práci s redakčním systémem wordpress.
                           Články pojednávali zprvu o novinkách z tehdejší třídy, později o návodech na PC.
                         </p>
-                        <a href="http://iadm.wz.cz/noviny/" className="btn btn-primary btn-sm" role="button" target="_blank">Přejít na web</a>
+                        <a href="http://iadm.wz.cz/noviny/" className="btn btn-primary btn-sm" role="button"
+                           target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt" /> Přejít na web</a>
                       </Project>
                       <Project img="/img/sesity.png" name="Sešity – zápisky z vyučování 8. a 9. třídy ZŠ online">
                         <p>
@@ -82,7 +85,8 @@ class Projects extends Component {
                           alespoň u předmětů, které byl někdo ochotný přepisovat. Web byl také napsaný v čistém PHP,
                           když jsem chodil do 9. třídy.
                         </p>
-                        <a href="http://sesity.borec.cz/" className="btn btn-primary btn-sm" role="button" target="_blank">Přejít na web</a>
+                        <a href="http://sesity.borec.cz/" className="btn btn-primary btn-sm" role="button"
+                           target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt" /> Přejít na web</a>
                       </Project>
                       <NavLink to="/archive">Archiv</NavLink>
                     </div>

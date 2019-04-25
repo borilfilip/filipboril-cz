@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Route, HashRouter } from "react-router-dom";
 import './App.css';
-import Menu from './Menu/Menu';
-import Footer from './Footer/Footer'
-import Home from "./Home/Home";
-import Projects from "./Projects/Projects";
-import Archive from './Archive/Archive'
-import Demo from "./Demo/Demo";
+import Menu from '../components/Menu/Menu';
+import Footer from '../components/Footer/Footer'
+import Home from "../components/Home/Home";
+import Projects from "../components/Projects/Projects";
+import Archive from '../components/Archive/Archive'
+import Demo from "../components/Demo/Demo";
 
 class App extends Component {
   render() {

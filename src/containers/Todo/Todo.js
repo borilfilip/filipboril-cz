@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Todo.css';
-import Item from "./Item/Item";
+import Item from "../../components/Demo/Todo/Item/Item";
 
 class Todo extends Component {
   state = {

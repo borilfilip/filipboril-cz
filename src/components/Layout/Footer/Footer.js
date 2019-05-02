@@ -1,12 +1,13 @@
 import React from 'react';
+import Container from "react-bootstrap/Container";
 
 const footer = (props) => {
   return (
-      <footer className="footer pb-3">
+      <footer className="pb-3">
           <hr />
-          <div className="container">
+          <Container>
               <span className="text-muted">Filip Bořil 2019 ©</span>
-          </div>
+          </Container>
       </footer>
   );
 };

@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import './Intro.css';
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 const intro = (props) => {
   return (
-      <div className="jumbotron">
+      <Jumbotron>
           <h1>Filip Bořil</h1>
           <p className="lead">
               Jsem student magisterského programu informatika na FIT.ČVUT. Mým oborem je softwarové inženýrství se zaměřením na webové inženýrství.
@@ -13,7 +14,7 @@ const intro = (props) => {
               Nette. V poslední době mě zaujalo programování v Reactu, ve kterém je napsán také tento web.
           </p>
           <NavLink to="/projects" role="button" className="btn btn-lg btn-primary">Zobrazit projekty →</NavLink>
-      </div>
+      </Jumbotron>
   );
 };
 

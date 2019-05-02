@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DemosHeader from "../../../components/Demos/DemosHeader/DemosHeader"
 import Item from "../../../components/Demos/Todo/Item/Item";
+import Button from "react-bootstrap/Button";
 
 class Todo extends Component {
   state = {
@@ -62,7 +63,7 @@ class Todo extends Component {
       <>
         <DemosHeader />
         <h2>Úkolníček</h2>
-        <button className="btn btn-primary" onClick={this.addItemHandler}><i className="fas fa-plus"/> Nový</button>
+        <Button variant="primary" onClick={this.addItemHandler}><i className="fas fa-plus"/> Nový</Button>
         {items}
       </>
     );

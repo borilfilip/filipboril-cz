@@ -3,14 +3,15 @@ import './CV.css';
 import Row from './Row/Row'
 import Headline from "./Headline/Headline";
 import Table from "./Table/Table";
+import Alert from 'react-bootstrap/Alert'
 
 const CV = (props) => {
   return (
       <div className="CV">
           <h1>Životopis</h1>
-          <div className="alert alert-dark" role="alert">
+          <Alert variant="dark">
               Ze životopisu jsou skryty osobní údaje. Celý životopis v PDF zašlu na vyžádání.
-          </div>
+          </Alert>
           <Table>
               <Headline>Vzdělání</Headline>
               <Row name="2018">Tallinn University of Technology (Erasmus+)</Row>

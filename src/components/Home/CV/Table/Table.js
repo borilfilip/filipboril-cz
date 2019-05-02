@@ -1,12 +1,13 @@
 import React from 'react';
+import BTable from 'react-bootstrap/Table'
 
 const Table = (props) => {
   return (
-      <table className="table table-sm table-borderless">
+      <BTable size="sm" borderless>
           <tbody>
               {props.children}
           </tbody>
-      </table>
+      </BTable>
   );
 };
 

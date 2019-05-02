@@ -1,4 +1,5 @@
 import React from 'react';
+import Alert from 'react-bootstrap/Alert'
 
 const demosHeader = (props) => {
   /*const lessons = {
@@ -7,12 +8,13 @@ const demosHeader = (props) => {
   };*/
 
   return (
-    <div className="alert alert-info">
+    <Alert variant="info">
       <p className="mb-0">
-        React se právě učím z videokurzu <a href="https://www.udemy.com/react-the-complete-guide-incl-redux/"
-                                            target="_blank"
-                                            rel="noopener noreferrer">
-          React - The Complete Guide (incl Hooks, React Router, Redux)
+        React se právě učím z videokurzu{' '}
+        <a href="https://www.udemy.com/react-the-complete-guide-incl-redux/"
+            target="_blank"
+            rel="noopener noreferrer">
+          React - The Complete Guide (incl Hooks, React Router, Redux){' '}
         </a> na <a href="https://www.udemy.com"
                  target="_blank"
                  rel="noopener noreferrer">
@@ -27,7 +29,7 @@ const demosHeader = (props) => {
                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" />
         </div>
       </p>*/}
-    </div>
+    </Alert>
   );
 };
 

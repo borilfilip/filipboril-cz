@@ -6,17 +6,20 @@ import Home from "../components/Home/Home";
 import Projects from "../components/Projects/Projects";
 import Archive from '../components/Projects/Archive/Archive'
 import Todo from "./Demos/Todo/Todo";
+import Container from 'react-bootstrap/Container'
 
 class App extends Component {
   render() {
     return (
       <HashRouter>
         <Menu />
-        <main className="container">
+        <main>
+          <Container>
             <Route exact path="/" component={Home} />
             <Route exact path="/projects" component={Projects} />
             <Route path="/projects/archive" component={Archive} />
             <Route path="/demos/todo" component={Todo} />
+          </Container>
         </main>
         <Footer />
       </HashRouter>

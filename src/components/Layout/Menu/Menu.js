@@ -1,38 +1,29 @@
 import React from 'react';
 import {NavLink, matchPath} from "react-router-dom";
+import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const menu = (props) => {
-  let demosActive = matchPath(window.location.hash.substr(1), {path: "/demos"}) !== null; // TODO does changes
+  let demosActive = matchPath(window.location.hash.substr(1), {path: "/demos"}) !== null; // TODO does not change
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div className="container">
-        <NavLink exact to="/" className="navbar-brand">Filip Bořil</NavLink>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"/>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <NavLink exact to="/" className="nav-link">O mně</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink exact to="/projects" className="nav-link">Projekty</NavLink>
-            </li>
-            <li className={"nav-item dropdown" + (demosActive ? " active" : "")}>
-              <a className="nav-link dropdown-toggle" href="#" id="demos" role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ukázky
-              </a>
-              <div className="dropdown-menu" aria-labelledby="demos">
-                <NavLink to="/demos/todo" className="dropdown-item">Úkolníček</NavLink>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar variant="dark" bg="dark" expand="md" fixed="top">
+      <Container>
+        <Navbar.Brand href="#/">Filip Bořil</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#/">O mně</Nav.Link>
+            <Nav.Link href="#/projects">Projekty</Nav.Link>
+            <NavDropdown title="Ukázky" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#/demos/todo">Úkolníček</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

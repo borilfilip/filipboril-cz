@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './Projects.css';
 import Project from "./Project/Project";
+import Card from "react-bootstrap/Card";
+import {Button} from "react-bootstrap";
+import Collapse from "react-bootstrap/Collapse";
 
 const projects = (props) => {
   return (
@@ -34,28 +37,30 @@ const projects = (props) => {
         <p>
           Jedná se o nasazení a úprava hotového řešení v podobě eshopu a redakčního systému. Na každém projektu
           jsem prováděl nasazení připravených html šablon a vývoj dodatečných modulů na míru každého klienta.
-          Kromě krátkodobějších projektů, jako <a href="http://www.gastro-projekt.cz/" target="_blank">Gastro
-          projekt</a>, <a href="http://www.galt-pro-deti.cz/" target="_blank">Galt pro děti</a>, <a
-          href="https://www.mdlet.cz/" target="_blank">MDlet</a>, <a
-          href="https://portal.powdergatecapital.com/" target="_blank">Powdergate Capital</a>, <a
-          href="http://www.cafeadastra.cz/" target="_blank">Cafe Adastra</a>, <a
-          href="https://svupraha-cz.dempsey.netservis.cz/" target="_blank">SVU Praha</a>, <a
-          href="http://www.energopraha.com/" target="_blank">Energo praha</a>, jsem vyvíjel také projekty s mnoha
-          moduly a importem dat, jako byl web <a href="https://cokolada-cz.vacatko.netservis.cz/" target="_blank">
-          čokolády</a>.
+          Kromě krátkodobějších projektů, jako{' '}
+          <a href="http://www.gastro-projekt.cz/" target="_blank" rel="noopener noreferrer">Gastro projekt</a>,{' '}
+          <a href="http://www.galt-pro-deti.cz/" target="_blank" rel="noopener noreferrer">Galt pro děti</a>,{' '}
+          <a href="https://www.mdlet.cz/" target="_blank" rel="noopener noreferrer">MDlet</a>,{' '}
+          <a href="https://portal.powdergatecapital.com/" target="_blank" rel="noopener noreferrer">Powdergate Capital</a>,{' '}
+          <a href="http://www.cafeadastra.cz/" target="_blank" rel="noopener noreferrer">Cafe Adastra</a>,{' '}
+          <a href="https://svupraha-cz.dempsey.netservis.cz/" target="_blank" rel="noopener noreferrer">SVU Praha</a>,{' '}
+          <a href="http://www.energopraha.com/" target="_blank" rel="noopener noreferrer">Energo praha</a>,
+          jsem vyvíjel také projekty s mnoha moduly a importem dat, jako byl web{' '}
+          <a href="https://cokolada-cz.vacatko.netservis.cz/" target="_blank" rel="noopener noreferrer">čokolády</a>.
         </p>
         <p>
           Použité technologie: PHP, HTML, jQuery, MySQL a další.
         </p>
       </Project>
-      <div className="card">
-        <div className="card-header">
-          <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample">
+
+      <Card>
+        <Card.Header>
+          <Button variant="link" data-toggle="collapse" data-target="#collapseExample">
             Starší projekty
-          </button>
-        </div>
-        <div className="collapse" id="collapseExample">
-          <div className="card-body">
+          </Button>
+        </Card.Header>
+        <Collapse id="collapseExample">
+          <Card.Body>
             <p>
               Zde se nachází některé starší projekty z doby, kdy jsem se to ještě učil sám – tedy ještě před
               gymnáziem a před ČVUT.
@@ -88,9 +93,9 @@ const projects = (props) => {
                  target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt"/> Přejít na web</a>
             </Project>
             <Link to="/projects/archive">Archiv</Link>
-          </div>
-        </div>
-      </div>
+          </Card.Body>
+        </Collapse>
+      </Card>
     </div>
   );
 };

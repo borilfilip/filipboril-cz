@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Projects.css';
 import Project from "./Project/Project";
 
@@ -87,7 +87,7 @@ const projects = (props) => {
               <a href="http://sesity.borec.cz/" className="btn btn-primary btn-sm" role="button"
                  target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt"/> Přejít na web</a>
             </Project>
-            <NavLink to="/archive">Archiv</NavLink>
+            <Link to="/projects/archive">Archiv</Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './Todo.css';
-import Item from "../../components/Demo/Todo/Item/Item";
+import React, {Component} from 'react';
+import DemosHeader from "../../../components/Demos/DemosHeader/DemosHeader"
+import Item from "../../../components/Demos/Todo/Item/Item";
 
 class Todo extends Component {
   state = {
@@ -47,25 +47,24 @@ class Todo extends Component {
   };
 
   render() {
-    let items = (
-      <div>
-        {this.state.notes.map((item, idx) => {
-          return <Item
-            key={item.id}
-            id={item.id}
-            delete={() => this.deleteItemHandler(idx)}
-            edit={(event) => this.editItemHandler(event, item.id)}
-            content={item.content}
-            editMode={item.editMode} />
-        })}
-      </div>
-    );
+    let items =
+      this.state.notes.map((item, idx) => {
+        return <Item
+          key={item.id}
+          id={item.id}
+          delete={() => this.deleteItemHandler(idx)}
+          edit={(event) => this.editItemHandler(event, item.id)}
+          content={item.content}
+          editMode={item.editMode}/>
+      });
 
     return (
-        <div className="Todo">
-          <button className="btn btn-primary" onClick={this.addItemHandler}><i className="fas fa-plus" /> Nový</button>
-          {items}
-        </div>
+      <>
+        <DemosHeader />
+        <h2>Úkolníček</h2>
+        <button className="btn btn-primary" onClick={this.addItemHandler}><i className="fas fa-plus"/> Nový</button>
+        {items}
+      </>
     );
   }
 }

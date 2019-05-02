@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import './Archive.css';
 
 const archive = (props) => {
     return (
@@ -20,7 +19,7 @@ const archive = (props) => {
             <li><a href="http://tikve.webz.cz/historie/topsoftware/" target="_blank">TopSoftware.wz.cz</a> - Nikdy nedokončený web, který měl nabízet přehled nejdůležitějšího SW; zrušen 21.12.2009</li>
             <li><a href="http://tikve.webz.cz/historie/gulz/" target="_blank">GULZ.borec.cz</a>, <a href="http://tikve.webz.cz/historie/gulz2/" target="_blank">druhá verze</a> - Web, který měl fungovat podobně jako Sešity.borec.cz, ale na úrovni gymnázia, nikdy nebyl spuštěn</li>
           </ul>
-          <NavLink to="/projects" className="btn btn-primary btn-sm">← Zpět</NavLink>
+          <NavLink exact to="/projects" className="btn btn-primary btn-sm">← Zpět</NavLink>
         </div>
     );
 };

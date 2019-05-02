@@ -1,5 +1,4 @@
 import React from 'react';
-import './Project.css';
 
 const Project = (props) => {
   return (
@@ -11,7 +10,7 @@ const Project = (props) => {
               <div className="col-md-8">
                   <div className="card-body">
                       <h5 className="card-title">{props.name}</h5>
-                      <p className="card-text">{props.children}</p>
+                      <div className="card-text">{props.children}</div>
                   </div>
               </div>
           </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Home.css';
 import CV from './CV/CV';
 import Intro from './Intro/Intro';
 import Social from './Social/Social';

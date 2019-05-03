@@ -7,6 +7,7 @@ import Projects from "../components/Projects/Projects";
 import Archive from '../components/Projects/Archive/Archive'
 import Todo from "./Demos/Todo/Todo";
 import Container from 'react-bootstrap/Container'
+import BurgerBuilder from "./Demos/BurgerBuilder/BurgerBuilder";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/projects" component={Projects} />
             <Route path="/projects/archive" component={Archive} />
             <Route path="/demos/todo" component={Todo} />
+            <Route path="/demos/burger-builder" component={BurgerBuilder} />
           </Container>
         </main>
         <Footer />

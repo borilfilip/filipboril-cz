@@ -1,12 +1,14 @@
 import React from 'react';
-import {NavLink, matchPath} from "react-router-dom";
+import { withRouter } from 'react-router';
+import { matchPath } from 'react-router-dom';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 const menu = (props) => {
-  let demosActive = matchPath(window.location.hash.substr(1), {path: "/demos"}) !== null; // TODO does not change
+  const pathname = props.location.pathname;
+  const demosActive = matchPath(pathname, {path: "/demos"}) !== null;
 
   return (
     <Navbar variant="dark" bg="dark" expand="md" fixed="top">
@@ -17,8 +19,9 @@ const menu = (props) => {
           <Nav className="mr-auto">
             <Nav.Link href="#/">O mně</Nav.Link>
             <Nav.Link href="#/projects">Projekty</Nav.Link>
-            <NavDropdown title="Ukázky" id="basic-nav-dropdown">
+            <NavDropdown title="Ukázky" id="basic-nav-dropdown" className={demosActive ? "active" : null}>
               <NavDropdown.Item href="#/demos/todo">Úkolníček</NavDropdown.Item>
+              <NavDropdown.Item href="#/demos/burger-builder">Burger builder</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -27,4 +30,4 @@ const menu = (props) => {
   );
 };
 
-export default menu;
+export default withRouter(menu);

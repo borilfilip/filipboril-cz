@@ -6,7 +6,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 const intro = (props) => {
   return (
       <Jumbotron>
-          <h1>Filip Bořil</h1>
+          <h1>Bc. Filip Bořil</h1>
           <p className="lead">
               Jsem student magisterského programu informatika na FIT.ČVUT. Mým oborem je softwarové inženýrství se zaměřením na webové inženýrství.
               Kariérně jsem začínal prací s databázemi a tvorbu reportů s využitím excelových maker pro oddělení finančního plánování české banky.

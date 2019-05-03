@@ -25,9 +25,9 @@ const projects = (props) => {
       <Project img="/img/sep-hp-thumb.png" name="SEP – skupinová evidence protistran">
         <p>
           Skupinová evidence protistran je portál, který eviduje protistrany, vytvořený pro banku. Na tomto
-          projektu jsem se podílel ve firmě <a href="https://evosoft.cz/" target="_blank">evosoft s r.o.</a>
-          Systém má za cíl každému subjektu ukázat různé údaje o jedné protistraně. Mimo to údaje také importuje
-          a exportuje přes API třetích stran.
+          projektu jsem se podílel ve firmě <a href="https://evosoft.cz/" target="_blank" rel="noopener noreferrer">
+          evosoft s r.o.</a> Systém má za cíl každému subjektu ukázat různé údaje o jedné protistraně. Mimo to údaje
+          také importuje a exportuje přes API třetích stran.
         </p>
         <p>
           Použité technologie: PHP, HTML, nette, jQuery, Oracle, GIT, docker a další.

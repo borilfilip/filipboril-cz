@@ -13,7 +13,7 @@ const Project = (props) => {
         <Col md="8">
           <Card.Body>
             <h5 className="card-title">{props.name}</h5>
-            <Card.Text>{props.children}</Card.Text>
+            <Card.Text as="div">{props.children}</Card.Text>
           </Card.Body>
         </Col>
       </Row>

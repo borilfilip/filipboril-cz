@@ -11,7 +11,7 @@ const menu = (props) => {
   const demosActive = matchPath(pathname, {path: "/demos"}) !== null;
 
   return (
-    <Navbar variant="dark" bg="dark" expand="md" fixed="top">
+    <Navbar variant="dark" bg="dark" expand="md" fixed="top" collapseOnSelect>
       <Container>
         <Navbar.Brand href="#/">Filip Bořil</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

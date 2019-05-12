@@ -12,20 +12,22 @@ const buildControls = (props) => {
   return (
     <div className="BuildControls">
       <h3 className="mb-3">Cena: {props.price.toFixed(2)} Kč</h3>
-      {controls.map(ctrl => (
-        <BuildControl
-          key={ctrl.label}
-          label={ctrl.label}
-          added={() => props.ingredientAdded(ctrl.type)}
-          removed={() => props.ingredientRemoved(ctrl.type)}
-          disabled={props.disabled[ctrl.type]}/>
-      ))}
-      <Button
-        size="lg"
-        className="mt-4"
-        disabled={!props.purchasable}
-        onClick={props.ordered}>Objednat
-      </Button>
+      <div className="BuildControlsControls">
+        {controls.map(ctrl => (
+          <BuildControl
+            key={ctrl.label}
+            label={ctrl.label}
+            added={() => props.ingredientAdded(ctrl.type)}
+            removed={() => props.ingredientRemoved(ctrl.type)}
+            disabled={props.disabled[ctrl.type]}/>
+        ))}
+        <Button
+          size="lg"
+          className="mt-4"
+          disabled={!props.purchasable}
+          onClick={props.ordered}>Objednat
+        </Button>
+      </div>
     </div>
 )};
 

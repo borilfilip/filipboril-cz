@@ -103,10 +103,10 @@ class BurgerBuilder extends Component {
         <DemosHeader/>
         <h2>Burger builder</h2>
         <Row>
-          <Col xs="12" sm="9">
+          <Col md="12" lg="9">
             <Burger ingredients={this.state.ingredients} />
           </Col>
-          <Col xs="12" sm="3">
+          <Col md="12" lg="3">
             <BuildControls
               ingredientAdded={this.addIngredientHandler}
               ingredientRemoved={this.removeIngredientHandler}

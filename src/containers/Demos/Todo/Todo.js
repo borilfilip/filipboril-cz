@@ -1,18 +1,28 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import DemosHeader from "../../../components/Demos/DemosHeader/DemosHeader"
 import Item from "../../../components/Demos/Todo/Item/Item";
 import Button from "react-bootstrap/Button";
 
 class Todo extends Component {
   state = {
-    notes: [
-      {id: 1, content: "Content 1", editMode: false},
-      {id: 2, content: "Content 2", editMode: false},
-      {id: 3, content: "Content 3", editMode: false},
-    ]
+    notes: []
   };
 
-  increment = 4;
+  increment = 9999; // TODO use DB increment and remove
+
+  componentDidMount () {
+    axios.get('http://filipboril.cz/api/')
+      .then( response => {
+        const notes = response.data.map(item => {
+          return {
+            ...item,
+            editMode: false
+          }
+        });
+        this.setState({notes: notes});
+      });
+  }
 
   deleteItemHandler = (idx) => {
     const notes = [...this.state.notes];

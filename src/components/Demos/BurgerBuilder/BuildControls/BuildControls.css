@@ -1,6 +1,9 @@
 .BuildControls {
-  width: 100%;
-  text-align: right;
-  margin: auto;
   padding: 10px 0;
+}
+
+.BuildControlsControls {
+  text-align: right;
+  width: max-content;
+  margin-left: 2rem;
 }

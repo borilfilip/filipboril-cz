@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+	# use HTTPS
+	RewriteCond %{HTTPS} !on
+	RewriteRule .? https://www.filipboril.cz%{REQUEST_URI} [R=301,L]
+</IfModule>

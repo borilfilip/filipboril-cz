@@ -3,13 +3,16 @@ import axios from 'axios';
 import DemosHeader from "../../../components/Demos/DemosHeader/DemosHeader"
 import Item from "../../../components/Demos/Todo/Item/Item";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 
 class Todo extends Component {
     state = {
-        notes: []
+        notes: [],
+        deleting: false,
+        adding: false,
+        loaded: false
     };
 
-    increment = 9999; // TODO use DB increment and remove
     url = 'https://www.filipboril.cz/api/todo';
 
     componentDidMount = () => {
@@ -22,14 +25,25 @@ class Todo extends Component {
                         saving: false
                     }
                 });
-                this.setState({notes: notes});
+                this.setState({notes: notes, loaded: true});
             });
     };
 
-    deleteItemHandler = (idx) => {
+    showHandler = () => {
+        this.setState({deleting: true});
+    };
+
+    closeHandler = () => {
+        this.setState({deleting: false});
+    };
+
+    deleteHandler = (idx) => {
+        axios.delete(this.url + '/note/' + this.state.notes[idx].id)
+            .then(() => {}); // TODO announcement
+
         const notes = [...this.state.notes];
         notes.splice(idx, 1);
-        this.setState({notes: notes});
+        this.setState({notes: notes, deleting: false});
     };
 
     getItemIndex = (id) => {
@@ -49,21 +63,21 @@ class Todo extends Component {
         this.setState({notes: notes});
     };
 
-    editItemHandler = (id) => {
+    editHandler = (id) => {
         const item = this.getItemCopy(id);
         item.editing = !item.editing;
 
         this.setItem(item);
     };
 
-    changeItemHandler = (event, id) => {
+    changeHandler = (event, id) => {
         const item = this.getItemCopy(id);
         item.content = event.target.value;
 
         this.setItem(item);
     };
 
-    saveItemHandler = (event, id) => {
+    saveHandler = (event, id) => {
         const item = this.getItemCopy(id);
 
         axios.put(this.url + '/note/' + item.id, item)
@@ -78,29 +92,43 @@ class Todo extends Component {
         event.preventDefault();
     };
 
-    addItemHandler = () => {
+    addHandler = () => {
         const item = {
-            id: this.increment++,
-            editing: true
+            content: '',
+            editing: true,
+            saving: false
         };
 
-        const notes = [...this.state.notes];
-        notes.push(item); // TODO ES6
+        axios.post(this.url + '/note/', item)
+            .then((response) => {
+                item.id = response.data.id;
 
-        this.setState({notes: notes});
+                const notes = [...this.state.notes];
+                notes.push(item);
+
+                this.setState({notes: notes, adding: false});
+            });
+
+        this.setState({adding: true});
     };
 
     render() {
-        let items =
+        let items = <Spinner animation="border" role="status">
+                       <span className="sr-only">Načítání...</span>
+                   </Spinner>;
+        if (this.state.loaded) items =
             this.state.notes.map((item, idx) => {
                 return <Item
                     key={item.id}
-                    delete={() => this.deleteItemHandler(idx)}
-                    edit={() => this.editItemHandler(item.id)} // TODO idx? also next 2 handlers
-                    change={(event) => this.changeItemHandler(event, item.id)}
-                    save={(event) => this.saveItemHandler(event, item.id)}
-                    content={item.content}
+                    show={this.showHandler}
+                    close={this.closeHandler}
+                    delete={() => this.deleteHandler(idx)}
+                    deleting={this.state.deleting}
+                    edit={() => this.editHandler(item.id)} // TODO idx? also next 2 handlers
                     editing={item.editing}
+                    change={(event) => this.changeHandler(event, item.id)}
+                    save={(event) => this.saveHandler(event, item.id)}
+                    content={item.content}
                     saving={item.saving}/>
             });
 
@@ -108,8 +136,12 @@ class Todo extends Component {
             <>
                 <DemosHeader/>
                 <h2>Úkolníček</h2>
-                <Button variant="primary" onClick={this.addItemHandler}><i className="fas fa-plus"/> Nový</Button>
-                {items}
+                <Button variant="primary" onClick={this.addHandler} disabled={this.state.adding}>
+                    {this.state.adding ? "Přidávání..." : <><i className="fas fa-plus"/> Nový</>}
+                </Button>
+                <div className="mt-3">
+                    {items}
+                </div>
             </>
         );
     }

@@ -9,7 +9,8 @@ const editItem = (props) => {
         <Form onSubmit={!props.saving ? props.save : null}>
             <Row>
                 <Col>
-                    <Form.Control type="text" name="note" value={props.content} onChange={props.change}/>
+                    <Form.Control type="text" name="note" value={props.content} onChange={props.change}
+                                  ref={props.inputRef}/>
                 </Col>
                 <Col xs="auto">
                     <Button type="submit" variant="primary" size="sm" disabled={props.saving}>

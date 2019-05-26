@@ -4,16 +4,18 @@ import DemosHeader from "../../../components/Demos/DemosHeader/DemosHeader"
 import Item from "../../../components/Demos/Todo/Item/Item";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
+import DeleteModal from "../../../components/Demos/Todo/Item/DeleteModal/DeleteModal";
 
 class Todo extends Component {
     state = {
         notes: [],
-        deleting: false,
+        deleting: 0,
         adding: false,
         loaded: false
     };
 
     url = 'https://www.filipboril.cz/api/todo';
+    lastInsertRef = React.createRef();
 
     componentDidMount = () => {
         axios.get(this.url)
@@ -29,21 +31,21 @@ class Todo extends Component {
             });
     };
 
-    showHandler = () => {
-        this.setState({deleting: true});
+    deleteModalShowHandler = (idx) => {
+        this.setState({deleting: idx});
     };
 
-    closeHandler = () => {
-        this.setState({deleting: false});
+    closeDeleteModalHandler = () => {
+        this.setState({deleting: 0});
     };
 
-    deleteHandler = (idx) => {
-        axios.delete(this.url + '/note/' + this.state.notes[idx].id)
-            .then(() => {}); // TODO announcement
+    deleteHandler = () => {
+        axios.delete(this.url + '/note/' + this.state.notes[this.state.deleting].id)
+            .then(() => {});
 
         const notes = [...this.state.notes];
-        notes.splice(idx, 1);
-        this.setState({notes: notes, deleting: false});
+        notes.splice(this.state.deleting, 1);
+        this.setState({notes: notes, deleting: 0});
     };
 
     getItemIndex = (id) => {
@@ -102,11 +104,10 @@ class Todo extends Component {
         axios.post(this.url + '/note/', item)
             .then((response) => {
                 item.id = response.data.id;
-
                 const notes = [...this.state.notes];
                 notes.push(item);
-
                 this.setState({notes: notes, adding: false});
+                this.lastInsertRef.current.focus();
             });
 
         this.setState({adding: true});
@@ -120,16 +121,15 @@ class Todo extends Component {
             this.state.notes.map((item, idx) => {
                 return <Item
                     key={item.id}
-                    show={this.showHandler}
-                    close={this.closeHandler}
-                    delete={() => this.deleteHandler(idx)}
+                    delete={() => this.deleteModalShowHandler(idx)}
                     deleting={this.state.deleting}
-                    edit={() => this.editHandler(item.id)} // TODO idx? also next 2 handlers
+                    edit={() => this.editHandler(item.id)} // TODO focus input
                     editing={item.editing}
                     change={(event) => this.changeHandler(event, item.id)}
                     save={(event) => this.saveHandler(event, item.id)}
+                    saving={item.saving}
                     content={item.content}
-                    saving={item.saving}/>
+                    inputRef={this.lastInsertRef} />
             });
 
         return (
@@ -142,6 +142,7 @@ class Todo extends Component {
                 <div className="mt-3">
                     {items}
                 </div>
+                <DeleteModal deleting={this.state.deleting} close={this.closeDeleteModalHandler} delete={this.deleteHandler}/>
             </>
         );
     }

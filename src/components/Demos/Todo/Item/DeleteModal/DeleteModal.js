@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 const deleteModal = (props) => {
     return (
-        <Modal show={props.deleting} onHide={props.close} onShow={() => {
+        <Modal show={props.deleting !== 0} onHide={props.close} onShow={() => {
             document.getElementById('deleteNoteConfirmButton').focus();
         }}>
             <Modal.Header closeButton>

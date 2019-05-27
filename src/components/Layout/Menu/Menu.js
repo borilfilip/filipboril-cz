@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { matchPath } from 'react-router-dom';
+import {matchPath, NavLink} from 'react-router-dom';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from "react-bootstrap/Nav";
@@ -17,11 +17,11 @@ const menu = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#/">O mně</Nav.Link>
-            <Nav.Link href="#/projects">Projekty</Nav.Link>
+            <Nav.Link as={NavLink} exact to="/">O mně</Nav.Link>
+            <Nav.Link as={NavLink} to="/projects">Projekty</Nav.Link>
             <NavDropdown title="Ukázky" id="basic-nav-dropdown" className={demosActive ? "active" : null}>
-              <NavDropdown.Item href="#/demos/todo">Úkolníček</NavDropdown.Item>
-              <NavDropdown.Item href="#/demos/burger-builder">Burger builder</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/demos/todo">Úkolníček</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/demos/burger-builder">Burger builder</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

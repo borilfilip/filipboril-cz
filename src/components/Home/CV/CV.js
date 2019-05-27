@@ -26,11 +26,11 @@ const CV = (props) => {
               <Headline>Dovednosti a zájmy</Headline>
               <Row name="Řidičský průkaz">AM, B1, B</Row>
               <Row name="Cizí jazyky">Pokročilá angličtina (B2), základy němčiny (A2) a ruštiny (A1)</Row>
-              <Row name="Programovací jazyky">C++, Java, Python, VBA</Row>
-              <Row name="Vývoj webu">HTML, CSS, PHP, JQuery, Nette, Symfony</Row>
+              <Row name="Programovací jazyky">C++, Java, Java EE, Python, VBA</Row>
+              <Row name="Vývoj webu">HTML, CSS, PHP, Javascript (ES6), Nette, Symfony, React, REST API, Bootstrap</Row>
               <Row name="Databáze">MySQL, Microsoft SQL Server, Oracle</Row>
-              <Row name="Další IT dovednosti">Uživatelská znalost BASH, učím se React</Row>
-              <Row name="Další zájmy">Linux, programování, cestování, cyklistika</Row>
+              <Row name="Další IT dovednosti">BASH, Git, Docker</Row>
+              <Row name="Další zájmy">Programování, cestování, cyklistika</Row>
           </Table>
       </div>
   );

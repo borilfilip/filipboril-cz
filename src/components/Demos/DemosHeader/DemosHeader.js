@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Alert from 'react-bootstrap/Alert'
 
-const demosHeader = (props) => {
-    return (
-        <Alert variant="info">
-            <p className="mb-0">
-                Ukázky postupně vylepšuji a přidávám další funkcionality. K ukázkám brzy zveřejním zdrojový kód.
-            </p>
-        </Alert>
-    );
-};
+class DemosHeader extends Component {
+    state = {
+        show: true
+    };
 
-export default demosHeader;
+    hideHandler = () => {
+        this.setState({show: false});
+    };
+
+    render() {
+        return (
+            <Alert variant="info" show={this.state.show} dismissible onClose={this.hideHandler}>
+                <p className="mb-0">
+                    Ukázky postupně vylepšuji a přidávám další funkcionality. K ukázkám brzy zveřejním zdrojový kód.
+                </p>
+            </Alert>
+        );
+    }
+}
+
+export default DemosHeader;

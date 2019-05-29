@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 const deleteModal = (props) => {
     return (
-        <Modal show={props.deleting !== 0} onHide={props.close} onShow={() => {
+        <Modal show={props.delete !== 0} onHide={props.close} onShow={() => {
             document.getElementById('deleteNoteConfirmButton').focus();
         }}>
             <Modal.Header closeButton>
@@ -12,11 +12,11 @@ const deleteModal = (props) => {
             </Modal.Header>
             <Modal.Body>Opravdu chcete smazat tuto poznámku?</Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.close}>
+                <Button variant="secondary" onClick={props.onClose}>
                     Zrušit
                 </Button>
-                <Button variant="danger" onClick={props.delete} id="deleteNoteConfirmButton">
-                    Smazat
+                <Button variant="danger" onClick={props.onDelete} disabled={props.deleting} id="deleteNoteConfirmButton">
+                    {props.deleting ? 'Mazání...' : 'Smazat'}
                 </Button>
             </Modal.Footer>
         </Modal>

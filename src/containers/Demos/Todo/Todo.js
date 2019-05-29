@@ -5,13 +5,17 @@ import Item from "../../../components/Demos/Todo/Item/Item";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import DeleteModal from "../../../components/Demos/Todo/Item/DeleteModal/DeleteModal";
+import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
+import Alert from "react-bootstrap/Alert";
 
 class Todo extends Component {
     state = {
         notes: [],
-        deleting: 0,
+        delete: 0,
+        deleting: false,
         adding: false,
-        loaded: false
+        loaded: false,
+        error: false
     };
 
     url = 'https://www.filipboril.cz/api/todo';
@@ -28,24 +32,31 @@ class Todo extends Component {
                     }
                 });
                 this.setState({notes: notes, loaded: true});
+            })
+            .catch(() => {
+                this.setState({error: true});
             });
     };
 
     deleteModalShowHandler = (idx) => {
-        this.setState({deleting: idx});
+        this.setState({delete: idx});
     };
 
     closeDeleteModalHandler = () => {
-        this.setState({deleting: 0});
+        this.setState({delete: 0});
     };
 
     deleteHandler = () => {
-        axios.delete(this.url + '/note/' + this.state.notes[this.state.deleting].id)
-            .then(() => {});
-
-        const notes = [...this.state.notes];
-        notes.splice(this.state.deleting, 1);
-        this.setState({notes: notes, deleting: 0});
+        axios.delete(this.url + '/note/' + this.state.notes[this.state.delete].id)
+            .then(() => {
+                const notes = [...this.state.notes];
+                notes.splice(this.state.delete, 1);
+                this.setState({notes: notes, delete: 0, deleting: false});
+            })
+            .catch(() => {
+                this.setState({delete: 0, deleting: false})
+            });
+        this.setState({deleting: true});
     };
 
     getItemIndex = (id) => {
@@ -85,6 +96,8 @@ class Todo extends Component {
         axios.put(this.url + '/note/' + item.id, item)
             .then(() => {
                 item.editing = false;
+            })
+            .finally(() => {
                 item.saving = false;
                 this.setItem(item);
             });
@@ -108,44 +121,58 @@ class Todo extends Component {
                 notes.push(item);
                 this.setState({notes: notes, adding: false});
                 this.lastInsertRef.current.focus();
+            })
+            .catch(() => {
+                this.setState({adding: false})
             });
 
         this.setState({adding: true});
     };
 
     render() {
-        let items = <Spinner animation="border" role="status">
-                       <span className="sr-only">Načítání...</span>
-                   </Spinner>;
+        let items = (
+            <Spinner animation="border" role="status">
+                <span className="sr-only">Načítání...</span>
+            </Spinner>
+        );
+
         if (this.state.loaded) items =
             this.state.notes.map((item, idx) => {
                 return <Item
                     key={item.id}
                     delete={() => this.deleteModalShowHandler(idx)}
-                    deleting={this.state.deleting}
                     edit={() => this.editHandler(item.id)} // TODO focus input
                     editing={item.editing}
                     change={(event) => this.changeHandler(event, item.id)}
                     save={(event) => this.saveHandler(event, item.id)}
                     saving={item.saving}
                     content={item.content}
-                    inputRef={this.lastInsertRef} />
+                    inputRef={this.lastInsertRef}/>
             });
 
-        return (
+        let view = (
             <>
-                <DemosHeader/>
-                <h2>Úkolníček</h2>
                 <Button variant="primary" onClick={this.addHandler} disabled={this.state.adding}>
                     {this.state.adding ? "Přidávání..." : <><i className="fas fa-plus"/> Nový</>}
                 </Button>
                 <div className="mt-3">
                     {items}
                 </div>
-                <DeleteModal deleting={this.state.deleting} close={this.closeDeleteModalHandler} delete={this.deleteHandler}/>
+                <DeleteModal delete={this.state.delete} deleting={this.state.deleting}
+                             onClose={this.closeDeleteModalHandler} onDelete={this.deleteHandler}/>
+            </>
+        );
+
+        if (this.state.error) view = <Alert variant="danger">Poznámky se nepodařilo načíst.</Alert>;
+
+        return (
+            <>
+                <DemosHeader/>
+                <h2>Úkolníček</h2>
+                {view}
             </>
         );
     }
 }
 
-export default Todo;
+export default withErrorHandler(Todo, axios);

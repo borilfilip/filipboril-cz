@@ -20,7 +20,9 @@ const projects = (props) => {
           Použité technologie: PHP, HTML, nette, jQuery, python, bootstrap, MySQL, docker a další.
         </p>
         <a href="/fras-code-demo.zip" className="btn btn-primary btn-sm" role="button"><i
-          className="far fa-file-archive"/> Ukázka kódu</a>
+          className="far fa-file-archive"/> Ukázka kódu</a>{' '}
+        <a href="https://dspace.cvut.cz/handle/10467/79461" target="_blank" rel="noreferrer noopener"
+           className="btn btn-primary btn-sm" role="button"><i className="fas fa-external-link-alt"/> Bakalářská práce</a>
       </Project>
       <Project img="/img/sep-hp-thumb.png" name="SEP – skupinová evidence protistran">
         <p>

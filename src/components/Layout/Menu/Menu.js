@@ -13,7 +13,7 @@ const menu = (props) => {
   return (
     <Navbar variant="dark" bg="dark" expand="md" fixed="top" collapseOnSelect>
       <Container>
-        <Navbar.Brand href="#/">Filip Bořil</Navbar.Brand>
+        <Navbar.Brand as={NavLink} exact to="/">Filip Bořil</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

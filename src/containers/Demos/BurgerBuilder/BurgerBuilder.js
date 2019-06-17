@@ -1,147 +1,36 @@
 import React, {Component} from 'react';
-import DemosHeader from "../../../components/Demos/DemosHeader/DemosHeader";
-import Burger from "../../../components/Demos/BurgerBuilder/Burger";
-import BuildControls from "../../../components/Demos/BurgerBuilder/BuildControls/BuildControls";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import OrderSummary from "../../../components/Demos/BurgerBuilder/OrderSummary/OrderSummary";
-
-const INGREDIENT_PRICES = {
-  salad: 7,
-  cheese: 10,
-  meat: 30,
-  bacon: 12
-};
-
-const INGREDIENTS_TRANSLATIONS = {
-  salad: 'Salát',
-  cheese: 'Sýr',
-  meat: 'Maso',
-  bacon: 'Slanina'
-};
+import DemosHeader from "./DemosHeader/DemosHeader";
+import {Route, Switch} from "react-router";
+import Builder from "./Builder/Builder";
+import Checkout from "./Checkout/Checkout";
+import Orders from "./Orders/Orders";
+import Navbar from "react-bootstrap/Navbar";
+import {NavLink} from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
 
 class BurgerBuilder extends Component {
-  state = {
-    ingredients: {
-      salad: 0,
-      bacon: 0,
-      cheese: 0,
-      meat: 0
-    },
-    totalPrice: 29,
-    purchasable: false,
-    purchasing: false
-  };
-
-  updatePurchaseState(ingredients) {
-    const sum = Object.keys(ingredients)
-      .map(igKey => {
-        return ingredients[igKey];
-      })
-      .reduce((sum, el) => {
-        return sum + el;
-      }, 0);
-    this.setState({purchasable: sum > 0});
-  };
-
-  addIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients[type];
-    const updatedCount = oldCount + 1;
-    const updatedIngredients = {
-      ...this.state.ingredients
-    };
-    updatedIngredients[type] = updatedCount;
-    const priceAddition = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.totalPrice;
-    const newPrice = oldPrice + priceAddition;
-    this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-    this.updatePurchaseState(updatedIngredients);
-  };
-
-  removeIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients[type];
-    if (oldCount <= 0) {
-      return;
+    render() {
+        return (
+            <>
+                <DemosHeader/>
+                <Navbar bg="light" expand="lg" className="mb-4">
+                    <Navbar.Brand as={NavLink} exact to="/demos/burger-builder">BurgerBuilder</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link as={NavLink} exact to="/demos/burger-builder">Nový</Nav.Link>
+                            <Nav.Link as={NavLink} to="/demos/burger-builder/orders">Objednávky</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+                <Switch>
+                    <Route exact path="/demos/burger-builder" component={Builder}/>
+                    <Route path="/demos/burger-builder/checkout" component={Checkout}/>
+                    <Route path="/demos/burger-builder/orders" component={Orders}/>
+                </Switch>
+            </>
+        );
     }
-    const updatedCount = oldCount - 1;
-    const updatedIngredients = {
-      ...this.state.ingredients
-    };
-    updatedIngredients[type] = updatedCount;
-    const priceDeduction = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.totalPrice;
-    const newPrice = oldPrice - priceDeduction;
-    this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-    this.updatePurchaseState(updatedIngredients);
-  };
-
-  purchaseHandler = () => {
-    this.setState({purchasing: true});
-  };
-
-  purchaseCancelHandler = () => {
-    this.setState({purchasing: false});
-  };
-
-  purchaseContinueHandler = () => {
-    this.setState({purchasing: false});
-    alert('Kdyby to již bylo naprogramované, pokračovali byste dál :-)');
-  };
-
-  render() {
-    const disabledInfo = {
-      ...this.state.ingredients
-    };
-    for (let key in disabledInfo) {
-      disabledInfo[key] = disabledInfo[key] <= 0
-    }
-
-    return (
-      <>
-        <DemosHeader/>
-        <h2>Burger builder</h2>
-        <Row>
-          <Col md="12" lg="9">
-            <Burger ingredients={this.state.ingredients} />
-          </Col>
-          <Col md="12" lg="3">
-            <BuildControls
-              ingredientAdded={this.addIngredientHandler}
-              ingredientRemoved={this.removeIngredientHandler}
-              disabled={disabledInfo}
-              purchasable={this.state.purchasable}
-              ordered={this.purchaseHandler}
-              price={this.state.totalPrice}
-              translations={INGREDIENTS_TRANSLATIONS} />
-          </Col>
-        </Row>
-
-        <Modal show={this.state.purchasing} onHide={this.purchaseCancelHandler}>
-          <Modal.Header closeButton>
-            <Modal.Title>Vaše objednávka</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <OrderSummary
-              ingredients={this.state.ingredients}
-              purchaseCancelled={this.purchaseCancelHandler}
-              purchaseContinued={this.purchaseContinueHandler}
-              price={this.state.totalPrice}
-              translations={INGREDIENTS_TRANSLATIONS} />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.purchaseCancelHandler}>
-              Zrušit
-            </Button>
-            <Button variant="primary" onClick={this.purchaseContinueHandler}>
-              Pokračovat
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    )
-  }
 }
 
-export default BurgerBuilder
+export default BurgerBuilder;

@@ -6,31 +6,18 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import OrderSummary from "../../../../components/Demos/BurgerBuilder/OrderSummary/OrderSummary";
+import {connect} from "react-redux";
+import * as actions from '../../../../store/actions';
 
-const INGREDIENT_PRICES = {
-  salad: 7,
-  cheese: 10,
-  meat: 30,
-  bacon: 12
-};
-
-const INGREDIENTS_TRANSLATIONS = {
-  salad: 'Salát',
-  cheese: 'Sýr',
-  meat: 'Maso',
-  bacon: 'Slanina'
+const INGREDIENT_TRANSLATIONS = {
+    salad: 'Salát',
+    cheese: 'Sýr',
+    meat: 'Maso',
+    bacon: 'Slanina'
 };
 
 class Builder extends Component {
   state = {
-    ingredients: {
-      salad: 0,
-      bacon: 0,
-      cheese: 0,
-      meat: 0
-    },
-    totalPrice: 29,
-    purchasable: false,
     purchasing: false
   };
 
@@ -42,38 +29,7 @@ class Builder extends Component {
       .reduce((sum, el) => {
         return sum + el;
       }, 0);
-    this.setState({purchasable: sum > 0});
-  };
-
-  addIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients[type];
-    const updatedCount = oldCount + 1;
-    const updatedIngredients = {
-      ...this.state.ingredients
-    };
-    updatedIngredients[type] = updatedCount;
-    const priceAddition = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.totalPrice;
-    const newPrice = oldPrice + priceAddition;
-    this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-    this.updatePurchaseState(updatedIngredients);
-  };
-
-  removeIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients[type];
-    if (oldCount <= 0) {
-      return;
-    }
-    const updatedCount = oldCount - 1;
-    const updatedIngredients = {
-      ...this.state.ingredients
-    };
-    updatedIngredients[type] = updatedCount;
-    const priceDeduction = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.totalPrice;
-    const newPrice = oldPrice - priceDeduction;
-    this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-    this.updatePurchaseState(updatedIngredients);
+    return sum > 0;
   };
 
   purchaseHandler = () => {
@@ -91,7 +47,7 @@ class Builder extends Component {
 
   render() {
     const disabledInfo = {
-      ...this.state.ingredients
+      ...this.props.ingredients
     };
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0
@@ -101,17 +57,17 @@ class Builder extends Component {
       <>
         <Row>
           <Col md="12" lg="9">
-            <Burger ingredients={this.state.ingredients} />
+            <Burger ingredients={this.props.ingredients} />
           </Col>
           <Col md="12" lg="3">
             <BuildControls
-              ingredientAdded={this.addIngredientHandler}
-              ingredientRemoved={this.removeIngredientHandler}
+              ingredientAdded={this.props.onIngredientAdded}
+              ingredientRemoved={this.props.onIngredientRemoved}
               disabled={disabledInfo}
-              purchasable={this.state.purchasable}
+              purchasable={this.updatePurchaseState(this.props.ingredients)}
               ordered={this.purchaseHandler}
-              price={this.state.totalPrice}
-              translations={INGREDIENTS_TRANSLATIONS} />
+              price={this.props.totalPrice}
+              translations={INGREDIENT_TRANSLATIONS} />
           </Col>
         </Row>
 
@@ -121,11 +77,11 @@ class Builder extends Component {
           </Modal.Header>
           <Modal.Body>
             <OrderSummary
-              ingredients={this.state.ingredients}
+              ingredients={this.props.ingredients}
               purchaseCancelled={this.purchaseCancelHandler}
               purchaseContinued={this.purchaseContinueHandler}
-              price={this.state.totalPrice}
-              translations={INGREDIENTS_TRANSLATIONS} />
+              price={this.props.totalPrice}
+              translations={INGREDIENT_TRANSLATIONS} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.purchaseCancelHandler}>
@@ -141,4 +97,26 @@ class Builder extends Component {
   }
 }
 
-export default Builder
+const mapStateToProps = state => {
+  return {
+    ingredients: state.ingredients,
+    totalPrice: state.totalPrice
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onIngredientAdded: (ingredient) => dispatch(
+        {
+            type: actions.ADD_INGREDIENT,
+            ingredient: ingredient
+        }),
+    onIngredientRemoved: (ingredient) => dispatch(
+        {
+            type: actions.REMOVE_INGREDIENT,
+            ingredient: ingredient
+        })
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Builder)

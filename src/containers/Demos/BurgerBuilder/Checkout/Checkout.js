@@ -17,6 +17,11 @@ class Checkout extends Component {
                     label: 'Váš email',
                     hint: 'Na tento email Vám zašleme rekapitulaci objednávky.'
                 },
+                validation: {
+                    required: true,
+                    isEmail: true
+                },
+                valid: undefined,
                 value: ''
             },
             name: {
@@ -24,6 +29,10 @@ class Checkout extends Component {
                     type: 'text',
                     label: 'Jméno a příjmení'
                 },
+                validation: {
+                    required: true
+                },
+                valid: undefined,
                 value: ''
             },
             street: {
@@ -31,6 +40,10 @@ class Checkout extends Component {
                     type: 'text',
                     label: 'Ulice, číslo popisné a orientační'
                 },
+                validation: {
+                    required: true
+                },
+                valid: undefined,
                 value: ''
             },
             city: {
@@ -38,6 +51,10 @@ class Checkout extends Component {
                     type: 'text',
                     label: 'Město'
                 },
+                validation: {
+                    required: true
+                },
+                valid: undefined,
                 value: ''
             },
             zip: {
@@ -45,6 +62,13 @@ class Checkout extends Component {
                     type: 'number',
                     label: 'PSČ'
                 },
+                validation: {
+                    required: true,
+                    isNumeric: true,
+                    minLength: 5,
+                    maxLength: 5
+                },
+                valid: undefined,
                 value: ''
             },
             country: {
@@ -52,6 +76,10 @@ class Checkout extends Component {
                     type: 'text',
                     label: 'Země'
                 },
+                validation: {
+                    required: true
+                },
+                valid: undefined,
                 value: ''
             },
             deliveryMethod: {
@@ -63,13 +91,52 @@ class Checkout extends Component {
                         {value: 'cheapest', displayValue: 'Levná'}
                     ]
                 },
+                validation: {},
+                valid: true,
                 value: ''
             }
-        }
+        },
+        formValid: false
     };
 
     countIngredients = () => {
         return Object.values(this.props.ingredients).reduce((acc, val) => acc + val);
+    };
+
+    checkInputValidity = (value, rules) => {
+        let isValid = true;
+
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid
+        }
+
+        if (rules.isEmail) {
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid
+        }
+
+        if (rules.isNumeric) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test(value) && isValid
+        }
+
+        return isValid;
+    };
+
+    checkFormValidity = (form) => {
+        let isValid = true;
+        for (let inputId in form) {
+            isValid = form[inputId].valid && isValid;
+        }
+        return isValid;
     };
 
     inputChangedHandler = (event, id) => {
@@ -81,9 +148,10 @@ class Checkout extends Component {
         };
 
         updatedInput.value = event.target.value;
+        updatedInput.valid = this.checkInputValidity(updatedInput.value, updatedInput.validation);
         updatedOrderForm[id] = updatedInput;
 
-        this.setState({orderForm: updatedOrderForm});
+        this.setState({orderForm: updatedOrderForm, formValid: this.checkFormValidity(updatedOrderForm)});
     };
 
     cancelOrderHandler = () => {
@@ -98,11 +166,11 @@ class Checkout extends Component {
         if (this.countIngredients() === 0) {
             return (<Redirect to="/demos/burger-builder/"/>);
         }
-        
+
         const inputs = Object.entries(this.state.orderForm).map(([name, data]) => {
             return (
                 <Input key={name} name={name} config={data.config} value={data.value}
-                       onChange={(event) => this.inputChangedHandler(event, name)}/>
+                       onChange={(event) => this.inputChangedHandler(event, name)} valid={data.valid}/>
             )
         });
 
@@ -112,7 +180,8 @@ class Checkout extends Component {
                     <Form>
                         {inputs}
                         <Button variant="secondary" onClick={this.cancelOrderHandler}>Zpět</Button>{' '}
-                        <Button variant="primary" onClick={this.confirmOrderHandler}>Objednat</Button>
+                        <Button variant="primary" disabled={!this.state.formValid}
+                                onClick={this.confirmOrderHandler}>Objednat</Button>
                     </Form>
                 </Col>
                 <Col lg="6">

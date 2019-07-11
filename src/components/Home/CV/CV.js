@@ -15,10 +15,11 @@ const CV = (props) => {
           <Table>
               <Headline>Vzdělání</Headline>
               <Row name="2018">Tallinn University of Technology (Erasmus+)</Row>
-              <Row name="2014 – 2019">Fakulta infomačních technologií, ČVUT</Row>
+              <Row name="2014 – současnost">Fakulta infomačních technologií, ČVUT</Row>
               <Row name="2010 – 2014">Gymnázium U Libeňského zámku (se zaměřením na IT)</Row>
 
               <Headline>Praxe</Headline>
+              <Row name="2019 – současnost">SinnerSchrader – Tvorba frontendu v reactu pro Volkswagen</Row>
               <Row name="2018 – 2019">NETservis – Tvorba webových prezentací a eshopů</Row>
               <Row name="2017 – 2018">Evosoft – Tvorba webových aplikací</Row>
               <Row name="2015 – 2017">Česká spořitelna – Data mining, tvorba reportů</Row>

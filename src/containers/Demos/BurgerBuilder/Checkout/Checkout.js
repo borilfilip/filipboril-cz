@@ -4,11 +4,17 @@ import Form from "react-bootstrap/Form";
 import Input from "../../../../components/Demos/BurgerBuilder/Input/Input"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Burger from "../../../../components/Demos/BurgerBuilder/Burger";
+import Burger from "../../../../components/Demos/BurgerBuilder/Burger/Burger";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
+import Alert from "react-bootstrap/Alert";
+import axios from 'axios';
+import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
 
 class Checkout extends Component {
+
+    url = 'https://www.filipboril.cz/api/burger';
+
     state = {
         orderForm: {
             email: {
@@ -82,21 +88,23 @@ class Checkout extends Component {
                 valid: undefined,
                 value: ''
             },
-            deliveryMethod: {
+            delivery_method: {
                 config: {
                     type: 'select',
                     label: 'Způsob doručení',
                     options: [
-                        {value: 'fastest', displayValue: 'Rychlá'},
-                        {value: 'cheapest', displayValue: 'Levná'}
+                        {value: 'fast', displayValue: 'Rychlá'},
+                        {value: 'cheap', displayValue: 'Levná'}
                     ]
                 },
                 validation: {},
                 valid: true,
-                value: ''
+                value: 'fast'
             }
         },
-        formValid: false
+        formValid: false,
+        showAlert: true,
+        sendingOrder: false
     };
 
     countIngredients = () => {
@@ -159,7 +167,26 @@ class Checkout extends Component {
     };
 
     confirmOrderHandler = () => {
-        alert('Zatím není implementováno :-(');
+        this.setState({sendingOrder: true});
+        const data = {
+            ...this.props.ingredients,
+            price: this.props.totalPrice
+        };
+        for (let id in this.state.orderForm) {
+            data[id] = this.state.orderForm[id].value;
+        }
+        axios.post(this.url + '/order', data)
+            .then(response => {
+                this.setState({sendingOrder: false});
+                this.props.history.push('/demos/burger-builder/thankyou');
+            })
+            .catch(error => {
+                this.setState({sendingOrder: false});
+            });
+    };
+
+    hideAlertHandler = () => {
+        this.setState({showAlert: false});
     };
 
     render() {
@@ -175,19 +202,28 @@ class Checkout extends Component {
         });
 
         return (
-            <Row>
-                <Col lg="6">
-                    <Form>
-                        {inputs}
-                        <Button variant="secondary" onClick={this.cancelOrderHandler}>Zpět</Button>{' '}
-                        <Button variant="primary" disabled={!this.state.formValid}
-                                onClick={this.confirmOrderHandler}>Objednat</Button>
-                    </Form>
-                </Col>
-                <Col lg="6">
-                    <Burger ingredients={this.props.ingredients}/>
-                </Col>
-            </Row>
+            <>
+                <Alert variant="warning" show={this.state.showAlert} dismissible onClose={this.hideAlertHandler}>
+                    <p className="mb-0">
+                        Nezadávejte, prosím, skutečná osobní data.
+                    </p>
+                </Alert>
+                <Row>
+                    <Col lg="6">
+                        <Form>
+                            {inputs}
+                            <Button variant="secondary" onClick={this.cancelOrderHandler}>Zpět</Button>{' '}
+                            <Button variant="primary" disabled={!this.state.formValid || this.props.sendingOrder}
+                                    onClick={this.confirmOrderHandler}>
+                                {this.props.sendingOrder ? "Objednávám..." : "Objednat"}
+                            </Button>
+                        </Form>
+                    </Col>
+                    <Col lg="6">
+                        <Burger ingredients={this.props.ingredients}/>
+                    </Col>
+                </Row>
+            </>
         )
     }
 }
@@ -199,4 +235,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Checkout);
+export default withErrorHandler(connect(mapStateToProps)(Checkout), axios);

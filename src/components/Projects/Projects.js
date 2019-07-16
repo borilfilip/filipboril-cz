@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import './Projects.css';
 import Project from "./Project/Project";
 import Card from "react-bootstrap/Card";
@@ -9,6 +8,18 @@ import Collapse from "react-bootstrap/Collapse";
 const projects = (props) => {
   return (
     <div className="Projects">
+      <Project img="/img/filipboril.cz.png" name="Tyto webové stránky">
+        <p>
+          Můj první projekt v reactu, na kterém jsem se react učil, který mě kariérně prezentuje a který též
+          dokládá mé znalosti reactu (v menu Ukázky). Skládá se ze z frontendu a backendu v Nette. Oba repozitáře
+          jsem zveřejnil k nahlédnutí na githubu.
+        </p>
+        <p>
+          Použité technologie: React, redux, bootstrap, PHP, nette, MySQL, GIT a další.
+        </p>
+        <a href="https://github.com/borilfilip/filipboril-cz" target="_blank" rel="noreferrer noopener"
+           className="btn btn-primary btn-sm" role="button"><i className="fab fa-github"/> Zdrojáky</a>
+      </Project>
       <Project img="/img/fras-hp-thumb.png" name="FRAS – docházkový systém s rozpoznáváním tváří (bakalářská práce)">
         <p>
           Systém má zá úkol zjednodušit proces zazamenávání docházky. Je tvořen moduly, z nichž jeden běží na
@@ -17,7 +28,7 @@ const projects = (props) => {
           rozpoznání a také zadává a schvaluje dovolená a spravuje se celý systém.
         </p>
         <p>
-          Použité technologie: PHP, HTML, nette, jQuery, python, bootstrap, MySQL, docker a další.
+          Použité technologie: PHP, nette, jQuery, python, bootstrap, fontawesome, MySQL, docker,…
         </p>
         <a href="/fras-code-demo.zip" className="btn btn-primary btn-sm" role="button"><i
           className="far fa-file-archive"/> Ukázka kódu</a>{' '}
@@ -32,7 +43,7 @@ const projects = (props) => {
           také importuje a exportuje přes API třetích stran.
         </p>
         <p>
-          Použité technologie: PHP, HTML, nette, jQuery, Oracle, GIT, docker a další.
+          Použité technologie: PHP, nette, jQuery, Oracle, GIT, docker a další.
         </p>
       </Project>
       <Project img="/img/cokolada-hp-thumb.png" name="Webredakce – eshopy a webové prezentace na míru">
@@ -51,7 +62,7 @@ const projects = (props) => {
           <a href="https://cokolada-cz.vacatko.netservis.cz/" target="_blank" rel="noopener noreferrer">čokolády</a>.
         </p>
         <p>
-          Použité technologie: PHP, HTML, jQuery, MySQL a další.
+          Použité technologie: PHP, jQuery, MySQL a další.
         </p>
       </Project>
 
@@ -94,7 +105,6 @@ const projects = (props) => {
               <a href="http://sesity.borec.cz/" className="btn btn-primary btn-sm" role="button"
                  target="_blank" rel="noopener noreferrer"><i className="fas fa-external-link-alt"/> Přejít na web</a>
             </Project>
-            <Link to="/projects/archive">Archiv</Link>
           </Card.Body>
         </Collapse>
       </Card>

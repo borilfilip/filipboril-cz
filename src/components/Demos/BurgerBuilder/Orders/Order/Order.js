@@ -1,7 +1,7 @@
 import React from 'react';
 
 const order = (props) => {
-    let deliveryMethod = "Neznámé";
+    let deliveryMethod;
     switch (props.method) {
         case 'fast':
             deliveryMethod = "Rychlé";
@@ -9,13 +9,17 @@ const order = (props) => {
         case 'cheap':
             deliveryMethod = "Levné";
             break;
+        default:
+            deliveryMethod = "Neznámé";
     }
 
-    let state = "Neznámý";
+    let state;
     switch (props.state) {
         case 'waiting_to_pay':
             state = "Čeká na zaplacení";
             break;
+        default:
+            state = "Neznámý";
     }
 
     return (
@@ -24,7 +28,7 @@ const order = (props) => {
             <td>{props.name}</td>
             <td>{deliveryMethod}</td>
             <td>{props.price} Kč</td>
-            <td>{props.state}</td>
+            <td>{state}</td>
         </tr>
     );
 };

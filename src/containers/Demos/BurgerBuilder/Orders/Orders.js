@@ -3,6 +3,7 @@ import axios from 'axios';
 import Order from "../../../../components/Demos/BurgerBuilder/Orders/Order/Order";
 import OrdersTable from "../../../../components/Demos/BurgerBuilder/Orders/OrdersTable/OrdersTable";
 import Spinner from "react-bootstrap/Spinner";
+import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
 
 class Orders extends Component {
 
@@ -14,7 +15,7 @@ class Orders extends Component {
     url = 'https://www.filipboril.cz/api/burger';
 
     componentDidMount() {
-        axios.get(this.url)
+        axios.get(this.url + '/orders')
             .then(res => {
                 this.setState({loading: false, orders: res.data});
             })
@@ -34,8 +35,8 @@ class Orders extends Component {
             orders = (
                 <OrdersTable>
                     {this.state.orders.map(order => (
-                        <Order date="10.7.2019 8:00" name={order.name} method={order.delivery_method} price={order.price}
-                               state="Čeká na zaplacení"/>
+                        <Order key={order.id} date={order.date} name={order.name} method={order.delivery_method}
+                               price={order.price} state={order.state}/>
                     ))}
                 </OrdersTable>
             );
@@ -49,4 +50,4 @@ class Orders extends Component {
     }
 }
 
-export default Orders;
+export default withErrorHandler(Orders, axios);

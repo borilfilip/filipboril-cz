@@ -93,7 +93,7 @@ class Todo extends Component {
     saveHandler = (event, id) => {
         const item = this.getItemCopy(id);
 
-        axios.put(this.url + '/note/' + item.id, item)
+        axios.put(this.url + '/note/' + item.id, {content: item.content})
             .then(() => {
                 item.editing = false;
             })
@@ -114,7 +114,7 @@ class Todo extends Component {
             saving: false
         };
 
-        axios.post(this.url + '/note/', item)
+        axios.post(this.url + '/note/', {content: item.content})
             .then((response) => {
                 item.id = response.data.id;
                 const notes = [...this.state.notes];

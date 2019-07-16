@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Burger from "../../../../components/Demos/BurgerBuilder/Burger";
+import Burger from "../../../../components/Demos/BurgerBuilder/Burger/Burger";
 import BuildControls from "../../../../components/Demos/BurgerBuilder/BuildControls/BuildControls";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

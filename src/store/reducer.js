@@ -7,7 +7,8 @@ const initialState = {
         cheese: 0,
         meat: 0
     },
-    totalPrice: 29
+    totalPrice: 29,
+    showDemoAlert: true
 };
 
 const INGREDIENT_PRICES = {
@@ -36,6 +37,11 @@ const reducer = (state = initialState, action) => {
                     [action.ingredient]: state.ingredients[action.ingredient] - 1
                 },
                 totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredient]
+            };
+        case actions.CLOSE_DEMO_ALERT:
+            return {
+                ...state,
+                showDemoAlert: false
             };
         default:
             return state;

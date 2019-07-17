@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import Alert from 'react-bootstrap/Alert'
+import * as actions from "../../../../store/actions";
+import {connect} from "react-redux";
 
 class DemosHeader extends Component {
-    state = {
-        show: true
-    };
-
-    hideHandler = () => {
-        this.setState({show: false});
-    };
 
     render() {
         return (
-            <Alert variant="info" show={this.state.show} dismissible onClose={this.hideHandler}>
+            <Alert variant="info" show={this.props.show} dismissible onClose={this.props.hide}>
                 <p className="mb-0">
                     Ukázky postupně vylepšuji a přidávám další funkcionality. Zdrojový kód naleznete na <a
                     href="https://github.com/borilfilip/filipboril-cz" target="_blank"
@@ -23,4 +18,16 @@ class DemosHeader extends Component {
     }
 }
 
-export default DemosHeader;
+const mapStateToProps = state => {
+    return {
+        show: state.showDemoAlert
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        hide: () => dispatch({type: actions.CLOSE_DEMO_ALERT})
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DemosHeader);

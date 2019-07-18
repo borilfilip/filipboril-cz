@@ -22,9 +22,19 @@ const order = (props) => {
             state = "Neznámý";
     }
 
+    const date = new Date(Date.parse(props.date));
+    const format = {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit"
+    };
+    const formattedDate = new Intl.DateTimeFormat('cs-CZ', format).format(date);
+
     return (
         <tr>
-            <td>{props.date}</td>
+            <td>{formattedDate}</td>
             <td>{props.name}</td>
             <td>{deliveryMethod}</td>
             <td>{props.price} Kč</td>

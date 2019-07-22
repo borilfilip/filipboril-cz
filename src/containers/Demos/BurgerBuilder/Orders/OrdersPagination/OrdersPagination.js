@@ -15,7 +15,6 @@ class OrdersPagination extends Component {
     render() {
         const active = this.props.page;
         const pages = Math.ceil(this.props.count / this.props.limit);
-        console.log(pages);
         let items = [];
         for (let number = 1; number <= pages; number++) {
             items.push(

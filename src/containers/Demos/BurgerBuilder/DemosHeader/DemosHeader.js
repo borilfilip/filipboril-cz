@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Alert from 'react-bootstrap/Alert'
-import * as actions from "../../../../store/actions";
+import * as actions from "../../../../store/burgerBuilder/actions/actionTypes";
 import {connect} from "react-redux";
 
 class DemosHeader extends Component {
@@ -20,7 +20,7 @@ class DemosHeader extends Component {
 
 const mapStateToProps = state => {
     return {
-        show: state.showDemoAlert
+        show: state.builder.showDemoAlert
     };
 };
 

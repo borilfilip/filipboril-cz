@@ -5,11 +5,12 @@ import OrdersPagination from "./OrdersPagination/OrdersPagination";
 import OrdersTable from "../../../../components/Demos/BurgerBuilder/Orders/Order/OrdersTable/OrdersTable";
 import Spinner from "react-bootstrap/Spinner";
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
+import * as actions from "../../../../store/burgerBuilder/actions";
+import {connect} from "react-redux";
 
 class Orders extends Component {
 
     state = {
-        orders: [],
         page: 1,
         count: 0,
         limit: 10,
@@ -27,33 +28,14 @@ class Orders extends Component {
             .catch(err => {
                 this.setState({loading: false});
             });
-        this.getOrders();
+        this.props.fetchOrders(this.state.limit, this.state.page);
     }
 
     componentDidUpdate(_, prevState) {
         if (prevState.page !== this.state.page || prevState.limit !== this.state.limit) {
-            this.getOrders();
+            this.props.fetchOrders(this.state.limit, this.state.page);
         }
     }
-
-    getOrders = () => {
-        let config = {};
-        if (this.state.limit !== 'inf')
-            config = {
-                params: {
-                    limit: this.state.limit,
-                    offset: (this.state.page - 1) * this.state.limit
-                }
-            };
-
-        axios.get(this.url + '/orders', config)
-            .then(res => {
-                this.setState({loading: false, orders: res.data});
-            })
-            .catch(err => {
-                this.setState({loading: false});
-            });
-    };
 
     goToPage = (page) => {
         this.setState({page: page});
@@ -70,11 +52,11 @@ class Orders extends Component {
             </Spinner>
         );
 
-        if (!this.state.loading) {
+        if (!this.state.loading && !this.props.loading && !this.props.error) {
             orders = (
                 <>
                     <OrdersTable>
-                        {this.state.orders.map(order => (
+                        {this.props.orders.map(order => (
                             <Order key={order.id} date={order.date} name={order.name} method={order.delivery_method}
                                    price={order.price} state={order.state}/>
                         ))}
@@ -90,4 +72,18 @@ class Orders extends Component {
     }
 }
 
-export default withErrorHandler(Orders, axios);
+const mapStateToProps = state => {
+    return {
+        orders: state.orders.orders,
+        loading: state.orders.loading,
+        error: state.orders.error
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchOrders: (limit, page) => dispatch(actions.fetchOrders(limit, page))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Orders, axios))

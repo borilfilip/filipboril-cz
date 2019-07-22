@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import OrderSummary from "../../../../components/Demos/BurgerBuilder/OrderSummary/OrderSummary";
 import {connect} from "react-redux";
-import * as actions from '../../../../store/actions';
+import * as actions from '../../../../store/burgerBuilder/actions';
 
 const INGREDIENT_TRANSLATIONS = {
     salad: 'Salát',
@@ -99,23 +99,15 @@ class Builder extends Component {
 
 const mapStateToProps = state => {
   return {
-    ingredients: state.ingredients,
-    totalPrice: state.totalPrice
+    ingredients: state.builder.ingredients,
+    totalPrice: state.builder.totalPrice
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIngredientAdded: (ingredient) => dispatch(
-        {
-            type: actions.ADD_INGREDIENT,
-            ingredient: ingredient
-        }),
-    onIngredientRemoved: (ingredient) => dispatch(
-        {
-            type: actions.REMOVE_INGREDIENT,
-            ingredient: ingredient
-        })
+    onIngredientAdded: (ingredient) => dispatch(actions.addIngredient(ingredient)),
+    onIngredientRemoved: (ingredient) => dispatch(actions.removeIngredient(ingredient))
   }
 };
 

@@ -11,8 +11,8 @@ const projects = (props) => {
       <Project img="/img/filipboril.cz.png" name="Tyto webové stránky">
         <p>
           Můj první projekt v reactu, na kterém jsem se react učil, který mě kariérně prezentuje a který též
-          dokládá mé znalosti reactu (v menu Ukázky). Skládá se ze z frontendu a backendu v Nette. Oba repozitáře
-          jsem zveřejnil k nahlédnutí na githubu.
+          dokládá mé znalosti reactu (v menu Ukázky). Skládá se ze z backendu v Nette a v frontendu ve zmíněném
+          reactu. Repozitář s frontendem jsem zveřejnil k nahlédnutí na githubu.
         </p>
         <p>
           Použité technologie: React, redux, bootstrap, PHP, nette, MySQL, GIT a další.

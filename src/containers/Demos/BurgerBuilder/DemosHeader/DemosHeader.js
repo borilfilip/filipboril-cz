@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Alert from 'react-bootstrap/Alert'
-import * as actions from "../../../../store/burgerBuilder/actions/actionTypes";
+import * as actions from "../../../../store/burgerBuilder/actions";
 import {connect} from "react-redux";
 
 class DemosHeader extends Component {
@@ -20,13 +20,13 @@ class DemosHeader extends Component {
 
 const mapStateToProps = state => {
     return {
-        show: state.builder.showDemoAlert
+        show: state.demosHeader.showDemoAlert
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        hide: () => dispatch({type: actions.CLOSE_DEMO_ALERT})
+        hide: () => dispatch(actions.closeDemoAlert())
     }
 };
 

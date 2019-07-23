@@ -12,22 +12,10 @@ class Orders extends Component {
 
     state = {
         page: 1,
-        count: 0,
-        limit: 10,
-        loading: true
+        limit: 10
     };
 
-    url = 'https://www.filipboril.cz/api/burger';
-
     componentDidMount() {
-        axios.get(this.url + '/order-count')
-            .then(res => {
-                this.setState({count: res.data.count});
-                this.getOrders();
-            })
-            .catch(err => {
-                this.setState({loading: false});
-            });
         this.props.fetchOrders(this.state.limit, this.state.page);
     }
 
@@ -52,7 +40,7 @@ class Orders extends Component {
             </Spinner>
         );
 
-        if (!this.state.loading && !this.props.loading && !this.props.error) {
+        if (!this.props.loading && !this.props.error) {
             orders = (
                 <>
                     <OrdersTable>
@@ -62,7 +50,7 @@ class Orders extends Component {
                         ))}
                     </OrdersTable>
 
-                    <OrdersPagination page={this.state.page} limit={this.state.limit} count={this.state.count}
+                    <OrdersPagination page={this.state.page} limit={this.state.limit} count={this.props.count}
                                       goToPage={this.goToPage} changeLimit={this.changeLimit}/>
                 </>
             );
@@ -75,6 +63,7 @@ class Orders extends Component {
 const mapStateToProps = state => {
     return {
         orders: state.orders.orders,
+        count: state.orders.count,
         loading: state.orders.loading,
         error: state.orders.error
     };

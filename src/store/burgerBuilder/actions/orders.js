@@ -3,10 +3,11 @@ import axios from "axios";
 
 const url = 'https://www.filipboril.cz/api/burger';
 
-export const setOrders = (orders) => {
+export const setOrders = (orders, count) => {
     return {
         type: actionTypes.SET_ORDERS,
-        orders: orders
+        orders: orders,
+        count: count
     };
 };
 
@@ -23,13 +24,13 @@ export const fetchOrders = (limit, page) => {
             config = {
                 params: {
                     limit: limit,
-                    offset: (page - 1) * limit
+                    page: page
                 }
             };
 
-        axios.get(url + '/orders', config)
+        axios.get(url + '/orders2', config)
             .then(res => {
-                dispatch(setOrders(res.data));
+                dispatch(setOrders(res.data.data, res.data.count));
             })
             .catch(err => {
                 dispatch(fetchOrdersFailed());

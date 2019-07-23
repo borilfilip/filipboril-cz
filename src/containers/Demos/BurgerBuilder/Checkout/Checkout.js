@@ -230,8 +230,8 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.ingredients,
-        totalPrice: state.totalPrice
+        ingredients: state.builder.ingredients,
+        totalPrice: state.builder.totalPrice
     };
 };
 

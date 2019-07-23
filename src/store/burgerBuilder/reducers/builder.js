@@ -38,11 +38,8 @@ const builder = (state = initialState, action) => {
                 },
                 totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredient]
             };
-        case actionTypes.CLOSE_DEMO_ALERT:
-            return {
-                ...state,
-                showDemoAlert: false
-            };
+        case actionTypes.RESET_BURGER:
+            return initialState;
         default:
             return state;
     }

@@ -4,3 +4,5 @@ export const RESET_BURGER = 'RESET_BURGER';
 export const CLOSE_DEMO_ALERT = 'CLOSE_DEMO_ALERT';
 export const SET_ORDERS = 'SET_ORDERS';
 export const FETCH_ORDERS_FAILED = 'FETCH_ORDERS_FAILED';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';

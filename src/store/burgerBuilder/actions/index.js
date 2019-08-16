@@ -9,3 +9,7 @@ export {
 export {
     closeDemoAlert
 } from './demosHeader'
+export {
+    login,
+    logout
+} from './user'

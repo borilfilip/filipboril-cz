@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import './withErrorHandler.css';
-import Card from "react-bootstrap/Card";
+import ErrorBox from "../../containers/ErrorBox/ErrorBox";
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {
@@ -19,37 +18,15 @@ const withErrorHandler = (WrappedComponent, axios) => {
             });
         }
 
-        componentDidUpdate() {
-            this.timeout = setTimeout(() => {
-                this.setState({error: null});
-                clearTimeout(this.timeout);
-            }, 5000);
-        }
-
         componentWillUnmount() {
             axios.interceptors.request.eject(this.reqInterceptor);
             axios.interceptors.response.eject(this.resInterceptor);
         }
 
-        closeErrorHandler = () => {
-            this.setState({error: null});
-        };
-
         render() {
             return (
                 <>
-                    {this.state.error ?
-                        <div className="withErrorHandlerWrapper" onClick={this.closeErrorHandler}>
-                            <Card bg="danger" text="white" className="withErrorHandler">
-                                <Card.Body>
-                                    <Card.Title>{this.state.error}</Card.Title>
-                                    <Card.Text>
-                                        Požadavek se nepodařilo vykonat.
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                        : null}
+                    <ErrorBox title={this.state.error} message="Požadavek se nepodařilo vykonat." />
                     <WrappedComponent {...this.props}/>
                 </>
             )

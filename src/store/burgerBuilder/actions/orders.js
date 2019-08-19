@@ -3,7 +3,7 @@ import axios from "axios";
 
 const url = 'https://www.filipboril.cz/api/burger';
 
-export const setOrders = (orders, count) => {
+const setOrders = (orders, count) => {
     return {
         type: actionTypes.SET_ORDERS,
         orders: orders,

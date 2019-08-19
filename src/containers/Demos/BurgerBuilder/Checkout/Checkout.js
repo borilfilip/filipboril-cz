@@ -107,6 +107,21 @@ class Checkout extends Component {
         sendingOrder: false
     };
 
+    componentDidMount() {
+        if (this.props.loginEmail) {
+            this.setState({
+                ...this.state,
+                orderForm: {
+                    ...this.state.orderForm,
+                    email: {
+                        ...this.state.orderForm.email,
+                        value: this.props.loginEmail
+                    }
+                }
+            })
+        }
+    };
+
     countIngredients = () => {
         return Object.values(this.props.ingredients).reduce((acc, val) => acc + val);
     };
@@ -231,7 +246,8 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         ingredients: state.builder.ingredients,
-        totalPrice: state.builder.totalPrice
+        totalPrice: state.builder.totalPrice,
+        loginEmail: state.auth.email
     };
 };
 

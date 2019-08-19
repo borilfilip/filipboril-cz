@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Input from "../../../../components/Demos/BurgerBuilder/Input/Input";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import axios from "axios";
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
 import ErrorBox from "../../../ErrorBox/ErrorBox";
@@ -53,9 +53,7 @@ class Sign extends Component {
                 value: ''
             }
         },
-        formValid: false,
-        sending: false,
-        error: null
+        formValid: false
     };
 
     checkInputValidity = (value, rules) => {
@@ -118,46 +116,22 @@ class Sign extends Component {
     };
 
     submitHandler = (event) => {
-        this.setState({sending: true});
-        const data = {};
-        for (let id in this.state.formData) {
-            data[id] = this.state.formData[id].value;
-        }
+        const {formData} = this.state;
 
         if (this.isRegistering()) {
-            axios.post(this.url + '/register', data) // TODO move to redux
-                .then(response => {
-                    this.setState({sending: false});
-                    if (response.data.status === 'ok') {
-                        this.props.login(this.state.formData.email.value, response.data.token);
-                        this.props.history.push('/demos/burger-builder');
-                    } else {
-                        this.setState({error: response.data.message});
-                    }
-                })
-                .catch(() => {
-                    this.setState({sending: false});
-                });
+            this.props.register(formData.email.value, formData.password.value);
         } else {
-            axios.post(this.url + '/login', data) // TODO move to redux
-                .then(response => {
-                    this.setState({sending: false});
-                    if (response.data.status === 'ok') {
-                        this.props.login(this.state.formData.email.value, response.data.token);
-                        this.props.history.push('/demos/burger-builder');
-                    } else {
-                        this.setState({error: response.data.message});
-                    }
-                })
-                .catch(() => {
-                    this.setState({sending: false});
-                });
+            this.props.login(formData.email.value, formData.password.value);
         }
 
         event.preventDefault();
     };
 
     render() {
+        if (this.props.email) {
+            return <Redirect to="/demos/burger-builder"/>;
+        }
+
         const register = this.isRegistering();
 
         let inputs = Object.entries(this.state.formData);
@@ -172,7 +146,7 @@ class Sign extends Component {
             )
         });
 
-        const {error} = this.state;
+        const {error, sending} = this.props;
 
         return (
             <>
@@ -181,8 +155,8 @@ class Sign extends Component {
                 <Col md="6">
                     <form onSubmit={this.submitHandler}>
                         {form}
-                        <Button type="submit" variant="primary" disabled={!this.state.formValid}>
-                            {register ? 'Registrovat' : 'Přihlásit'}
+                        <Button type="submit" variant="primary" disabled={!this.state.formValid || sending}>
+                            {sending ? 'Čekejte...' : (register ? 'Registrovat' : 'Přihlásit')}
                         </Button>
                     </form>
                     <div className="mt-3">
@@ -198,10 +172,19 @@ class Sign extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        email: state.auth.email,
+        sending: state.auth.sending,
+        error: state.auth.error
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
-        login: (email, token) => dispatch(actions.login(email, token))
+        login: (email, password) => dispatch(actions.login(email, password)),
+        register: (email, password) => dispatch(actions.register(email, password))
     }
 };
 
-export default connect(null, mapDispatchToProps)(withErrorHandler(Sign, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Sign, axios));

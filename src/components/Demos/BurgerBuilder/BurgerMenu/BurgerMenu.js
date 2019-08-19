@@ -19,9 +19,8 @@ const burgerMenu = (props) => {
 
         userLink = (
             <>
-                <Navbar.Text>{login}</Navbar.Text>
                 <Nav.Link onClick={props.logout}>
-                    <i className="fas fa-sign-out-alt"/> Odhlásit
+                    <i className="fas fa-sign-out-alt"/> Odhlásit {login}
                 </Nav.Link>
             </>
         );
@@ -47,7 +46,7 @@ const burgerMenu = (props) => {
 
 const mapStateToProps = state => {
     return {
-        email: state.user.email
+        email: state.auth.email
     };
 };
 

@@ -11,7 +11,7 @@ import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import builder from './store/burgerBuilder/reducers/builder';
 import orders from './store/burgerBuilder/reducers/orders';
 import demosHeader from './store/burgerBuilder/reducers/demosHeader';
-import user from './store/burgerBuilder/reducers/user';
+import auth from './store/burgerBuilder/reducers/auth';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
     builder: builder,
     orders: orders,
     demosHeader: demosHeader,
-    user: user
+    auth: auth
 });
 const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)

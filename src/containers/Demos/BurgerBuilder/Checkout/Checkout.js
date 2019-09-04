@@ -10,6 +10,7 @@ import {Redirect} from "react-router";
 import Alert from "react-bootstrap/Alert";
 import axios from 'axios';
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
+import * as actions from "../../../../store/burgerBuilder/actions";
 
 class Checkout extends Component {
 
@@ -191,11 +192,12 @@ class Checkout extends Component {
             data[id] = this.state.orderForm[id].value;
         }
         axios.post(this.url + '/order', data)
-            .then(response => {
+            .then(() => {
                 this.setState({sendingOrder: false});
+                this.props.notify('Burger objednán', 'Váš burger byl objednán');
                 this.props.history.push('/demos/burger-builder/thankyou');
             })
-            .catch(error => {
+            .catch(() => {
                 this.setState({sendingOrder: false});
             });
     };
@@ -251,4 +253,10 @@ const mapStateToProps = state => {
     };
 };
 
-export default withErrorHandler(connect(mapStateToProps)(Checkout), axios);
+const mapDispatchToProps = dispatch => {
+    return {
+        notify: (title, message, type) => dispatch(actions.notify(title, message, type))
+    }
+};
+
+export default withErrorHandler(connect(mapStateToProps, mapDispatchToProps)(Checkout), axios);

@@ -1,7 +1,8 @@
 .BuildControl {
-  margin: 3px 0;
+  margin: 2px 0;
+  display: inline-flex;
 }
 
 .Label {
-  text-align: right;
+  padding-top: 2px;
 }

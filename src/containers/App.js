@@ -9,6 +9,9 @@ import Todo from "./Demos/Todo/Todo";
 import Container from 'react-bootstrap/Container'
 import BurgerBuilder from "./Demos/BurgerBuilder/BurgerBuilder";
 import Error404 from "../components/Error/404/Error404";
+import Notification from "./Notification/Notification";
+import * as actions from "../store/burgerBuilder/actions";
+import {connect} from "react-redux";
 
 class App extends Component {
     render() {
@@ -17,6 +20,7 @@ class App extends Component {
                 <Menu/>
                 <main>
                     <Container>
+                        <Notification title={this.props.title} message={this.props.message} type={this.props.type} />
                         <Switch>
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/projects" component={Projects}/>
@@ -33,4 +37,18 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        title: state.notification.title,
+        message: state.notification.message,
+        type: state.notification.type
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        notify: (title, message, type) => dispatch(actions.notify(title, message, type))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

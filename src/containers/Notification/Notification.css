@@ -1,14 +1,14 @@
-.ErrorBox {
+.Notification {
     position: fixed;
     z-index: 100;
-    width: 18rem;
-    margin-left: -18rem;
+    width: 22rem;
+    margin: 0.5rem 0 0 -23rem;
     cursor: pointer;
     opacity: 0.8;
     visibility: visible;
 }
 
-.ErrorBox.hide {
+.Notification.hide {
     -webkit-transition: 0.8s;
     -moz-transition: 0.8s;
     -o-transition: 0.8s;
@@ -17,6 +17,6 @@
     visibility: hidden;
 }
 
-.ErrorBoxWrapper {
+.NotificationWrapper {
     float: right;
 }

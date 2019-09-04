@@ -8,18 +8,20 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
-import builder from './store/burgerBuilder/reducers/builder';
-import orders from './store/burgerBuilder/reducers/orders';
-import demosHeader from './store/burgerBuilder/reducers/demosHeader';
-import auth from './store/burgerBuilder/reducers/auth';
+import builderReducer from './store/burgerBuilder/reducers/builder';
+import ordersReducer from './store/burgerBuilder/reducers/orders';
+import demosHeaderReducer from './store/burgerBuilder/reducers/demosHeader';
+import authReducer from './store/burgerBuilder/reducers/auth';
+import notificationReducer from './store/burgerBuilder/reducers/notification';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
-    builder: builder,
-    orders: orders,
-    demosHeader: demosHeader,
-    auth: auth
+    builder: builderReducer,
+    orders: ordersReducer,
+    demosHeader: demosHeaderReducer,
+    auth: authReducer,
+    notification: notificationReducer
 });
 const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)

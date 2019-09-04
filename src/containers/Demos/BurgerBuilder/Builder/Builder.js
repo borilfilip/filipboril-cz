@@ -56,18 +56,18 @@ class Builder extends Component {
     return (
       <>
         <Row>
-          <Col md="12" lg="9">
-            <Burger ingredients={this.props.ingredients} />
-          </Col>
-          <Col md="12" lg="3">
+          <Col sm="12" md="3">
             <BuildControls
-              ingredientAdded={this.props.onIngredientAdded}
-              ingredientRemoved={this.props.onIngredientRemoved}
-              disabled={disabledInfo}
-              purchasable={this.updatePurchaseState(this.props.ingredients)}
-              ordered={this.purchaseHandler}
-              price={this.props.totalPrice}
-              translations={INGREDIENT_TRANSLATIONS} />
+                ingredientAdded={this.props.onIngredientAdded}
+                ingredientRemoved={this.props.onIngredientRemoved}
+                disabled={disabledInfo}
+                purchasable={this.updatePurchaseState(this.props.ingredients)}
+                ordered={this.purchaseHandler}
+                price={this.props.totalPrice}
+                translations={INGREDIENT_TRANSLATIONS} />
+          </Col>
+          <Col sm="12" md="9">
+            <Burger ingredients={this.props.ingredients} />
           </Col>
         </Row>
 

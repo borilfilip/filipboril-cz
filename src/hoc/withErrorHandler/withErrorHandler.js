@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import ErrorBox from "../../containers/ErrorBox/ErrorBox";
+import Notification from "../../containers/Notification/Notification";
 
-const withErrorHandler = (WrappedComponent, axios) => {
+const withErrorHandler = (WrappedComponent, axios) => { //TODO use notify
     return class extends Component {
         state = {
             error: null
@@ -26,7 +26,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         render() {
             return (
                 <>
-                    <ErrorBox title={this.state.error} message="Požadavek se nepodařilo vykonat." />
+                    <Notification title="Došlo k chybě" message={this.state.error} />
                     <WrappedComponent {...this.props}/>
                 </>
             )

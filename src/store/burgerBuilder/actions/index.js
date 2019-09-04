@@ -14,3 +14,6 @@ export {
     login,
     logout
 } from './auth'
+export {
+    notify
+} from './notification'

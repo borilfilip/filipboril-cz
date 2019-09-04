@@ -5,12 +5,11 @@ import Button from "react-bootstrap/Button";
 import {Link, Redirect} from "react-router-dom";
 import axios from "axios";
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
-import ErrorBox from "../../../ErrorBox/ErrorBox";
+import Notification from "../../../Notification/Notification";
 import {connect} from "react-redux";
 import * as actions from "../../../../store/burgerBuilder/actions";
 
 class Sign extends Component {
-
     url = 'https://www.filipboril.cz/api/user';
 
     state = {
@@ -129,7 +128,9 @@ class Sign extends Component {
 
     render() {
         if (this.props.email) {
-            return <Redirect to="/demos/burger-builder"/>;
+            return (
+                <Redirect to="/demos/burger-builder"/>
+            );
         }
 
         const register = this.isRegistering();
@@ -150,7 +151,7 @@ class Sign extends Component {
 
         return (
             <>
-                <ErrorBox title={error} message="Přihlášení se nezdařilo." />
+                <Notification title={error} message="Přihlášení se nezdařilo."/>
                 <h2>{register ? 'Registrace' : 'Přihlášení'}</h2>
                 <Col md="6">
                     <form onSubmit={this.submitHandler}>
@@ -163,7 +164,8 @@ class Sign extends Component {
                         {
                             register
                                 ? <Link to="/demos/burger-builder/sign/in">Již mám účet</Link>
-                                : <><i className="fas fa-info-circle" /> Nemáte účet? <Link to="/demos/burger-builder/sign/up">Zaregistrujte se</Link></>
+                                : <><i className="fas fa-info-circle"/> Nemáte účet? <Link
+                                    to="/demos/burger-builder/sign/up">Zaregistrujte se</Link></>
                         }
                     </div>
                 </Col>
@@ -187,4 +189,5 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
+// export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(withNotification(Sign), axios));
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Sign, axios));

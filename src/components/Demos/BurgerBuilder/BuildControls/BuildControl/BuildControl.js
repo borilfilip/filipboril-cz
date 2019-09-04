@@ -5,7 +5,9 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const buildControl = (props) => (
   <div className="BuildControl">
-    {props.label}
+    <div className="Label">
+      {props.label}
+    </div>
     <ButtonGroup size="sm" className="ml-3">
       <Button
         variant="danger"

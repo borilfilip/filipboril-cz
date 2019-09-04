@@ -10,31 +10,34 @@ const burgerMenu = (props) => {
 
     let userLink = (
         <Nav.Link as={NavLink} to="/demos/burger-builder/sign">
-        <i className="fas fa-user"/> Přihlášení
-    </Nav.Link>
+            <i className="fas fa-user"/> Přihlášení
+        </Nav.Link>
     );
 
     if (isLoggedIn) {
         const login = props.email.split('@')[0];
 
         userLink = (
-            <>
-                <Nav.Link onClick={props.logout}>
-                    <i className="fas fa-sign-out-alt"/> Odhlásit {login}
-                </Nav.Link>
-            </>
+            <Nav.Link onClick={props.logout}>
+                <i className="fas fa-sign-out-alt"/> Odhlásit {login}
+            </Nav.Link>
         );
     }
 
     return (
         <Navbar bg="light" expand="md" className="mb-4">
-            <Navbar.Brand as={NavLink} exact to="/demos/burger-builder"><i className="fas fa-hamburger"/> BurgerBuilder</Navbar.Brand>
+            <Navbar.Brand as={NavLink} exact to="/demos/burger-builder">
+                <i className="fas fa-hamburger"/> BurgerBuilder
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link as={NavLink} exact to="/demos/burger-builder"><i className="fas fa-plus"/> Nový</Nav.Link>
-                    <Nav.Link as={NavLink} to="/demos/burger-builder/orders"><i
-                        className="fas fa-list"/> Objednávky</Nav.Link>
+                    <Nav.Link as={NavLink} exact to="/demos/burger-builder">
+                        <i className="fas fa-plus"/> Nový
+                    </Nav.Link>
+                    <Nav.Link as={NavLink} to="/demos/burger-builder/orders">
+                        <i className="fas fa-list"/> Objednávky
+                    </Nav.Link>
                 </Nav>
                 <Nav>
                     {userLink}

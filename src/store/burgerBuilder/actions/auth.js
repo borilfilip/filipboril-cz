@@ -38,13 +38,17 @@ const request = (action, email, password) => {
         dispatch(loginStart());
         axios.post(url + '/' + action, {email, password})
             .then(response => {
-                const {data} = response;
-                if (data.status === 'ok') {
-                    dispatch(loginSuccess(email, data.token));
+                const {status, token, expiration_time} = response.data;
+                if (status === 'ok') {
+                    const expirationDate = new Date(new Date().getTime() + expiration_time * 1000);
+                    localStorage.setItem('email', email);
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('expirationDate', expirationDate);
+                    dispatch(loginSuccess(email, token));
                     dispatch(actions.notify('Přihlášení úspěšné', 'Nyní můžete prohlížet svoje objednávky'));
-                    dispatch(checkAuthTimeout(data.expiration_time));
+                    dispatch(checkAuthTimeout(expiration_time));
                 } else {
-                    dispatch(loginFailed(data.message));
+                    dispatch(loginFailed(response.data.message));
                     dispatch(this.props.notify('Registrace proběhla úspěšně', 'Jste zeregistrován(a) a rovnou přihlášen(a)'));
                 }
             })
@@ -68,9 +72,30 @@ const logoutSuccess = () => {
     }
 };
 
-export const logout = () => {
+export const logout = (notify = true) => {
     return dispatch => {
+        localStorage.removeItem('email');
+        localStorage.removeItem('token');
+        localStorage.removeItem('expirationDate');
         dispatch(logoutSuccess());
-        dispatch(actions.notify('Odhlášení úspěšné', 'Odhlášení bylo úspěšné'));
+        if (notify) dispatch(actions.notify('Odhlášení úspěšné', 'Odhlášení bylo úspěšné'));
+    };
+};
+
+export const checkAuthState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logout(false));
+        } else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if (expirationDate <= new Date()) {
+                dispatch(logout(false));
+            } else {
+                const email = localStorage.getItem('email');
+                dispatch(loginSuccess(email, token));
+                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
+            }
+        }
     };
 };

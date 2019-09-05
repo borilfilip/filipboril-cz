@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import React from "react";
 import {connect} from "react-redux";
 import * as actions from "../../../../store/burgerBuilder/actions";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const burgerMenu = (props) => {
     const isLoggedIn = props.email;
@@ -15,12 +16,17 @@ const burgerMenu = (props) => {
     );
 
     if (isLoggedIn) {
-        const login = props.email.split('@')[0];
+        const login = (
+            <>
+                <i className="fas fa-user"/> {props.email.split('@')[0]}
+            </>
+        );
 
         userLink = (
-            <Nav.Link onClick={props.logout}>
-                <i className="fas fa-sign-out-alt"/> Odhlásit {login}
-            </Nav.Link>
+            <NavDropdown alignRight title={login} id="user-dropdown">
+                <NavDropdown.Item onClick={props.logout}><i
+                    className="fas fa-sign-out-alt"/> Odhlásit</NavDropdown.Item>
+            </NavDropdown>
         );
     }
 

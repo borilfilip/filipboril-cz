@@ -12,7 +12,8 @@ export {
 export {
     register,
     login,
-    logout
+    logout,
+    checkAuthState
 } from './auth'
 export {
     notify

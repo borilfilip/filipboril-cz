@@ -14,6 +14,10 @@ import * as actions from "../store/burgerBuilder/actions";
 import {connect} from "react-redux";
 
 class App extends Component {
+    componentDidMount () {
+        this.props.tryAutoSignup();
+    }
+
     render() {
         return (
             <BrowserRouter>
@@ -47,7 +51,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        notify: (title, message, type) => dispatch(actions.notify(title, message, type))
+        notify: (title, message, type) => dispatch(actions.notify(title, message, type)),
+        tryAutoSignup: () => dispatch(actions.checkAuthState())
     }
 };
 

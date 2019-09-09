@@ -1,11 +1,31 @@
 .Notification {
+    cursor: pointer;
+    opacity: 0.85;
+    visibility: visible;
+    margin: 0 1rem;
+}
+
+.NotificationWrapper {
+    width: 100%;
+    left: 0;
     position: fixed;
     z-index: 100;
-    width: 22rem;
-    margin: 0.5rem 0 0 -23rem;
-    cursor: pointer;
-    opacity: 0.8;
-    visibility: visible;
+}
+
+@media (min-width: 768px) {
+    .Notification {
+        width: 22rem;
+        margin: 0.5rem 0 0 -22.5rem;
+        position: fixed;
+        z-index: 100;
+    }
+
+    .NotificationWrapper {
+        position: static;
+        width: auto;
+        float: right;
+        z-index: 0;
+    }
 }
 
 .Notification.hide {
@@ -15,8 +35,4 @@
     transition: 0.8s;
     opacity: 0;
     visibility: hidden;
-}
-
-.NotificationWrapper {
-    float: right;
 }

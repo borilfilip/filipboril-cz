@@ -8,6 +8,7 @@ const ordersTable = (props) => (
             <th>Datum</th>
             <th>Jméno</th>
             <th>Doručení</th>
+            <th>Ingredience</th>
             <th>Cena</th>
             <th>Stav</th>
         </tr>

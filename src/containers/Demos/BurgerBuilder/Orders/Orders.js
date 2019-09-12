@@ -35,19 +35,25 @@ class Orders extends Component {
 
     render() {
         let orders = (
-            <Spinner animation="border" role="status">
-                <span className="sr-only">Načítání...</span>
-            </Spinner>
+            <div style={{textAlign: 'center'}}>
+                <Spinner animation="border" role="status">
+                    <span className="sr-only">Načítání...</span>
+                </Spinner>
+            </div>
         );
 
         if (!this.props.loading && !this.props.error) {
             orders = (
                 <>
                     <OrdersTable>
-                        {this.props.orders.map(order => (
-                            <Order key={order.id} date={order.date} name={order.name} method={order.delivery_method}
-                                   price={order.price} state={order.state}/>
-                        ))}
+                        {this.props.orders.map(order => {
+                            const {salad, bacon, cheese, meat} = order;
+                            return (
+                                <Order key={order.id} date={order.date} name={order.name} method={order.delivery_method}
+                                       price={order.price} state={order.state}
+                                       ingredients={{salad, bacon, cheese, meat}}/>
+                            )
+                        })}
                     </OrdersTable>
 
                     <OrdersPagination page={this.state.page} limit={this.state.limit} count={this.props.count}

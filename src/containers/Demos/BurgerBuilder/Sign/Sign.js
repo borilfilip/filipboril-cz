@@ -8,6 +8,7 @@ import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler"
 import Notification from "../../../Notification/Notification";
 import {connect} from "react-redux";
 import * as actions from "../../../../store/burgerBuilder/actions";
+import {checkInputValidity} from "../../../../shared/utility";
 
 class Sign extends Component {
     url = 'https://www.filipboril.cz/api/user';
@@ -55,38 +56,6 @@ class Sign extends Component {
         formValid: false
     };
 
-    checkInputValidity = (value, rules) => {
-        let isValid = true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        if (rules.equal) {
-            isValid = value === this.state.formData[rules.equal].value && isValid
-        }
-
-        return isValid;
-    };
-
     isRegistering = () => {
         return this.props.location.pathname === '/demos/burger-builder/sign/up';
     };
@@ -108,7 +77,7 @@ class Sign extends Component {
         };
 
         updatedInput.value = event.target.value;
-        updatedInput.valid = this.checkInputValidity(updatedInput.value, updatedInput.validation);
+        updatedInput.valid = checkInputValidity(updatedInput.value, updatedInput.validation);
         updatedFormData[id] = updatedInput;
 
         this.setState({formData: updatedFormData, formValid: this.checkFormValidity(updatedFormData)});

@@ -11,6 +11,7 @@ import Alert from "react-bootstrap/Alert";
 import axios from 'axios';
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../../../store/burgerBuilder/actions";
+import {checkInputValidity} from "../../../../shared/utility"
 
 class Checkout extends Component {
 
@@ -127,34 +128,6 @@ class Checkout extends Component {
         return Object.values(this.props.ingredients).reduce((acc, val) => acc + val);
     };
 
-    checkInputValidity = (value, rules) => {
-        let isValid = true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        return isValid;
-    };
-
     checkFormValidity = (form) => {
         let isValid = true;
         for (let inputId in form) {
@@ -172,7 +145,7 @@ class Checkout extends Component {
         };
 
         updatedInput.value = event.target.value;
-        updatedInput.valid = this.checkInputValidity(updatedInput.value, updatedInput.validation);
+        updatedInput.valid = checkInputValidity(updatedInput.value, updatedInput.validation);
         updatedOrderForm[id] = updatedInput;
 
         this.setState({orderForm: updatedOrderForm, formValid: this.checkFormValidity(updatedOrderForm)});

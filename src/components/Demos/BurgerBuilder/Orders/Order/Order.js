@@ -40,6 +40,7 @@ const order = (props) => {
             case 'bacon': color = 'danger'; break;
             case 'cheese': color = 'warning'; break;
             case 'meat': color = 'dark'; break;
+            default: color = 'secondary'; break;
         }
 
         return count ? (<Badge variant={color} style={{marginRight: '3px'}}>{count}</Badge>) : null;

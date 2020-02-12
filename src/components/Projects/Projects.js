@@ -35,6 +35,19 @@ const projects = (props) => {
         <a href="https://dspace.cvut.cz/handle/10467/79461" target="_blank" rel="noreferrer noopener"
            className="btn btn-primary btn-sm" role="button"><i className="fas fa-external-link-alt"/> Bakalářská práce</a>
       </Project>
+      <Project img="/img/volkswagen-thumb.png" name="CMS pro Volkswagen">
+        <p>
+          Je content management system pro <a href="https://www.volkswagen.de" target="_blank" rel="noreferrer noopener">
+          Volkswagen</a> editory po celém světě a po publikování jejich obsahu také pro návštěvníky většiny trhů,
+          na nichž VW působí. Spolupracoval jsem s týmem v{' '}
+          <a href="https://sinnerschrader.com/" target="_blank" rel="noreferrer noopener">SinnerSchrader</a> v Praze a
+          v Hamburku, moje práce jakožto front-end developera je vidět na některých komponentách, jako například
+          vyhledávání, navigation flyoutu nebo disclaimery.
+        </p>
+        <p>
+          Použité technologie: React, Typescript, CSS, styled-components, GIT, docker a další.
+        </p>
+      </Project>
       <Project img="/img/sep-hp-thumb.png" name="SEP – skupinová evidence protistran">
         <p>
           Skupinová evidence protistran je portál, který eviduje protistrany, vytvořený pro banku. Na tomto

@@ -1,33 +1,50 @@
-import React from 'react';
-import { withRouter } from 'react-router';
+import React, {Component} from 'react';
+import {withRouter} from 'react-router';
 import {matchPath, NavLink} from 'react-router-dom';
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap'
 
-const menu = (props) => {
-  const pathname = props.location.pathname;
-  const demosActive = matchPath(pathname, {path: "/demos"}) !== null;
+class Menu extends Component {
+  state = {
+    navBarExpanded: false
+  };
 
-  return (
-    <Navbar variant="dark" bg="dark" expand="md" fixed="top" collapseOnSelect>
-      <Container>
-        <Navbar.Brand as={NavLink} exact to="/">Filip Bořil</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link as={NavLink} exact to="/">O mně</Nav.Link>
-            <Nav.Link as={NavLink} to="/projects">Projekty</Nav.Link>
-            <NavDropdown title="Ukázky" id="basic-nav-dropdown" className={demosActive ? "active" : null}>
-              <NavDropdown.Item as={NavLink} to="/demos/todo">Úkolníček</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/demos/burger-builder">Burger builder</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-};
+  expandNavBar = (expanded) => {
+    this.setState({navBarExpanded: expanded});
+  };
 
-export default withRouter(menu);
+  closeNavBar = () => {
+    this.setState({navBarExpanded: false});
+  };
+
+  render() {
+    const MenuNav = (props) => (
+      <Nav.Link onClick={this.closeNavBar} as={NavLink} {...props}>{props.children}</Nav.Link>
+    );
+    const MenuNavDropdownItem = (props) => (
+      <NavDropdown.Item onClick={this.closeNavBar} as={NavLink} {...props}>{props.children}</NavDropdown.Item>
+    );
+    const pathname = this.props.location.pathname;
+    const demosActive = matchPath(pathname, {path: "/demos"}) !== null;
+
+    return (
+      <Navbar variant="dark" bg="dark" expand="md" fixed="top" onToggle={this.expandNavBar} expanded={this.state.navBarExpanded}>
+        <Container>
+          <Navbar.Brand as={NavLink} exact to="/">Filip Bořil</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <MenuNav exact to="/">O mně</MenuNav>
+              <MenuNav to="/projects">Projekty</MenuNav>
+              <NavDropdown title="Ukázky" id="basic-nav-dropdown" className={demosActive ? "active" : null}>
+                <MenuNavDropdownItem to="/demos/todo">Úkolníček</MenuNavDropdownItem>
+                <MenuNavDropdownItem to="/demos/burger-builder">Burger builder</MenuNavDropdownItem>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
+  };
+}
+
+export default withRouter(Menu);

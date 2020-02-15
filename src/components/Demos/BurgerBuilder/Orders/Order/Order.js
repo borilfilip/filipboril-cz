@@ -32,7 +32,7 @@ const order = (props) => {
         minute: "2-digit"
     };
     const formattedDate = new Intl.DateTimeFormat('cs-CZ', format).format(date);
-    const ingredients = Object.keys(props.ingredients).map((ingredient) => {
+    const ingredients = Object.keys(props.ingredients).map((ingredient, index) => {
         const count = props.ingredients[ingredient];
         let color;
         switch (ingredient) {
@@ -43,7 +43,7 @@ const order = (props) => {
             default: color = 'secondary'; break;
         }
 
-        return count ? (<Badge variant={color} style={{marginRight: '3px'}}>{count}</Badge>) : null;
+        return count ? (<Badge key={index} variant={color} style={{marginRight: '3px'}}>{count}</Badge>) : null;
     });
 
     return (

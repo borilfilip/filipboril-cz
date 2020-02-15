@@ -1,39 +1,40 @@
 import React from 'react';
 import './CV.css';
-import Row from './Row/Row'
-import Headline from "./Headline/Headline";
-import Table from "./Table/Table";
+import Block from './Block/Block'
+import Entry from './Entry/Entry'
 import Alert from 'react-bootstrap/Alert'
 
 const CV = (props) => {
   return (
-      <div className="CV">
-          <h1>Životopis</h1>
-          <Alert variant="dark">
-              Ze životopisu jsou skryty osobní údaje. Celý životopis v PDF zašlu na vyžádání.
-          </Alert>
-          <Table>
-              <Headline>Vzdělání</Headline>
-              <Row name="2018">Tallinn University of Technology (Erasmus+)</Row>
-              <Row name="2014 – 2019">Fakulta infomačních technologií, ČVUT</Row>
-              <Row name="2010 – 2014">Gymnázium U Libeňského zámku (se zaměřením na IT)</Row>
+    <div className="CV">
+      <h1>Životopis</h1>
+      <Alert variant="dark">
+        Ze životopisu jsou skryty osobní údaje. Celý životopis v PDF zašlu na vyžádání.
+      </Alert>
 
-              <Headline>Praxe</Headline>
-              <Row name="2019 – současnost">SinnerSchrader – Tvorba frontendu v reactu pro Volkswagen</Row>
-              <Row name="2018 – 2019">NETservis – Tvorba webových prezentací a eshopů</Row>
-              <Row name="2017 – 2018">Evosoft – Tvorba webových aplikací</Row>
-              <Row name="2015 – 2017">Česká spořitelna – Data mining, tvorba reportů</Row>
+      <Block name="Vzdělání">
+        <Entry name="2018">Tallinn University of Technology (Erasmus+)</Entry>
+        <Entry name="2014 – 2019">Fakulta infomačních technologií, ČVUT</Entry>
+        <Entry name="2010 – 2014">Gymnázium U Libeňského zámku (se zaměřením na IT)</Entry>
+      </Block>
 
-              <Headline>Dovednosti a zájmy</Headline>
-              <Row name="Řidičský průkaz">AM, B1, B</Row>
-              <Row name="Cizí jazyky">Pokročilá angličtina (B2), základy němčiny (A2) a ruštiny (A1)</Row>
-              <Row name="Programovací jazyky">C++, Java, Java EE, Python, VBA</Row>
-              <Row name="Vývoj webu">HTML, CSS, PHP, Javascript (ES6), Nette, Symfony, React, REST API, Bootstrap</Row>
-              <Row name="Databáze">MySQL, Microsoft SQL Server, Oracle</Row>
-              <Row name="Další IT dovednosti">BASH, Git, Docker</Row>
-              <Row name="Další zájmy">Programování, cestování, cyklistika</Row>
-          </Table>
-      </div>
+      <Block name="Praxe">
+        <Entry name="2019 – současnost">SinnerSchrader – Tvorba frontendu v reactu pro Volkswagen</Entry>
+        <Entry name="2018 – 2019">NETservis – Tvorba webových prezentací a eshopů</Entry>
+        <Entry name="2017 – 2018">Evosoft – Tvorba webových aplikací</Entry>
+        <Entry name="2015 – 2017">Česká spořitelna – Data mining, tvorba reportů</Entry>
+      </Block>
+
+      <Block name="Dovednosti a zájmy">
+        <Entry name="Řidičský průkaz">AM, B1, B</Entry>
+        <Entry name="Cizí jazyky">Pokročilá angličtina (B2), základy němčiny (A2) a ruštiny (A1)</Entry>
+        <Entry name="Programovací jazyky">C++, Java, Java EE, Python, VBA</Entry>
+        <Entry name="Vývoj webu">HTML, CSS, PHP, Javascript (ES6), Nette, Symfony, React, REST API, Bootstrap</Entry>
+        <Entry name="Databáze">MySQL, Microsoft SQL Server, Oracle</Entry>
+        <Entry name="Další IT dovednosti">BASH, Git, Docker</Entry>
+        <Entry name="Další zájmy">Programování, cestování, cyklistika</Entry>
+      </Block>
+    </div>
   );
 };
 

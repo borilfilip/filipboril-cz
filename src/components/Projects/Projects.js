@@ -59,19 +59,6 @@ const projects = (props) => {
           Použité technologie: PHP, nette, jQuery, Oracle, GIT, docker a další.
         </p>
       </Project>
-      <Project img="/img/volkswagen-thumb.png" name="CMS pro Volkswagen">
-        <p>
-          Je content management system pro <a href="https://www.volkswagen.de" target="_blank" rel="noreferrer noopener">
-          Volkswagen</a> editory po celém světě a po publikování jejich obsahu také pro návštěvníky většiny trhů,
-          na nichž VW působí. Spolupracoval jsem s týmem v{' '}
-          <a href="https://sinnerschrader.com/" target="_blank" rel="noreferrer noopener">SinnerSchrader</a> v Praze a
-          v Hamburku, moje práce jakožto front-end developera je vidět na některých komponentách, jako například
-          vyhledávání, navigation flyoutu nebo disclaimery.
-        </p>
-        <p>
-          Použité technologie: React, Typescript, CSS, styled-components, GIT, docker a další.
-        </p>
-      </Project>
       <Project img="/img/cokolada-hp-thumb.png" name="Webredakce – eshopy a webové prezentace na míru">
         <p>
           Jedná se o nasazení a úprava hotového řešení v podobě eshopu a redakčního systému. Na každém projektu

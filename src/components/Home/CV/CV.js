@@ -19,21 +19,21 @@ const CV = () => {
         <Entry name="2010 – 2014">Gymnázium U Libeňského zámku (<FormattedMessage id="focus-on-it"/>)</Entry>
       </Block>
 
-      <Block name={<FormattedMessage id="practise"/>}>
-        <Entry name="2019 – současnost">SinnerSchrader – <FormattedMessage id="s2-job"/></Entry>
+      <Block name={<FormattedMessage id="practice"/>}>
+        <Entry name={<FormattedMessage id="present" values={{year: 2019}}/>}>SinnerSchrader – <FormattedMessage id="s2-job"/></Entry>
         <Entry name="2018 – 2019">NETservis – <FormattedMessage id="nts-job"/></Entry>
         <Entry name="2017 – 2018">Evosoft – <FormattedMessage id="twa"/></Entry>
         <Entry name="2015 – 2017">Česká spořitelna – <FormattedMessage id="cs-job"/></Entry>
       </Block>
 
       <Block name={<FormattedMessage id="skills-and-hobbies"/>}>
-        <Entry name="Řidičský průkaz">AM, B1, B</Entry>
-        <Entry name="Cizí jazyky"><FormattedMessage id="language-skills"/></Entry>
-        <Entry name="Programovací jazyky">C++, Java, Java EE, Python, VBA</Entry>
-        <Entry name="Vývoj webu">HTML, CSS, PHP, Javascript (ES6), Nette, Symfony, React, REST API, Bootstrap</Entry>
-        <Entry name="Databáze">MySQL, Microsoft SQL Server, Oracle</Entry>
-        <Entry name="Další IT dovednosti">BASH, Git, Docker</Entry>
-        <Entry name="Další zájmy"><FormattedMessage id="programming"/>, <FormattedMessage
+        <Entry name={<FormattedMessage id="driving-licence"/>}>AM, B1, B</Entry>
+        <Entry name={<FormattedMessage id="foreign-languages"/>}><FormattedMessage id="language-skills"/></Entry>
+        <Entry name={<FormattedMessage id="programming-languages"/>}>C++, Java, Java EE, Python, VBA</Entry>
+        <Entry name={<FormattedMessage id="web-development"/>}>HTML, CSS, PHP, Javascript/Typescript (ES6), React, Nette, Symfony, REST API, Bootstrap</Entry>
+        <Entry name={<FormattedMessage id="databases"/>}>MySQL, Microsoft SQL Server, Oracle</Entry>
+        <Entry name={<FormattedMessage id="other-it-skills"/>}>BASH, Git, Docker</Entry>
+        <Entry name={<FormattedMessage id="other-hobbies"/>}><FormattedMessage id="programming"/>, <FormattedMessage
           id="travelling"/>, <FormattedMessage id="cycling"/></Entry>
       </Block>
     </div>

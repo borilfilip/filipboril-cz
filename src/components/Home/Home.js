@@ -3,7 +3,7 @@ import CV from './CV/CV';
 import Intro from './Intro/Intro';
 import Social from './Social/Social';
 
-const home = (props) => {
+const home = () => {
   return (
       <div className="Home">
           <Intro />

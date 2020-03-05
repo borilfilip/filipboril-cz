@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router';
 import {matchPath, NavLink} from 'react-router-dom';
 import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap'
+import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
+import {FormattedMessage} from "react-intl";
 
 class Menu extends Component {
   state = {
@@ -16,30 +18,41 @@ class Menu extends Component {
     this.setState({navBarExpanded: false});
   };
 
+  languageChangeHandler = (language) => {
+    this.closeNavBar();
+    this.props.onLanguageChange(language);
+  };
+
   render() {
     const MenuNav = (props) => (
       <Nav.Link onClick={this.closeNavBar} as={NavLink} {...props}>{props.children}</Nav.Link>
     );
+
     const MenuNavDropdownItem = (props) => (
       <NavDropdown.Item onClick={this.closeNavBar} as={NavLink} {...props}>{props.children}</NavDropdown.Item>
     );
+
     const pathname = this.props.location.pathname;
     const demosActive = matchPath(pathname, {path: "/demos"}) !== null;
 
     return (
-      <Navbar variant="dark" bg="dark" expand="md" fixed="top" onToggle={this.expandNavBar} expanded={this.state.navBarExpanded}>
+      <Navbar variant="dark" bg="dark" expand="md" fixed="top" onToggle={this.expandNavBar}
+              expanded={this.state.navBarExpanded}>
         <Container>
           <Navbar.Brand as={NavLink} exact to="/">Filip Bořil</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <MenuNav exact to="/">O mně</MenuNav>
-              <MenuNav to="/projects">Projekty</MenuNav>
-              <NavDropdown title="Ukázky" id="basic-nav-dropdown" className={demosActive ? "active" : null}>
-                <MenuNavDropdownItem to="/demos/todo">Úkolníček</MenuNavDropdownItem>
-                <MenuNavDropdownItem to="/demos/burger-builder">Burger builder</MenuNavDropdownItem>
+              <MenuNav exact to="/"><FormattedMessage id="about-me"/></MenuNav>
+              <MenuNav to="/projects"><FormattedMessage id="projects"/></MenuNav>
+              <NavDropdown title={<FormattedMessage id="demos"/>} id="basic-nav-dropdown" className={demosActive ? "active" : null}>
+                <MenuNavDropdownItem to="/demos/todo"><FormattedMessage id="memo"/></MenuNavDropdownItem>
+                <MenuNavDropdownItem to="/demos/burger-builder"><FormattedMessage
+                  id="burger-builder"/></MenuNavDropdownItem>
               </NavDropdown>
             </Nav>
+            <LanguageSwitcher className="justify-content-end" language={this.props.language}
+                              onLanguageChange={this.languageChangeHandler}/>
           </Navbar.Collapse>
         </Container>
       </Navbar>

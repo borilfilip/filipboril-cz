@@ -1,7 +1,7 @@
 import React from 'react';
 import './Social.css';
 
-const social = (props) => {
+const social = () => {
   return (
       <div className="social">
           <a href="https://www.facebook.com/borilfilip" target="_blank" rel="noopener noreferrer">

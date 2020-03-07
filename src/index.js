@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css';
-import App from './containers/App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import {Provider as ReduxProvider} from 'react-redux';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';

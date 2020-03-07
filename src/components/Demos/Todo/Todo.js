@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import DemosHeader from "../BurgerBuilder/DemosHeader/DemosHeader"
-import Item from "../../../components/Demos/Todo/Item/Item";
+import Item from "./Item/Item";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-import DeleteModal from "../../../components/Demos/Todo/Item/DeleteModal/DeleteModal";
+import DeleteModal from "./Item/DeleteModal/DeleteModal";
 import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
 import Alert from "react-bootstrap/Alert";
 

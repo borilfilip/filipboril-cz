@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Notification from "../../containers/Notification/Notification";
+import Notification from "../../components/Notification/Notification";
 
 const withErrorHandler = (WrappedComponent, axios) => { //TODO use notify
     return class extends Component {

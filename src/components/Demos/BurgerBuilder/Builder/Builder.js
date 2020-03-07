@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Burger from "../../../../components/Demos/BurgerBuilder/Burger/Burger";
-import BuildControls from "../../../../components/Demos/BurgerBuilder/BuildControls/BuildControls";
+import Burger from "../Burger/Burger";
+import BuildControls from "../BuildControls/BuildControls";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import OrderSummary from "../../../../components/Demos/BurgerBuilder/OrderSummary/OrderSummary";
+import OrderSummary from "../OrderSummary/OrderSummary";
 import {connect} from "react-redux";
 import * as actions from '../../../../store/burgerBuilder/actions';
 

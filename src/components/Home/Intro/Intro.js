@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import NavLink from "../../../shared/NavLink";
 import './Intro.css';
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Dropdown from "react-bootstrap/Dropdown";

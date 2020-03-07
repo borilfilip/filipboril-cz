@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Order from "../../../../components/Demos/BurgerBuilder/Orders/Order/Order";
+import Order from "./Order/Order";
 import OrdersPagination from "./OrdersPagination/OrdersPagination";
-import OrdersTable from "../../../../components/Demos/BurgerBuilder/Orders/Order/OrdersTable/OrdersTable";
+import OrdersTable from "./Order/OrdersTable/OrdersTable";
 import Spinner from "react-bootstrap/Spinner";
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../../../store/burgerBuilder/actions";

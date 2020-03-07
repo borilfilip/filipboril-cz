@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NotificationContext} from "../../containers/App";
+import {NotificationContext} from "../../components/App";
 
 const withNotification = (WrappedComponent) => {
     return class extends Component {

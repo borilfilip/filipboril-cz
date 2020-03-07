@@ -4,7 +4,7 @@ import {Route, Switch} from "react-router";
 import Builder from "./Builder/Builder";
 import Checkout from "./Checkout/Checkout";
 import Orders from "./Orders/Orders";
-import BurgerMenu from "../../../components/Demos/BurgerBuilder/BurgerMenu/BurgerMenu";
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import ThankYou from "./ThankYou/ThankYou";
 import Sign from "./Sign/Sign";
 

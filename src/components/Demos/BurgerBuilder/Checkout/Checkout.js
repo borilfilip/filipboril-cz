@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Input from "../../../../components/Demos/BurgerBuilder/Input/Input"
+import Input from "../Input/Input"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Burger from "../../../../components/Demos/BurgerBuilder/Burger/Burger";
+import Burger from "../Burger/Burger";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import Alert from "react-bootstrap/Alert";

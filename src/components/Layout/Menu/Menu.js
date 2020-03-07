@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router';
 import {matchPath, NavLink} from 'react-router-dom';
-import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap'
+import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
 import {FormattedMessage} from "react-intl";
+import {animateScroll as scroll} from 'react-scroll';
+import {scrollDuration} from "../../../shared/NavLink";
 
 class Menu extends Component {
   state = {
@@ -18,6 +20,11 @@ class Menu extends Component {
     this.setState({navBarExpanded: false});
   };
 
+  navigate = () => {
+    this.closeNavBar();
+    scroll.scrollToTop({duration: scrollDuration});
+  };
+
   languageChangeHandler = (language) => {
     this.closeNavBar();
     this.props.onLanguageChange(language);
@@ -25,11 +32,11 @@ class Menu extends Component {
 
   render() {
     const MenuNav = (props) => (
-      <Nav.Link onClick={this.closeNavBar} as={NavLink} {...props}>{props.children}</Nav.Link>
+      <Nav.Link onClick={this.navigate} as={NavLink} {...props}>{props.children}</Nav.Link>
     );
 
     const MenuNavDropdownItem = (props) => (
-      <NavDropdown.Item onClick={this.closeNavBar} as={NavLink} {...props}>{props.children}</NavDropdown.Item>
+      <NavDropdown.Item onClick={this.navigate} as={NavLink} {...props}>{props.children}</NavDropdown.Item>
     );
 
     const pathname = this.props.location.pathname;

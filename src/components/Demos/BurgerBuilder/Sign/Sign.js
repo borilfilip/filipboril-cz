@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Input from "../../../../components/Demos/BurgerBuilder/Input/Input";
+import Input from "../Input/Input";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import {Link, Redirect} from "react-router-dom";

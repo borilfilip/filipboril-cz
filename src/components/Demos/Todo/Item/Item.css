@@ -1,3 +1,17 @@
 .Item {
   margin: 1rem 0;
 }
+
+.Item-row {
+  align-items: baseline;
+}
+
+.Item-input {
+  border: none;
+  height: auto;
+  padding: 0;
+}
+
+.Item-input:focus {
+  box-shadow: none;
+}

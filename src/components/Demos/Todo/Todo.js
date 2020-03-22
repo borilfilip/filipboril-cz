@@ -1,178 +1,193 @@
 import React, {Component} from 'react';
+import {Alert, Button, Spinner, Row, Col} from "react-bootstrap";
 import axios from 'axios';
 import DemosHeader from "../BurgerBuilder/DemosHeader/DemosHeader"
 import Item from "./Item/Item";
-import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
 import DeleteModal from "./Item/DeleteModal/DeleteModal";
 import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
-import Alert from "react-bootstrap/Alert";
+import {FormattedMessage} from "react-intl";
 
 class Todo extends Component {
-    state = {
-        notes: [],
-        delete: 0,
-        deleting: false,
-        adding: false,
-        loaded: false,
-        error: false
-    };
+  state = {
+    notes: [],
+    delete: 0,
+    deleting: false,
+    adding: false,
+    loaded: false,
+    error: false
+  };
 
-    url = 'https://www.filipboril.cz/api/todo';
-    lastInsertRef = React.createRef();
+  url = 'https://www.filipboril.cz/api/todo';
+  lastInsertRef = React.createRef();
 
-    componentDidMount = () => {
-        axios.get(this.url)
-            .then(response => {
-                const notes = response.data.map(item => {
-                    return {
-                        ...item,
-                        editing: false,
-                        saving: false
-                    }
-                });
-                this.setState({notes: notes, loaded: true});
-            })
-            .catch(() => {
-                this.setState({error: true});
-            });
-    };
-
-    deleteModalShowHandler = (idx) => {
-        this.setState({delete: idx});
-    };
-
-    closeDeleteModalHandler = () => {
-        this.setState({delete: 0});
-    };
-
-    deleteHandler = () => {
-        axios.delete(this.url + '/note/' + this.state.notes[this.state.delete].id)
-            .then(() => {
-                const notes = [...this.state.notes];
-                notes.splice(this.state.delete, 1);
-                this.setState({notes: notes, delete: 0, deleting: false});
-            })
-            .catch(() => {
-                this.setState({delete: 0, deleting: false})
-            });
-        this.setState({deleting: true});
-    };
-
-    getItemIndex = (id) => {
-        return this.state.notes.findIndex(p => {
-            return p.id === id;
-        });
-    };
-
-    getItemCopy = (id) => {
-        return {...this.state.notes[this.getItemIndex(id)]};
-    };
-
-    setItem = (item) => {
-        const notes = [...this.state.notes];
-        notes[this.getItemIndex(item.id)] = item;
-
-        this.setState({notes: notes});
-    };
-
-    editHandler = (id) => {
-        const item = this.getItemCopy(id);
-        item.editing = !item.editing;
-
-        this.setItem(item);
-    };
-
-    changeHandler = (event, id) => {
-        const item = this.getItemCopy(id);
-        item.content = event.target.value;
-
-        this.setItem(item);
-    };
-
-    saveHandler = (event, id) => {
-        const item = this.getItemCopy(id);
-
-        axios.put(this.url + '/note/' + item.id, {content: item.content})
-            .then(() => {
-                item.editing = false;
-            })
-            .finally(() => {
-                item.saving = false;
-                this.setItem(item);
-            });
-
-        item.saving = true;
-        this.setItem(item);
-        event.preventDefault();
-    };
-
-    addHandler = () => {
-        const item = {
-            content: '',
-            editing: true,
+  componentDidMount = () => {
+    axios.get(this.url)
+      .then(response => {
+        const notes = response.data.map(item => {
+          return {
+            ...item,
+            editing: false,
             saving: false
-        };
+          }
+        });
+        this.setState({notes: notes, loaded: true});
+      })
+      .catch(() => {
+        this.setState({error: true});
+      });
+  };
 
-        axios.post(this.url + '/note/', {content: item.content})
-            .then((response) => {
-                item.id = response.data.id;
-                const notes = [...this.state.notes];
-                notes.push(item);
-                this.setState({notes: notes, adding: false});
-                this.lastInsertRef.current.focus();
-            })
-            .catch(() => {
-                this.setState({adding: false})
-            });
+  deleteModalShowHandler = (idx) => {
+    this.setState({delete: idx});
+  };
 
-        this.setState({adding: true});
+  closeDeleteModalHandler = () => {
+    this.setState({delete: 0});
+  };
+
+  deleteHandler = () => {
+    axios.delete(this.url + '/note/' + this.state.notes[this.state.delete].id)
+      .then(() => {
+        const notes = [...this.state.notes];
+        notes.splice(this.state.delete, 1);
+        this.setState({notes: notes, delete: 0, deleting: false});
+      })
+      .catch(() => {
+        this.setState({delete: 0, deleting: false})
+      });
+    this.setState({deleting: true});
+  };
+
+  getItemIndex = (id) => {
+    return this.state.notes.findIndex(p => {
+      return p.id === id;
+    });
+  };
+
+  getItemCopy = (id) => {
+    return {...this.state.notes[this.getItemIndex(id)]};
+  };
+
+  setItem = (item) => {
+    const notes = [...this.state.notes];
+    notes[this.getItemIndex(item.id)] = item;
+
+    this.setState({notes: notes});
+  };
+
+  editHandler = (id) => {
+    const item = this.getItemCopy(id);
+    item.editing = !item.editing;
+
+    this.setItem(item);
+  };
+
+  changeHandler = (event, id) => {
+    const item = this.getItemCopy(id);
+    item.content = event.target.value;
+
+    this.setItem(item);
+  };
+
+  saveHandler = (event, id) => {
+    const item = this.getItemCopy(id);
+
+    axios.put(this.url + '/note/' + item.id, {content: item.content})
+      .then(() => {
+        item.editing = false;
+      })
+      .finally(() => {
+        item.saving = false;
+        this.setItem(item);
+      });
+
+    item.saving = true;
+    this.setItem(item);
+    event.preventDefault();
+  };
+
+  addHandler = () => {
+    const item = {
+      content: '',
+      editing: true,
+      saving: false
     };
 
-    render() {
-        let items = (
-            <Spinner animation="border" role="status">
-                <span className="sr-only">Načítání...</span>
-            </Spinner>
-        );
+    axios.post(this.url + '/note/', {content: item.content})
+      .then((response) => {
+        item.id = response.data.id;
+        const notes = [...this.state.notes];
+        notes.push(item);
+        this.setState({notes: notes, adding: false});
+        this.lastInsertRef.current.focus();
+      })
+      .catch(() => {
+        this.setState({adding: false})
+      });
 
-        if (this.state.loaded) items =
-            this.state.notes.map((item, idx) => {
-                return <Item
-                    key={item.id}
-                    delete={() => this.deleteModalShowHandler(idx)}
-                    edit={() => this.editHandler(item.id)} // TODO focus input
-                    editing={item.editing}
-                    change={(event) => this.changeHandler(event, item.id)}
-                    save={(event) => this.saveHandler(event, item.id)}
-                    saving={item.saving}
-                    content={item.content}
-                    inputRef={this.lastInsertRef}/>
-            });
+    this.setState({adding: true});
+  };
 
-        let view = (
-            <>
-                <Button variant="primary" onClick={this.addHandler} disabled={this.state.adding}>
-                    {this.state.adding ? "Přidávání..." : <><i className="fas fa-plus"/> Nový</>}
-                </Button>
-                <div className="mt-3">
-                    {items}
-                </div>
-                <DeleteModal delete={this.state.delete} deleting={this.state.deleting}
-                             onClose={this.closeDeleteModalHandler} onDelete={this.deleteHandler}/>
-            </>
-        );
+  render() {
+    let items = (
+      <Spinner animation="border" role="status">
+        <span className="sr-only"><FormattedMessage id="loading"/></span>
+      </Spinner>
+    );
 
-        if (this.state.error) view = <Alert variant="danger">Poznámky se nepodařilo načíst.</Alert>;
+    if (this.state.loaded) items =
+      this.state.notes.map((item, idx) => {
+        return <Item
+          key={item.id}
+          onDelete={() => this.deleteModalShowHandler(idx)}
+          onEdit={() => this.editHandler(item.id)}
+          isEditing={item.editing}
+          onChange={(event) => this.changeHandler(event, item.id)}
+          onSave={(event) => this.saveHandler(event, item.id)}
+          isSaving={item.saving}
+          content={item.content}
+          inputRef={this.lastInsertRef}/>
+      });
 
-        return (
-            <>
-                <DemosHeader/>
-                <h2>Úkolníček</h2>
-                {view}
-            </>
-        );
-    }
+    const headline = <h2><FormattedMessage id="notes"/></h2>;
+
+    let view = (
+      <>
+        <Row>
+          <Col>
+            {headline}
+          </Col>
+          <Col xs={"auto"}>
+            <Button variant="primary" onClick={this.addHandler} disabled={this.state.adding}>
+              {this.state.adding
+                ? <FormattedMessage id="adding"/>
+                : <><i className="fas fa-plus"/> <FormattedMessage id="new"/></>
+              }
+            </Button>
+          </Col>
+        </Row>
+        <div className="mt-3">
+          {items}
+        </div>
+        <DeleteModal delete={this.state.delete} deleting={this.state.deleting}
+                     onClose={this.closeDeleteModalHandler} onDelete={this.deleteHandler}/>
+      </>
+    );
+
+    if (this.state.error) view = (
+      <>
+        {headline}
+        <Alert variant="danger"><FormattedMessage id="notes-error"/></Alert>
+      </>
+    );
+
+    return (
+      <>
+        <DemosHeader/>
+        {view}
+      </>
+    );
+  }
 }
 
 export default withErrorHandler(Todo, axios);

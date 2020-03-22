@@ -28,5 +28,11 @@
   "language-skills": "Advanced English (B2), German (A2) and Russian (A1) basis",
   "programming": "Programming",
   "travelling": "travelling",
-  "cycling": "cycling"
+  "cycling": "cycling",
+  "notes": "Notes",
+  "new": "New",
+  "demos-github": "Demos am I still upgrading and adding new functionality. The source code is available on {github}.",
+  "notes-error": "Notes could not be loaded.",
+  "adding": "Adding...",
+  "loading": "Loading..."
 }

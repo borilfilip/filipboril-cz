@@ -34,11 +34,10 @@ class Menu extends Component {
     const MenuNav = (props) => (
       <Nav.Link onClick={this.navigate} as={NavLink} {...props}>{props.children}</Nav.Link>
     );
-
     const MenuNavDropdownItem = (props) => (
       <NavDropdown.Item onClick={this.navigate} as={NavLink} {...props}>{props.children}</NavDropdown.Item>
     );
-
+    const logo = <Navbar.Brand onClick={this.navigate} as={NavLink} exact to="/">Filip Bořil</Navbar.Brand>;
     const pathname = this.props.location.pathname;
     const demosActive = matchPath(pathname, {path: "/demos"}) !== null;
 
@@ -46,13 +45,14 @@ class Menu extends Component {
       <Navbar variant="dark" bg="dark" expand="md" fixed="top" onToggle={this.expandNavBar}
               expanded={this.state.navBarExpanded}>
         <Container>
-          <Navbar.Brand as={NavLink} exact to="/">Filip Bořil</Navbar.Brand>
+          {logo}
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <MenuNav exact to="/"><FormattedMessage id="about-me"/></MenuNav>
               <MenuNav to="/projects"><FormattedMessage id="projects"/></MenuNav>
-              <NavDropdown title={<FormattedMessage id="demos"/>} id="basic-nav-dropdown" className={demosActive ? "active" : null}>
+              <NavDropdown title={<FormattedMessage id="demos"/>} id="basic-nav-dropdown"
+                           className={demosActive ? "active" : null}>
                 <MenuNavDropdownItem to="/demos/todo"><FormattedMessage id="memo"/></MenuNavDropdownItem>
                 <MenuNavDropdownItem to="/demos/burger-builder"><FormattedMessage
                   id="burger-builder"/></MenuNavDropdownItem>

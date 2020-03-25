@@ -149,7 +149,7 @@ class Todo extends Component {
           inputRef={this.lastInsertRef}/>
       });
 
-    const headline = <h2><FormattedMessage id="notes"/></h2>;
+    const headline = <h2><FormattedMessage id="memo"/></h2>;
 
     let view = (
       <>
@@ -177,7 +177,7 @@ class Todo extends Component {
     if (this.state.error) view = (
       <>
         {headline}
-        <Alert variant="danger"><FormattedMessage id="notes-error"/></Alert>
+        <Alert variant="danger"><FormattedMessage id="memo-error"/></Alert>
       </>
     );
 

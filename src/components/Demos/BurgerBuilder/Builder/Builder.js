@@ -8,12 +8,13 @@ import Button from "react-bootstrap/Button";
 import OrderSummary from "../OrderSummary/OrderSummary";
 import {connect} from "react-redux";
 import * as actions from '../../../../store/burgerBuilder/actions';
+import {FormattedMessage} from "react-intl";
 
 const INGREDIENT_TRANSLATIONS = {
-    salad: 'Salát',
-    cheese: 'Sýr',
-    meat: 'Maso',
-    bacon: 'Slanina'
+    salad: <FormattedMessage id="salad"/>,
+    cheese: <FormattedMessage id="cheese"/>,
+    meat: <FormattedMessage id="meat"/>,
+    bacon: <FormattedMessage id="bacon"/>
 };
 
 class Builder extends Component {
@@ -73,7 +74,7 @@ class Builder extends Component {
 
         <Modal show={this.state.purchasing} onHide={this.purchaseCancelHandler}>
           <Modal.Header closeButton>
-            <Modal.Title>Vaše objednávka</Modal.Title>
+            <Modal.Title><FormattedMessage id="your-order"/></Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <OrderSummary
@@ -85,10 +86,10 @@ class Builder extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.purchaseCancelHandler}>
-              Zrušit
+              <FormattedMessage id="cancel"/>
             </Button>
             <Button variant="primary" onClick={this.purchaseContinueHandler}>
-              Pokračovat
+              <FormattedMessage id="continue"/>
             </Button>
           </Modal.Footer>
         </Modal>

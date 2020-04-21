@@ -1,4 +1,5 @@
 import React from 'react';
+import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
 
 const orderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients)
@@ -8,12 +9,12 @@ const orderSummary = (props) => {
 
   return (
     <>
-      Vynikající burger s následujícími ingrediencemi:
+      <FormattedMessage id="delicious-burger"/>:
       <div className="pl-4 mb-3">
         {ingredientSummary}
       </div>
-      <p>Cena celkem: <strong>{props.price.toFixed(2)} Kč</strong></p>
-      <p>Pokračovat k odeslání objednávky?</p>
+      <p><FormattedHTMLMessage id="total-price" values={{price: props.price.toFixed(2)}}/></p>
+      <p><FormattedMessage id="continue-order"/></p>
     </>
   );
 };

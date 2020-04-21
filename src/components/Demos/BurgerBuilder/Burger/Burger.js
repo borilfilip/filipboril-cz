@@ -1,6 +1,7 @@
 import React from 'react';
 import './Burger.css'
 import BurgerIngredient from '../BurgerIngredient/BurgerIngredient';
+import {FormattedMessage} from "react-intl";
 
 const burger = (props) => {
   let transformedIngredients = Object.keys(props.ingredients)
@@ -14,7 +15,7 @@ const burger = (props) => {
     }, []);
 
   if (transformedIngredients.length === 0) {
-    transformedIngredients = <p>Začněte přidáním ingrediencí, prosím!</p>;
+    transformedIngredients = <p><FormattedMessage id="burger-start"/></p>;
   }
 
   return (

@@ -9,6 +9,10 @@ class Notification extends Component {
 
     ref = React.createRef();
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.title !== this.props.title || nextProps.message !== this.props.message;
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.title && nextProps.message) {
             this.openNotification();

@@ -6,6 +6,7 @@ import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
 import {FormattedMessage} from "react-intl";
 import {animateScroll as scroll} from 'react-scroll';
 import {scrollDuration} from "../../../shared/NavLink";
+import './Menu.css';
 
 class Menu extends Component {
   state = {
@@ -42,13 +43,13 @@ class Menu extends Component {
     const demosActive = matchPath(pathname, {path: "/demos"}) !== null;
 
     return (
-      <Navbar variant="dark" bg="dark" expand="md" fixed="top" onToggle={this.expandNavBar}
+      <Navbar className="main-menu" variant="dark" expand="md" fixed="top" onToggle={this.expandNavBar}
               expanded={this.state.navBarExpanded}>
         <Container>
           {logo}
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav>
               <MenuNav exact to="/"><FormattedMessage id="about-me"/></MenuNav>
               <MenuNav to="/projects"><FormattedMessage id="projects"/></MenuNav>
               <NavDropdown title={<FormattedMessage id="demos"/>} id="basic-nav-dropdown"

@@ -1,0 +1,32 @@
+.main-menu.navbar {
+    background-color: #343a40;
+}
+
+@media (min-width: 768px) {
+    .main-menu.navbar {
+        background-image: linear-gradient(0, rgb(128,0,0) 0, rgb(96,0,0) 49.9%, rgb(128,0,0) 50%, rgb(160,0,0) 100%);
+    }
+
+    .main-menu.navbar {
+        padding: .33rem 1rem;
+    }
+
+    .main-menu.navbar .navbar-nav {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-menu.navbar .navbar-nav > * {
+        margin: 0 .25rem;
+    }
+
+    .main-menu.navbar .navbar-nav > *:hover {
+        border-bottom: 3px solid rgba(255,255,255,.75);
+        margin-bottom: -3px;
+    }
+
+    .main-menu.navbar .navbar-nav > .active {
+        border-bottom: 3px solid white;
+        margin-bottom: -3px;
+    }
+}

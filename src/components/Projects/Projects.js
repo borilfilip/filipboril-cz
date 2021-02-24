@@ -9,7 +9,19 @@ import {FormattedMessage} from "react-intl";
 const projects = () => {
   return (
     <div className="Projects">
-      <Project img="/img/filipboril-cz-thumb.png" name={<FormattedMessage id="this-web"/>}>
+      <Project img="/img/volkswagen-thumb.png" name="Volkswagen WWW | 2019-21">
+        <p>
+          Webové stránky pro <a href="https://www.volkswagen.de" target="_blank" rel="noreferrer noopener">
+          Volkswagen</a> a jeho návštěvníky většiny trhů, na nichž VW působí. Spolupracoval jsem s týmem v{' '}
+          <a href="https://sinnerschrader.com/" target="_blank" rel="noreferrer noopener">SinnerSchrader</a> v Praze a
+          v Hamburku, moje práce jakožto front-end developera je vidět na některých komponentách, jako například
+          vyhledávání, navigation flyoutu nebo disclaimery.
+        </p>
+        <p>
+          <FormattedMessage id="tech-used"/>: React, Typescript, CSS, styled-components, GIT, docker,…
+        </p>
+      </Project>
+      <Project img="/img/filipboril-cz-thumb.png" name={<><FormattedMessage id="this-web"/> | 2019-21</>}>
         <p>
           Můj první projekt v reactu, na kterém jsem se react učil, který mě kariérně prezentuje a který též
           dokládá mé znalosti reactu (v menu Ukázky). Skládá se ze z backendu v Nette a v frontendu ve zmíněném
@@ -23,7 +35,7 @@ const projects = () => {
           <i className="fab fa-github"/> <FormattedMessage id="source-files"/>
         </a>
       </Project>
-      <Project img="/img/fras-hp-thumb.png" name={<FormattedMessage id="bachelor-project-headline"/>}>
+      <Project img="/img/fras-hp-thumb.png" name={<><FormattedMessage id="bachelor-project-headline"/> | 2018-19</>}>
         <p>
           Systém má zá úkol zjednodušit proces zazamenávání docházky. Je tvořen moduly, z nichž jeden běží na
           Raspberry PI a má na starosti detekovat pohyb a fotit procházející lidi. Další modul na pořízených
@@ -41,30 +53,7 @@ const projects = () => {
           <FormattedMessage id="bachelor-project"/>
         </a>
       </Project>
-      <Project img="/img/volkswagen-thumb.png" name="Volkswagen WWW">
-        <p>
-          Webové stránky pro <a href="https://www.volkswagen.de" target="_blank" rel="noreferrer noopener">
-          Volkswagen</a> a jeho návštěvníky většiny trhů, na nichž VW působí. Spolupracoval jsem s týmem v{' '}
-          <a href="https://sinnerschrader.com/" target="_blank" rel="noreferrer noopener">SinnerSchrader</a> v Praze a
-          v Hamburku, moje práce jakožto front-end developera je vidět na některých komponentách, jako například
-          vyhledávání, navigation flyoutu nebo disclaimery.
-        </p>
-        <p>
-          <FormattedMessage id="tech-used"/>: React, Typescript, CSS, styled-components, GIT, docker,…
-        </p>
-      </Project>
-      <Project img="/img/sep-hp-thumb.png" name={<FormattedMessage id="sep-headline"/>}>
-        <p>
-          Skupinová evidence protistran je portál, který eviduje protistrany, vytvořený pro banku. Na tomto
-          projektu jsem se podílel ve firmě <a href="https://evosoft.cz/" target="_blank" rel="noopener noreferrer">
-          evosoft s r.o.</a> Systém má za cíl každému subjektu ukázat různé údaje o jedné protistraně. Mimo to údaje
-          také importuje a exportuje přes API třetích stran.
-        </p>
-        <p>
-          <FormattedMessage id="tech-used"/>: PHP, nette, jQuery, Oracle, GIT, docker,…
-        </p>
-      </Project>
-      <Project img="/img/cokolada-hp-thumb.png" name={<FormattedMessage id="webredakce-headline"/>}>
+      <Project img="/img/cokolada-hp-thumb.png" name={<><FormattedMessage id="webredakce-headline"/> | 2018-19</>}>
         <p>
           Jedná se o nasazení a úprava hotového řešení v podobě eshopu a redakčního systému. Na každém projektu
           jsem prováděl nasazení připravených html šablon a vývoj dodatečných modulů na míru každého klienta.
@@ -81,6 +70,17 @@ const projects = () => {
         </p>
         <p>
           <FormattedMessage id="tech-used"/>: PHP, jQuery, MySQL,…
+        </p>
+      </Project>
+      <Project img="/img/sep-hp-thumb.png" name={<><FormattedMessage id="sep-headline"/> | 2017-18</>}>
+        <p>
+          Skupinová evidence protistran je portál, který eviduje protistrany, vytvořený pro banku. Na tomto
+          projektu jsem se podílel ve firmě <a href="https://evosoft.cz/" target="_blank" rel="noopener noreferrer">
+          evosoft s r.o.</a> Systém má za cíl každému subjektu ukázat různé údaje o jedné protistraně. Mimo to údaje
+          také importuje a exportuje přes API třetích stran.
+        </p>
+        <p>
+          <FormattedMessage id="tech-used"/>: PHP, nette, jQuery, Oracle, GIT, docker,…
         </p>
       </Project>
 

@@ -4,15 +4,10 @@
 
 @media (min-width: 768px) {
     .main-menu.navbar {
-        background-image: linear-gradient(0, rgb(128,0,0) 0, rgb(96,0,0) 49.9%, rgb(128,0,0) 50%, rgb(160,0,0) 100%);
-    }
-
-    .main-menu.navbar {
         padding: .33rem 1rem;
     }
 
     .main-menu.navbar .navbar-nav {
-        margin-left: auto;
         margin-right: auto;
     }
 

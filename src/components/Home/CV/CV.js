@@ -29,12 +29,12 @@ const CV = () => {
       <Block name={<FormattedMessage id="skills-and-hobbies"/>}>
         <Entry name={<FormattedMessage id="driving-licence"/>}>AM, B1, B</Entry>
         <Entry name={<FormattedMessage id="foreign-languages"/>}><FormattedMessage id="language-skills"/></Entry>
+        <Entry name={<FormattedMessage id="web-development"/>}>HTML, CSS, PHP, Javascript/Typescript (ES6), React, React Native, Redux, Nette, REST, Bootstrap</Entry>
+        <Entry name={<FormattedMessage id="databases"/>}>MySQL, Microsoft SQL Server, Oracle, Firebase</Entry>
         <Entry name={<FormattedMessage id="programming-languages"/>}>C++, Java, Java EE, Python, VBA</Entry>
-        <Entry name={<FormattedMessage id="web-development"/>}>HTML, CSS, PHP, Javascript/Typescript (ES6), React, Nette, Symfony, REST API, Bootstrap</Entry>
-        <Entry name={<FormattedMessage id="databases"/>}>MySQL, Microsoft SQL Server, Oracle</Entry>
         <Entry name={<FormattedMessage id="other-it-skills"/>}>BASH, Git, Docker</Entry>
-        <Entry name={<FormattedMessage id="other-hobbies"/>}><FormattedMessage id="programming"/>, <FormattedMessage
-          id="travelling"/>, <FormattedMessage id="cycling"/></Entry>
+        <Entry name={<FormattedMessage id="other-hobbies"/>}><FormattedMessage
+          id="travelling"/>, <FormattedMessage id="cognition"/>, <FormattedMessage id="cycling"/>, <FormattedMessage id="programming"/></Entry>
       </Block>
     </div>
   );

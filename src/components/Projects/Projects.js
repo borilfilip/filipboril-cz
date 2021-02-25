@@ -18,7 +18,18 @@ const projects = () => {
           vyhledávání, navigation flyoutu nebo disclaimery.
         </p>
         <p>
-          <FormattedMessage id="tech-used"/>: React, Typescript, CSS, styled-components, GIT, docker,…
+          <FormattedMessage id="tech-used"/>: React, Typescript, CSS, styled-components, jest, GIT, docker,…
+        </p>
+      </Project>
+      <Project img="/img/my2-thumb.png" name="My2 | 2020-21">
+        <p>
+          My2 je aplikace pro partnery, která má sloužit jako pomocník pro zlepšení jejich vztahu. Aplikaci vymyslel
+          psycholog Pavel Rataj a většinu jsem naprogramoval já jako dobrovolník, protože mi to přišlo jako zajímavý
+          nápad a protože jsem se chtěl naučit vyvíjet pro mobilní aplikace. Nyní jsem ve fázi funkčního prototypu,
+          kdy zbývá implementovat poslední sekce a funkcionality typu notifikace a podobně.
+        </p>
+        <p>
+          <FormattedMessage id="tech-used"/>: Expo, React native, firebase, crypto,…
         </p>
       </Project>
       <Project img="/img/filipboril-cz-thumb.png" name={<><FormattedMessage id="this-web"/> | 2019-21</>}>

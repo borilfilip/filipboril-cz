@@ -7,6 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../../../store/burgerBuilder/actions";
 import {connect} from "react-redux";
+import {FormattedMessage} from "react-intl";
 
 class Orders extends Component {
 
@@ -37,7 +38,7 @@ class Orders extends Component {
         let orders = (
             <div style={{textAlign: 'center'}}>
                 <Spinner animation="border" role="status">
-                    <span className="sr-only">Načítání...</span>
+                    <span className="sr-only"><FormattedMessage id="loading" /></span>
                 </Spinner>
             </div>
         );

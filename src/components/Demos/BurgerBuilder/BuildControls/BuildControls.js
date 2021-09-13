@@ -13,7 +13,7 @@ const buildControls = (props) => {
   return (
     <div className="BuildControls">
       <h3 className="mb-3">
-        <FormattedMessage id="price" values={{price: props.price.toFixed(2)}}/>
+        <FormattedMessage id="price-czk" values={{price: props.price.toFixed(2)}}/>
       </h3>
       <div className="BuildControlsControls">
         {controls.map(ctrl => (

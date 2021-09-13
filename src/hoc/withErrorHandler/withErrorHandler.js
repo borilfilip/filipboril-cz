@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Notification from "../../components/Notification/Notification";
+import {FormattedMessage} from "react-intl";
 
-const withErrorHandler = (WrappedComponent, axios) => { //TODO use notify
+const withErrorHandler = (WrappedComponent, axios) => { // TODO use notify
     return class extends Component {
         state = {
             error: null
@@ -26,7 +27,7 @@ const withErrorHandler = (WrappedComponent, axios) => { //TODO use notify
         render() {
             return (
                 <>
-                    <Notification title="Došlo k chybě" message={this.state.error} />
+                    <Notification title={<FormattedMessage id="error-occurred" />} message={this.state.error} />
                     <WrappedComponent {...this.props}/>
                 </>
             )

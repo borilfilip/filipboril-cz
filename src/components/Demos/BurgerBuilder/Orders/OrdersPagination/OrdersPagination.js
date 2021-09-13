@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Pagination from "react-bootstrap/Pagination";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import {FormattedMessage} from "react-intl";
 
 class OrdersPagination extends Component {
 
@@ -28,7 +29,7 @@ class OrdersPagination extends Component {
             <>
                 <div style={pages > 1 ? {float: 'right'} : {textAlign: 'right'}}>
                     <DropdownButton
-                        title={this.props.limit === 'inf' ? 'Zobrazit všechny' : 'Zobrazit: ' + this.props.limit}
+                        title={this.props.limit === 'inf' ? <FormattedMessage id="show-all" /> : <FormattedMessage id="show-num" values={{number: this.props.limit}} />}
                         variant="secondary">
                         {this.limits.map(limit => (
                             <Dropdown.Item key={limit} onClick={() => this.props.changeLimit(limit)}
@@ -36,7 +37,7 @@ class OrdersPagination extends Component {
                         ))}
                         <Dropdown.Divider/>
                         <Dropdown.Item key="inf" onClick={() => this.props.changeLimit('inf')}
-                                       active={0 === this.props.limit}>Všechny</Dropdown.Item>
+                                       active={0 === this.props.limit}><FormattedMessage id="all" /></Dropdown.Item>
                     </DropdownButton>
                 </div>
 

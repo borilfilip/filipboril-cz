@@ -20,7 +20,7 @@ const intro = () => {
         </Col>
         <Col sm={12} md={9}>
           <p className="lead">
-            <FormattedMessage id="intro-text" values={{volkswagen: <a href="https://www.volkswagen.de">Volkswagen</a>}}/>
+            <FormattedMessage id="intro-text"/>
           </p>
           <ButtonGroup>
             <NavLink to="/projects" role="button" className="btn btn-primary">

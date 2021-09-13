@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './Projects.css';
 import Project from "./Project/Project";
 import Card from "react-bootstrap/Card";
-import {Button, Image} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import Collapse from "react-bootstrap/Collapse";
 import {FormattedMessage} from "react-intl";
 import ImageOverlay from "./ImageOverlay/ImageOverlay";
@@ -13,6 +13,16 @@ const Projects = () => {
   return (
     <div style={{position: "relative"}}>
       <div className="Projects">
+        <Project img="/img/nps.png" imageClick={() => setImage("/img/nps.png")}
+                 name={<><FormattedMessage id="nps"/> | 2021</>}>
+          <p>
+            Interní aplikace pro <a href="https://www.economia.cz/" target="_blank" rel="noreferrer noopener">
+            Economia</a> ...
+          </p>
+          <p>
+            <FormattedMessage id="tech-used"/>: ...,…
+          </p>
+        </Project>
         <Project img="/img/volkswagen.jpg" imageClick={() => setImage("/img/volkswagen.jpg")}
                  name="Volkswagen WWW | 2019-21">
           <p>

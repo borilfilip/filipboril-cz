@@ -14,20 +14,22 @@ const CV = () => {
       </Alert>
 
       <Block name={<FormattedMessage id="education"/>}>
+        <Entry name={<FormattedMessage id="present" values={{year: 2021}}/>}><FormattedMessage id="pef-czu"/></Entry>
         <Entry name="2018">Tallinn University of Technology (Erasmus+)</Entry>
         <Entry name="2014 – 2019"><FormattedMessage id="fit-ctu"/></Entry>
         <Entry name="2010 – 2014">Gymnázium U Libeňského zámku (<FormattedMessage id="focus-on-it"/>)</Entry>
       </Block>
 
       <Block name={<FormattedMessage id="practice"/>}>
-        <Entry name={<FormattedMessage id="present" values={{year: 2019}}/>}>SinnerSchrader – <FormattedMessage id="s2-job"/></Entry>
+        <Entry name={<FormattedMessage id="present" values={{year: 2021}}/>}>Economia – <FormattedMessage id="eco-job"/></Entry>
+        <Entry name="2019 – 2021">SinnerSchrader – <FormattedMessage id="s2-job"/></Entry>
         <Entry name="2018 – 2019">NETservis – <FormattedMessage id="nts-job"/></Entry>
         <Entry name="2017 – 2018">Evosoft – <FormattedMessage id="twa"/></Entry>
         <Entry name="2015 – 2017">Česká spořitelna – <FormattedMessage id="cs-job"/></Entry>
       </Block>
 
       <Block name={<FormattedMessage id="skills-and-hobbies"/>}>
-        <Entry name={<FormattedMessage id="driving-licence"/>}>AM, B1, B</Entry>
+        <Entry name={<FormattedMessage id="driving-licence"/>}>AM, A1, A2, A, B1, B</Entry>
         <Entry name={<FormattedMessage id="foreign-languages"/>}><FormattedMessage id="language-skills"/></Entry>
         <Entry name={<FormattedMessage id="web-development"/>}>HTML, CSS, PHP, Javascript/Typescript (ES6), React, React Native, Redux, Nette, REST, Bootstrap</Entry>
         <Entry name={<FormattedMessage id="databases"/>}>MySQL, Microsoft SQL Server, Oracle, Firebase</Entry>

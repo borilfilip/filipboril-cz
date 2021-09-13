@@ -1,26 +1,27 @@
 import React from 'react';
 import Badge from "react-bootstrap/Badge";
+import {FormattedMessage} from "react-intl";
 
 const order = (props) => {
     let deliveryMethod;
     switch (props.method) {
         case 'fast':
-            deliveryMethod = "Rychlé";
+            deliveryMethod = <FormattedMessage id="fast" />;
             break;
         case 'cheap':
-            deliveryMethod = "Levné";
+            deliveryMethod = <FormattedMessage id="cheap" />;
             break;
         default:
-            deliveryMethod = "Neznámé";
+            deliveryMethod = <FormattedMessage id="unknown-f" />;
     }
 
     let state;
     switch (props.state) {
         case 'waiting_to_pay':
-            state = "Čeká na zaplacení";
+            state = <FormattedMessage id="waiting-to-pay" />;
             break;
         default:
-            state = "Neznámý";
+            state = <FormattedMessage id="unknown-m" />;
     }
 
     const date = new Date(Date.parse(props.date));
@@ -52,7 +53,7 @@ const order = (props) => {
             <td>{props.name}</td>
             <td>{deliveryMethod}</td>
             <td>{ingredients}</td>
-            <td>{props.price} Kč</td>
+            <td>{props.price} <FormattedMessage id="czk" /></td>
             <td>{state}</td>
         </tr>
     );

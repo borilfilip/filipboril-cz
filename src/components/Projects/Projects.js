@@ -17,10 +17,11 @@ const Projects = () => {
                  name={<><FormattedMessage id="nps"/> | 2021</>}>
           <p>
             Interní aplikace pro <a href="https://www.economia.cz/" target="_blank" rel="noreferrer noopener">
-            Economia</a> ...
+            Economia</a> složící ke správě předplatitelů, objednávek, vydání, atd… Komplexní systém je napojený na mnoho
+            jiných systémů přes API.
           </p>
           <p>
-            <FormattedMessage id="tech-used"/>: ...,…
+            <FormattedMessage id="tech-used"/>: React, Typescript, formik, jest, Symfony, Terraform, GIT, docker,…
           </p>
         </Project>
         <Project img="/img/volkswagen.jpg" imageClick={() => setImage("/img/volkswagen.jpg")}
@@ -39,11 +40,9 @@ const Projects = () => {
         <Project img="/img/my2.png" imageClick={() => setImage("/img/my2.png")} name="My2 | 2020-21">
           <p>
             My2 je aplikace pro partnery, která slouží ke zlepšení jejich vztahu. Aplikaci vymyslel psycholog Pavel
-            Rataj
-            a já jsem se ji jako dobrovolník rozhodl naprogramovat, je to totiž zajímavý nápad a navíc jsem se tak mohl
-            naučit vyvíjet mobilní aplikace. Nyní je projekt ve fázi funkčního prototypu, kdy zbývá implementovat
-            poslední
-            sekce a funkcionality typu notifikace a podobně.
+            Rataj a já jsem se ji jako dobrovolník rozhodl naprogramovat, je to totiž zajímavý nápad a navíc jsem se tak
+            mohl naučit vyvíjet mobilní aplikace. Nyní je projekt ve fázi funkčního prototypu, kdy zbývá implementovat
+            poslední sekce a funkcionality typu notifikace a podobně.
           </p>
           <p>
             <FormattedMessage id="tech-used"/>: Expo, React native, firebase, crypto,…

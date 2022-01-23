@@ -16,7 +16,7 @@ const intro = () => {
       <h1 className="headline">Bc. Filip Bořil</h1>
       <Row>
         <Col sm={12} md={3} className="mb-4 mb-md-0">
-          <Image src="/img/profil.jpg" thumbnail/>
+          <Image src="/img/profile.jpg" thumbnail/>
         </Col>
         <Col sm={12} md={9}>
           <p className="lead">

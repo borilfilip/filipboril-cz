@@ -14,7 +14,6 @@ const CV = () => {
       </Alert>
 
       <Block name={<FormattedMessage id="education"/>}>
-        <Entry name={<FormattedMessage id="present" values={{year: 2021}}/>}><FormattedMessage id="pef-czu"/></Entry>
         <Entry name="2018">Tallinn University of Technology (Erasmus+)</Entry>
         <Entry name="2014 – 2019"><FormattedMessage id="fit-ctu"/></Entry>
         <Entry name="2010 – 2014">Gymnázium U Libeňského zámku (<FormattedMessage id="focus-on-it"/>)</Entry>

@@ -13,12 +13,10 @@ import Notification from "./Notification/Notification";
 import * as actions from "../store/burgerBuilder/actions";
 import {connect} from "react-redux";
 import {IntlProvider} from "react-intl";
-import {Alert} from "react-bootstrap";
 
 class App extends Component {
   state = {
-    language: this.props.language,
-    displayWarning: true
+    language: this.props.language
   };
 
   componentDidMount() {
@@ -27,10 +25,6 @@ class App extends Component {
 
   languageChangeHandler = (language) => {
     this.setState({language});
-  };
-
-  closeWarning = () => {
-    this.setState({displayWarning: false});
   };
 
   render() {
@@ -44,10 +38,6 @@ class App extends Component {
           <main>
             <Container>
               <Notification title={this.props.title} message={this.props.message} type={this.props.type}/>
-              <Alert dismissible variant="warning" show={this.state.displayWarning && language === 'en'}
-                     onClose={this.closeWarning}>
-                English language is not fully supported yet.
-              </Alert>
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/projects" component={Projects}/>

@@ -12,6 +12,7 @@ import axios from 'axios';
 import withErrorHandler from "../../../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../../../store/burgerBuilder/actions";
 import {checkInputValidity} from "../../../../shared/utility"
+import {FormattedMessage} from "react-intl";
 
 class Checkout extends Component {
 
@@ -22,8 +23,8 @@ class Checkout extends Component {
             email: {
                 config: {
                     type: 'email',
-                    label: 'Váš email',
-                    hint: 'Na tento email Vám zašleme rekapitulaci objednávky.'
+                    labelId: 'email-label',
+                    hintId: 'email-hint'
                 },
                 validation: {
                     required: true,
@@ -35,7 +36,7 @@ class Checkout extends Component {
             name: {
                 config: {
                     type: 'text',
-                    label: 'Jméno a příjmení'
+                    labelId: 'name-label'
                 },
                 validation: {
                     required: true
@@ -46,7 +47,7 @@ class Checkout extends Component {
             street: {
                 config: {
                     type: 'text',
-                    label: 'Ulice, číslo popisné a orientační'
+                    labelId: 'street-label'
                 },
                 validation: {
                     required: true
@@ -57,7 +58,7 @@ class Checkout extends Component {
             city: {
                 config: {
                     type: 'text',
-                    label: 'Město'
+                    labelId: 'city-label'
                 },
                 validation: {
                     required: true
@@ -68,7 +69,7 @@ class Checkout extends Component {
             zip: {
                 config: {
                     type: 'number',
-                    label: 'PSČ'
+                    labelId: 'zip-code-label'
                 },
                 validation: {
                     required: true,
@@ -82,7 +83,7 @@ class Checkout extends Component {
             country: {
                 config: {
                     type: 'text',
-                    label: 'Země'
+                    labelId: 'country-label'
                 },
                 validation: {
                     required: true
@@ -93,10 +94,10 @@ class Checkout extends Component {
             delivery_method: {
                 config: {
                     type: 'select',
-                    label: 'Způsob doručení',
+                    labelId: 'delivery-method-label',
                     options: [
-                        {value: 'fast', displayValue: 'Rychlá'},
-                        {value: 'cheap', displayValue: 'Levná'}
+                        {value: 'fast', displayValueId: 'fast'},
+                        {value: 'cheap', displayValueId: 'cheap'}
                     ]
                 },
                 validation: {},
@@ -195,17 +196,17 @@ class Checkout extends Component {
             <>
                 <Alert variant="warning" show={this.state.showAlert} dismissible onClose={this.hideAlertHandler}>
                     <p className="mb-0">
-                        Nezadávejte, prosím, skutečná osobní data.
+                        <FormattedMessage id="do-not-enter-real-data"/>
                     </p>
                 </Alert>
                 <Row>
                     <Col lg="6">
                         <Form>
                             {inputs}
-                            <Button variant="secondary" onClick={this.cancelOrderHandler}>Zpět</Button>{' '}
+                            <Button variant="secondary" onClick={this.cancelOrderHandler}><FormattedMessage id="back" /></Button>{' '}
                             <Button variant="primary" disabled={!this.state.formValid || this.props.sendingOrder}
                                     onClick={this.confirmOrderHandler}>
-                                {this.props.sendingOrder ? "Objednávám..." : "Objednat"}
+                                {this.props.sendingOrder ? <FormattedMessage id="ordering"/> : <FormattedMessage id="order"/>}
                             </Button>
                         </Form>
                     </Col>

@@ -10,68 +10,55 @@ import ImageOverlay from "./ImageOverlay/ImageOverlay";
 const Projects = () => {
   const [image, setImage] = useState(null);
 
+  const economiaLink = <a href="https://www.economia.cz/" target="_blank" rel="noreferrer noopener">Economia</a>;
+  const vwLink = <a href="https://www.volkswagen.de" target="_blank" rel="noreferrer noopener">Volkswagen</a>;
+  const s2Link = <a href="https://sinnerschrader.com/" target="_blank" rel="noreferrer noopener">SinnerSchrader</a>;
+  const gastroP = <a href="http://www.gastro-projekt.cz/" target="_blank" rel="noopener noreferrer">Gastro projekt</a>;
+  const galt = <a href="http://www.galt-pro-deti.cz/" target="_blank" rel="noopener noreferrer">Galt pro děti</a>;
+  const mdlet = <a href="https://www.mdlet.cz/" target="_blank" rel="noopener noreferrer">MDlet</a>;
+  const pwgate = <a href="https://portal.powdergatecapital.com/" target="_blank" rel="noopener noreferrer">Powdergate
+    Capital</a>;
+  const adastra = <a href="http://www.cafeadastra.cz/" target="_blank" rel="noopener noreferrer">Cafe Adastra</a>;
+  const svupraha = <a href="https://svupraha.cz/" target="_blank" rel="noopener noreferrer">SVU Praha</a>;
+  const energo = <a href="http://www.energopraha.com/" target="_blank" rel="noopener noreferrer">Energo Praha</a>;
+  const cokolada = <a href="https://cokolada.cz/" target="_blank" rel="noopener noreferrer">Čokoláda</a>;
+  const evosoft = <a href="https://evosoft.cz/" target="_blank" rel="noopener noreferrer">evosoft s r.o.</a>;
+
   return (
     <div style={{position: "relative"}}>
       <div className="Projects">
         <Project img="/img/nps.png" imageClick={() => setImage("/img/nps.png")}
-                 name={<><FormattedMessage id="nps"/> | 2021</>}>
+                 name={<><FormattedMessage id="nps"/> | 2021 – 22</>}>
           <p>
-            Interní aplikace pro <a href="https://www.economia.cz/" target="_blank" rel="noreferrer noopener">
-            Economia</a> složící ke správě předplatitelů, objednávek, vydání, atd… Komplexní systém je napojený na mnoho
-            jiných systémů přes API.
+            <FormattedMessage id="economia-description" values={{economiaLink}}/>
           </p>
           <p>
-            <FormattedMessage id="tech-used"/>: React, Typescript, formik, jest, Symfony, Terraform, GIT, docker,…
+            <FormattedMessage id="tech-used"/>: React, Typescript, formik, jest, react-bootstrap, Terraform, GIT,…
           </p>
         </Project>
         <Project img="/img/volkswagen.jpg" imageClick={() => setImage("/img/volkswagen.jpg")}
-                 name="Volkswagen WWW | 2019-21">
+                 name="Volkswagen WWW | 2019 – 21">
           <p>
-            Webové stránky pro <a href="https://www.volkswagen.de" target="_blank" rel="noreferrer noopener">
-            Volkswagen</a> a jeho návštěvníky většiny trhů, na nichž VW působí. Spolupracoval jsem s týmem v{' '}
-            <a href="https://sinnerschrader.com/" target="_blank" rel="noreferrer noopener">SinnerSchrader</a> v Praze a
-            v Hamburku, moje práce jakožto front-end developera je vidět na některých komponentách, jako například
-            vyhledávání, navigation flyoutu nebo disclaimery.
+            <FormattedMessage id="volkswagen-description" values={{vwLink, s2Link}}/>
           </p>
           <p>
             <FormattedMessage id="tech-used"/>: React, Typescript, CSS, styled-components, jest, GIT, docker,…
           </p>
         </Project>
-        <Project img="/img/my2.png" imageClick={() => setImage("/img/my2.png")} name="My2 | 2020-21">
+        <Project img="/img/my2.png" imageClick={() => setImage("/img/my2.png")} name="My2 | 2020 – 21">
           <p>
-            My2 je aplikace pro partnery, která slouží ke zlepšení jejich vztahu. Aplikaci vymyslel psycholog Pavel
-            Rataj a já jsem se ji jako dobrovolník rozhodl naprogramovat, je to totiž zajímavý nápad a navíc jsem se tak
-            mohl naučit vyvíjet mobilní aplikace. Nyní je projekt ve fázi funkčního prototypu, kdy zbývá implementovat
-            poslední sekce a funkcionality typu notifikace a podobně.
+            <FormattedMessage id="my2-description"/>
           </p>
           <p>
-            <FormattedMessage id="tech-used"/>: Expo, React native, firebase, crypto,…
+            <FormattedMessage id="tech-used"/>: Expo, React native, firebase, crypto, prettier, react-native-elements…
           </p>
           <a href="/my2-code-demo.zip" className="btn btn-primary btn-sm" role="button"><i
             className="far fa-file-archive"/> <FormattedMessage id="code-demo"/></a>
         </Project>
-        <Project img="/img/filipboril-cz.png" imageClick={() => setImage("/img/filipboril-cz.png")}
-                 name={<><FormattedMessage id="this-web"/> | 2019-21</>}>
-          <p>
-            Můj první projekt v reactu, na kterém jsem se react učil, který mě kariérně prezentuje a který též
-            dokládá mé znalosti reactu (v menu Ukázky). Skládá se ze z backendu v Nette a v frontendu ve zmíněném
-            reactu. Repozitář s frontendem jsem zveřejnil k nahlédnutí na githubu.
-          </p>
-          <p>
-            <FormattedMessage id="tech-used"/>: React, redux, bootstrap, PHP, nette, MySQL, GIT,…
-          </p>
-          <a href="https://github.com/borilfilip/filipboril-cz" target="_blank" rel="noreferrer noopener"
-             className="btn btn-primary btn-sm" role="button">
-            <i className="fab fa-github"/> <FormattedMessage id="source-files"/>
-          </a>
-        </Project>
         <Project img="/img/fras-hp.png" imageClick={() => setImage("/img/fras-hp.png")}
-                 name={<><FormattedMessage id="bachelor-project-headline"/> | 2018-19</>}>
+                 name={<><FormattedMessage id="bachelor-project-headline"/> | 2018 – 19</>}>
           <p>
-            Systém má zá úkol zjednodušit proces zazamenávání docházky. Je tvořen moduly, z nichž jeden běží na
-            Raspberry PI a má na starosti detekovat pohyb a fotit procházející lidi. Další modul na pořízených
-            fotkách rozpozná tváře. Hlavním modulem je webový portál, přes který se kontroluje docházka, správnost
-            rozpoznání a také zadává a schvaluje dovolená a spravuje se celý systém.
+            <FormattedMessage id="fras-description"/>
           </p>
           <p>
             <FormattedMessage id="tech-used"/>: PHP, nette, jQuery, python, bootstrap, fontawesome, MySQL, docker,…
@@ -85,34 +72,19 @@ const Projects = () => {
           </a>
         </Project>
         <Project img="/img/cokolada-hp.png" imageClick={() => setImage("/img/cokolada-hp.png")}
-                 name={<><FormattedMessage id="webredakce-headline"/> | 2018-19</>}>
+                 name={<><FormattedMessage id="webredakce-headline"/> | 2018 – 19</>}>
           <p>
-            Jedná se o nasazení a úprava hotového řešení v podobě eshopu a redakčního systému. Na každém projektu
-            jsem prováděl nasazení připravených html šablon a vývoj dodatečných modulů na míru každého klienta.
-            Kromě krátkodobějších projektů, jako{' '}
-            <a href="http://www.gastro-projekt.cz/" target="_blank" rel="noopener noreferrer">Gastro projekt</a>,{' '}
-            <a href="http://www.galt-pro-deti.cz/" target="_blank" rel="noopener noreferrer">Galt pro děti</a>,{' '}
-            <a href="https://www.mdlet.cz/" target="_blank" rel="noopener noreferrer">MDlet</a>,{' '}
-            <a href="https://portal.powdergatecapital.com/" target="_blank" rel="noopener noreferrer">Powdergate
-              Capital</a>,{' '}
-            <a href="http://www.cafeadastra.cz/" target="_blank" rel="noopener noreferrer">Cafe Adastra</a>,{' '}
-            <a href="https://svupraha-cz.dempsey.netservis.cz/" target="_blank" rel="noopener noreferrer">SVU
-              Praha</a>,{' '}
-            <a href="http://www.energopraha.com/" target="_blank" rel="noopener noreferrer">Energo praha</a>,
-            jsem vyvíjel také projekty s mnoha moduly a importem dat, jako byl web{' '}
-            <a href="https://cokolada-cz.vacatko.netservis.cz/" target="_blank" rel="noopener noreferrer">čokolády</a>.
+            <FormattedMessage id="netservis-description"
+                              values={{gastroP, galt, mdlet, pwgate, adastra, svupraha, energo, cokolada}}/>
           </p>
           <p>
-            <FormattedMessage id="tech-used"/>: PHP, jQuery, MySQL,…
+            <FormattedMessage id="tech-used"/>: PHP, jQuery, CSS, MySQL,…
           </p>
         </Project>
         <Project img="/img/sep-hp.png" imageClick={() => setImage("/img/sep-hp.png")}
-                 name={<><FormattedMessage id="sep-headline"/> | 2017-18</>}>
+                 name={<><FormattedMessage id="sep-headline"/> | 2017 – 18</>}>
           <p>
-            Skupinová evidence protistran je portál, který eviduje protistrany, vytvořený pro banku. Na tomto
-            projektu jsem se podílel ve firmě <a href="https://evosoft.cz/" target="_blank" rel="noopener noreferrer">
-            evosoft s r.o.</a> Systém má za cíl každému subjektu ukázat různé údaje o jedné protistraně. Mimo to údaje
-            také importuje a exportuje přes API třetích stran.
+            <FormattedMessage id="evosoft-description" values={{evosoft}}/>
           </p>
           <p>
             <FormattedMessage id="tech-used"/>: PHP, nette, jQuery, Oracle, GIT, docker,…
@@ -133,9 +105,7 @@ const Projects = () => {
               <Project img="/img/iadm.png" imageClick={() => setImage("/img/iadm.png")}
                        name={<FormattedMessage id="iadm-headline"/>}>
                 <p>
-                  Web slouží jako pomůcka při výuce psaní všemi deseti na PC. K naleznutí jsou zde domácí úkoly,
-                  které je na stránce možno rovnou vyzkoušet nebo opsat. Je to druhá verze webu psaná v čistém
-                  PHP v době, kdy jsem chodil do 8. třídy ZŠ.
+                  <FormattedMessage id="iadm-description"/>
                 </p>
                 <a href="http://iadm.wz.cz/" className="btn btn-primary btn-sm" role="button" target="_blank"
                    rel="noopener noreferrer">
@@ -146,9 +116,7 @@ const Projects = () => {
               <Project img="/img/noviny.png" imageClick={() => setImage("/img/noviny.png")}
                        name={<FormattedMessage id="iadm-news-headline"/>}>
                 <p>
-                  V rámci webu iAdministrativa, jakožto webu, který měl určitou míru navštěvovanosti, jsem se
-                  rozhodl psát články a vyzkoušet si instalaci a práci s redakčním systémem wordpress.
-                  Články pojednávali zprvu o novinkách z tehdejší třídy, později o návodech na PC.
+                  <FormattedMessage id="iadm-noviny-description"/>
                 </p>
                 <a href="http://iadm.wz.cz/noviny/" className="btn btn-primary btn-sm" role="button"
                    target="_blank" rel="noopener noreferrer">
@@ -159,9 +127,7 @@ const Projects = () => {
               <Project img="/img/sesity.png" imageClick={() => setImage("/img/sesity.png")}
                        name={<FormattedMessage id="sesity-headline"/>}>
                 <p>
-                  Web sloužil jako online zdroj zápisků z vyučování v 8. a 9. třídě na ZŠ Rychnovská. Tedy
-                  alespoň u předmětů, které byl někdo ochotný přepisovat. Web byl také napsaný v čistém PHP,
-                  když jsem chodil do 9. třídy.
+                  <FormattedMessage id="sesity-description"/>
                 </p>
                 <a href="http://sesity.borec.cz/" className="btn btn-primary btn-sm" role="button"
                    target="_blank" rel="noopener noreferrer">

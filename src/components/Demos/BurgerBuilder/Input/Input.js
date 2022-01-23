@@ -5,7 +5,11 @@ import {FormattedMessage} from "react-intl";
 const input = (props) => {
 
   let hint = null;
-  if (props.config.hint) {
+  if (props.config.hintId) {
+    hint = <FormattedMessage id={props.config.labelId}>
+      {(label) => <Form.Text className="text-muted">{label}</Form.Text>}
+    </FormattedMessage>
+  } else if (props.config.hint) {
     hint = <Form.Text className="text-muted">{props.config.hint}</Form.Text>
   }
 
@@ -14,7 +18,7 @@ const input = (props) => {
     feedback = <Form.Control.Feedback type="invalid"><FormattedMessage id="invalid"/></Form.Control.Feedback>
   }
 
-  let control = null;
+  let control;
   const commonInputProps = {
     value: props.value,
     onChange: props.onChange,
@@ -27,7 +31,11 @@ const input = (props) => {
       control = (
         <Form.Control as="select" {...commonInputProps}>
           {props.config.options.map(
-            (option) => <option key={option.value} value={option.value}>{option.displayValue}</option>
+            (option) => option.displayValueId
+              ? <FormattedMessage key={option.value} id={option.displayValueId}>
+                {(label) => <option value={option.value}>{label}</option>}
+              </FormattedMessage>
+              : <option key={option.value} value={option.value}>{option.displayValue}</option>
           )}
         </Form.Control>
       );

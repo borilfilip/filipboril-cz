@@ -45,11 +45,14 @@ const request = (action, email, password) => {
                     localStorage.setItem('token', token);
                     localStorage.setItem('expirationDate', expirationDate);
                     dispatch(loginSuccess(email, token));
-                    dispatch(actions.notify('Přihlášení úspěšné', 'Nyní můžete prohlížet svoje objednávky'));
+                    if (action === "register") {
+                        dispatch(this.props.notify('Registrace proběhla úspěšně', 'Jste zeregistrován(a) a rovnou přihlášen(a)'));
+                    } else {
+                        dispatch(actions.notify('Přihlášení úspěšné', 'Nyní můžete prohlížet svoje objednávky'));
+                    }
                     dispatch(checkAuthTimeout(expiration_time));
                 } else {
                     dispatch(loginFailed(response.data.message));
-                    dispatch(this.props.notify('Registrace proběhla úspěšně', 'Jste zeregistrován(a) a rovnou přihlášen(a)'));
                 }
             })
             .catch(() => {

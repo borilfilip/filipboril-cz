@@ -49,7 +49,7 @@ class Sign extends Component {
         validation: {
           required: true,
           minLength: 6,
-          equal: 'password'
+          equal: this.state?.formData.password.value
         },
         valid: undefined,
         value: ''

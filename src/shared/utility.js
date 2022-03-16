@@ -24,7 +24,7 @@ export const checkInputValidity = (value, rules) => {
     }
 
     if (rules.equal) {
-        isValid = value === this.state.formData[rules.equal].value && isValid
+        isValid = value === rules.equal && isValid
     }
 
     return isValid;

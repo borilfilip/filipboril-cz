@@ -117,5 +117,7 @@
   "evosoft-description": "Skupinová evidence protistran je portál vytvořený pro velkou banku. Na tomto projektu jsem se podílel ve firmě {evosoft} Systém má za cíl každému subjektu ukázat různé údaje o jedné protistraně. Mimo to údaje také importuje a exportuje přes API třetích stran.",
   "iadm-description": "Web slouží jako pomůcka při výuce psaní všemi deseti na PC. K naleznutí jsou zde domácí úkoly, které je na stránce možno rovnou vyzkoušet nebo opsat. Je to druhá verze webu psaná v čistém PHP v době, kdy jsem chodil do 8. třídy ZŠ.",
   "iadm-noviny-description": "V rámci webu iAdministrativa, jakožto webu, který měl určitou míru navštěvovanosti, jsem se rozhodl psát články a vyzkoušet si instalaci a práci s redakčním systémem wordpress. Články pojednávali zprvu o novinkách z tehdejší třídy, později o návodech na PC.",
-  "sesity-description": "Web sloužil jako online zdroj zápisků z vyučování v 8. a 9. třídě na ZŠ Rychnovská. Tedy alespoň u předmětů, které byl někdo ochotný přepisovat. Web byl také napsaný v čistém PHP, když jsem chodil do 9. třídy."
+  "sesity-description": "Web sloužil jako online zdroj zápisků z vyučování v 8. a 9. třídě na ZŠ Rychnovská. Tedy alespoň u předmětů, které byl někdo ochotný přepisovat. Web byl také napsaný v čistém PHP, když jsem chodil do 9. třídy.",
+  "freedomtime": "FreedomTime.eu",
+  "freedomtime-description": "Systém pro správu akcí, kde se lidé mohou přihlašovat, psát recenze a prohlížet fotky, administrátoři mohou akce přidávat, přihlášky schvalovat, zobrazovat statistiky, nastavovat automatické emaily, přidávat forky do galerie, a další..."
 }

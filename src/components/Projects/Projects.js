@@ -11,7 +11,7 @@ const Projects = () => {
   const [image, setImage] = useState(null);
 
   const economiaLink = <a href="https://www.economia.cz/" target="_blank" rel="noreferrer noopener">Economia</a>;
-  const vwLink = <a href="https://www.volkswagen.de" target="_blank" rel="noreferrer noopener">Volkswagen</a>;
+  const vwLink = <a href="https://www.volkswagen.de/" target="_blank" rel="noreferrer noopener">Volkswagen</a>;
   const s2Link = <a href="https://sinnerschrader.com/" target="_blank" rel="noreferrer noopener">SinnerSchrader</a>;
   const gastroP = <a href="http://www.gastro-projekt.cz/" target="_blank" rel="noopener noreferrer">Gastro projekt</a>;
   const galt = <a href="http://www.galt-pro-deti.cz/" target="_blank" rel="noopener noreferrer">Galt pro děti</a>;
@@ -27,6 +27,20 @@ const Projects = () => {
   return (
     <div style={{position: "relative"}}>
       <div className="Projects">
+        <Project img="/img/freedomtime.jpg" imageClick={() => setImage("/img/freedomtime.png")}
+                 name={<><FormattedMessage id="freedomtime"/> | 2021 – 22</>}>
+          <p>
+            <FormattedMessage id="freedomtime-description"/>
+          </p>
+          <p>
+            <FormattedMessage id="tech-used"/>: React, Javascript, react-bootstrap, formik, Nette, PHP, CSS, GIT,…
+          </p>
+          <a href="https://www.freedomtime.eu/" className="btn btn-primary btn-sm" role="button"
+             target="_blank" rel="noopener noreferrer">
+            <i className="fas fa-external-link-alt"/>{' '}
+            <FormattedMessage id="go-to-web"/>
+          </a>
+        </Project>
         <Project img="/img/nps.png" imageClick={() => setImage("/img/nps.png")}
                  name={<><FormattedMessage id="nps"/> | 2021 – 22</>}>
           <p>
@@ -44,6 +58,11 @@ const Projects = () => {
           <p>
             <FormattedMessage id="tech-used"/>: React, Typescript, CSS, styled-components, jest, GIT, docker,…
           </p>
+          <a href="https://www.volkswagen.co.uk/" className="btn btn-primary btn-sm" role="button"
+             target="_blank" rel="noopener noreferrer">
+            <i className="fas fa-external-link-alt"/>{' '}
+            <FormattedMessage id="go-to-web"/>
+          </a>
         </Project>
         <Project img="/img/my2.png" imageClick={() => setImage("/img/my2.png")} name="My2 | 2020 – 21">
           <p>

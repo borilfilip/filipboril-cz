@@ -6,7 +6,7 @@ const footer = () => {
       <footer className="pb-3">
           <hr />
           <Container>
-              <span className="text-muted">Filip Bořil 2019 – 2021 ©</span>
+              <span className="text-muted">Filip Bořil 2019 – 2022</span>
           </Container>
       </footer>
   );

@@ -46,7 +46,7 @@
   "new": "New",
   "new2": "New",
   "not-registered": "Don't have an account?",
-  "nps": "New subscriber's system",
+  "nps": "The new system of subscribers",
   "nts-job": "Web presentations and e-shops development",
   "old-projects": "Old projects",
   "old-projects-intro": "Here you can find some old projects, which have been programmed while I was attending the primary school. They are here because of nostalgy.",
@@ -116,5 +116,7 @@
   "evosoft-description": "Group evience of counterparties is a portal created for a big bank. On this project I participated in {evosoft} company. The target of the project is to show different data to each subject about the same counterparty. Besides that those data it also imports and exports using 3rd party APIs.",
   "iadm-description": "Web is served to help educate touch typing. You can find here homeworks, which visitors are able to train here or copy them. It is the second version of the web written in pure PHP at the time I was attending 8th year of the primary school.",
   "iadm-noviny-description": "Within web iAdministrativa, as a web with certain visitors level, I decided to write articles and try to install and use wordpress blog system. The articles began to be written about our class news and later about PC howto.",
-  "sesity-description": "Web served as an online source of notes from lessons in the 8th and 9th class in the primary school Rychnovská. This included subjects which someone was willing to rewrite. Web was developed in pure PHP, when I was attending 9th class of primary school."
+  "sesity-description": "Web served as an online source of notes from lessons in the 8th and 9th class in the primary school Rychnovská. This included subjects which someone was willing to rewrite. Web was developed in pure PHP, when I was attending 9th class of primary school.",
+  "freedomtime": "FreedomTime.eu",
+  "freedomtime-description": "Event management system, where people can sign in to events, add reviews and browse photos, administrators can add events, approve applications, view statistics, set auto-sent emails, add photos to gallery, etc..."
 }

@@ -1,8 +1,8 @@
 .additional-link {
-    display: flex;
-    align-items: baseline;
+  display: flex;
+  align-items: baseline;
 }
 
 .additional-link > *:not(:last-child) {
-    margin-right: 1em;
+  margin-right: 1em;
 }

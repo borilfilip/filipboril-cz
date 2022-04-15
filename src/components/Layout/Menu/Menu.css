@@ -1,27 +1,27 @@
 .main-menu.navbar {
-    background-color: #343a40;
+  background-color: #343a40;
 }
 
 @media (min-width: 768px) {
-    .main-menu.navbar {
-        padding: .33rem 1rem;
-    }
+  .main-menu.navbar {
+    padding: 0.33rem 1rem;
+  }
 
-    .main-menu.navbar .navbar-nav {
-        margin-right: auto;
-    }
+  .main-menu.navbar .navbar-nav {
+    margin-right: auto;
+  }
 
-    .main-menu.navbar .navbar-nav > * {
-        margin: 0 .25rem;
-    }
+  .main-menu.navbar .navbar-nav > * {
+    margin: 0 0.25rem;
+  }
 
-    .main-menu.navbar .navbar-nav > *:hover {
-        border-bottom: 3px solid rgba(255,255,255,.75);
-        margin-bottom: -3px;
-    }
+  .main-menu.navbar .navbar-nav > *:hover {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.75);
+    margin-bottom: -3px;
+  }
 
-    .main-menu.navbar .navbar-nav > .active {
-        border-bottom: 3px solid white;
-        margin-bottom: -3px;
-    }
+  .main-menu.navbar .navbar-nav > .active {
+    border-bottom: 3px solid white;
+    margin-bottom: -3px;
+  }
 }

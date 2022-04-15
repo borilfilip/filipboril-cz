@@ -1,7 +1,7 @@
-import * as actionTypes  from './actionTypes'
+import * as actionTypes from "./actionTypes";
 
 export const closeDemoAlert = () => {
-    return {
-        type: actionTypes.CLOSE_DEMO_ALERT
-    };
+  return {
+    type: actionTypes.CLOSE_DEMO_ALERT,
+  };
 };

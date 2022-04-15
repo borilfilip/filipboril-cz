@@ -1,38 +1,38 @@
 .Notification {
-    cursor: pointer;
-    opacity: 0.85;
-    visibility: visible;
-    margin: 0 1rem;
+  cursor: pointer;
+  opacity: 0.85;
+  visibility: visible;
+  margin: 0 1rem;
 }
 
 .NotificationWrapper {
-    width: 100%;
-    left: 0;
-    position: fixed;
-    z-index: 100;
+  width: 100%;
+  left: 0;
+  position: fixed;
+  z-index: 100;
 }
 
 @media (min-width: 768px) {
-    .Notification {
-        width: 22rem;
-        margin: 0.5rem 0 0 -22.5rem;
-        position: fixed;
-        z-index: 100;
-    }
+  .Notification {
+    width: 22rem;
+    margin: 0.5rem 0 0 -22.5rem;
+    position: fixed;
+    z-index: 100;
+  }
 
-    .NotificationWrapper {
-        position: static;
-        width: auto;
-        float: right;
-        z-index: 0;
-    }
+  .NotificationWrapper {
+    position: static;
+    width: auto;
+    float: right;
+    z-index: 0;
+  }
 }
 
 .Notification.hide {
-    -webkit-transition: 0.8s;
-    -moz-transition: 0.8s;
-    -o-transition: 0.8s;
-    transition: 0.8s;
-    opacity: 0;
-    visibility: hidden;
+  -webkit-transition: 0.8s;
+  -moz-transition: 0.8s;
+  -o-transition: 0.8s;
+  transition: 0.8s;
+  opacity: 0;
+  visibility: hidden;
 }

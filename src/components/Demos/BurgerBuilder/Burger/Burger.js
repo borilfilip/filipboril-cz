@@ -1,28 +1,32 @@
-import React from 'react';
-import './Burger.css'
-import BurgerIngredient from '../BurgerIngredient/BurgerIngredient';
-import {FormattedMessage} from "react-intl";
+import React from "react";
+import "./Burger.css";
+import BurgerIngredient from "../BurgerIngredient/BurgerIngredient";
+import { FormattedMessage } from "react-intl";
 
 const burger = (props) => {
   let transformedIngredients = Object.keys(props.ingredients)
-    .map(igKey => {
+    .map((igKey) => {
       return [...Array(props.ingredients[igKey])].map((_, i) => {
-        return <BurgerIngredient key={igKey + i} type={igKey}/>;
+        return <BurgerIngredient key={igKey + i} type={igKey} />;
       });
     })
     .reduce((arr, el) => {
-      return arr.concat(el)
+      return arr.concat(el);
     }, []);
 
   if (transformedIngredients.length === 0) {
-    transformedIngredients = <p><FormattedMessage id="burger-start"/></p>;
+    transformedIngredients = (
+      <p>
+        <FormattedMessage id="burger-start" />
+      </p>
+    );
   }
 
   return (
     <div className="Burger">
-      <BurgerIngredient type="bread-top"/>
+      <BurgerIngredient type="bread-top" />
       {transformedIngredients}
-      <BurgerIngredient type="bread-bottom"/>
+      <BurgerIngredient type="bread-bottom" />
     </div>
   );
 };

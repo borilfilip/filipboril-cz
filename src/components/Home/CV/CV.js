@@ -26,7 +26,7 @@ const CV = () => {
       </Block>
 
       <Block name={<FormattedMessage id="practice" />}>
-        <Entry name={<FormattedMessage id="present" values={{ year: 2021 }} />}>
+        <Entry name="2021 – 2022">
           Economia – <FormattedMessage id="eco-job" />
         </Entry>
         <Entry name="2019 – 2021">
@@ -45,28 +45,23 @@ const CV = () => {
 
       <Block name={<FormattedMessage id="skills-and-hobbies" />}>
         <Entry name={<FormattedMessage id="driving-licence" />}>
-          AM, A1, A2, A, B1, B
+          <FormattedMessage id="driving-licence-details" />
         </Entry>
         <Entry name={<FormattedMessage id="foreign-languages" />}>
           <FormattedMessage id="language-skills" />
         </Entry>
         <Entry name={<FormattedMessage id="web-development" />}>
-          HTML, CSS, PHP, Javascript/Typescript (ES6), React, React Native,
-          Redux, Nette, REST, Bootstrap
+          HTML, CSS, Typescript (ES6), React, React Native, Redux, Bootstrap,
+          PHP, Nette
         </Entry>
         <Entry name={<FormattedMessage id="databases" />}>
           MySQL, Microsoft SQL Server, Oracle, Firebase
         </Entry>
-        <Entry name={<FormattedMessage id="programming-languages" />}>
-          C++, Java, Java EE, Python, VBA
-        </Entry>
-        <Entry name={<FormattedMessage id="other-it-skills" />}>
-          BASH, Git, Docker
+        <Entry name={<FormattedMessage id="other-programming" />}>
+          BASH, Git, Docker, C++, Java, Java EE, Python, VBA
         </Entry>
         <Entry name={<FormattedMessage id="other-hobbies" />}>
-          <FormattedMessage id="travelling" />,{" "}
-          <FormattedMessage id="cognition" />, <FormattedMessage id="cycling" />
-          , <FormattedMessage id="programming" />
+          <FormattedMessage id="hobbies" />
         </Entry>
       </Block>
     </div>
